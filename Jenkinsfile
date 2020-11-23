@@ -1,4 +1,5 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '10', artifactNumToKeepStr: '30', daysToKeepStr: '365', numToKeepStr: '']]]);
+pipeline{
 timestamps {
     node('master'){
         workspace = pwd()
@@ -13,7 +14,6 @@ timestamps {
             VERSION=$(date +%Y.%m.%d)
             export BRANCH_CLEAN
             ls -la
-            cat /etc/centos_release
             '''
 
         }
@@ -26,4 +26,5 @@ timestamps {
         }
 
     }
+  }
 }
