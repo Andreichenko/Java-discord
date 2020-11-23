@@ -18,5 +18,11 @@ timestamps {
 
         }
 
+        stage('Test') {
+            steps {
+                sh 'docker -v'
+            }
+        }
+
     }
 }
