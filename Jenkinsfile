@@ -1,7 +1,8 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '10', artifactNumToKeepStr: '30', daysToKeepStr: '365', numToKeepStr: '']]]);
 
 pipeline {
-    node('master'){
+    agent none
+    stages{
 
         workspace = pwd()
         // Mark the code checkout 'stage'....
