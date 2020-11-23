@@ -1,7 +1,12 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '10', artifactNumToKeepStr: '30', daysToKeepStr: '365', numToKeepStr: '']]]);
-pipeline{
+
 timestamps {
     node('master'){
+
+   agent {
+           docker { image 'node:14-alpine' }
+       }
+
         workspace = pwd()
         // Mark the code checkout 'stage'....
         stage('Checkout'){
@@ -27,4 +32,3 @@ timestamps {
 
     }
   }
-}
