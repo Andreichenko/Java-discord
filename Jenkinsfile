@@ -1,10 +1,9 @@
 properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', artifactDaysToKeepStr: '10', artifactNumToKeepStr: '30', daysToKeepStr: '365', numToKeepStr: '']]]);
 
-pipeline {
-    agent none
-    stages{
-
-        //workspace = pwd()
+timestamps {
+    node('master'){
+        ansiColor('xterm')
+        workspace = pwd()
         // Mark the code checkout 'stage'....
         stage('Checkout'){
             // Get some code from a GitHub repository
@@ -16,7 +15,6 @@ pipeline {
             VERSION=$(date +%Y.%m.%d)
             export BRANCH_CLEAN
             ls -la
-            node --version
             '''
 
         }
@@ -29,4 +27,4 @@ pipeline {
         }
 
     }
- }
+  }
