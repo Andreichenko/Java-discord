@@ -20,7 +20,7 @@ timestamps {
 
         stage('Test') {
             steps {
-                sh 'docker -v'
+                sh './gradlew clean test --no-daemon'
             }
         }
 
