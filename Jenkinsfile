@@ -3,10 +3,6 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 timestamps {
     node('master'){
 
-   agent {
-           docker { image 'node:14-alpine' }
-       }
-
         workspace = pwd()
         // Mark the code checkout 'stage'....
         stage('Checkout'){
@@ -19,6 +15,7 @@ timestamps {
             VERSION=$(date +%Y.%m.%d)
             export BRANCH_CLEAN
             ls -la
+            ll /etc/
             '''
 
         }
