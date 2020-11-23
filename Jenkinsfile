@@ -15,7 +15,6 @@ timestamps {
             VERSION=$(date +%Y.%m.%d)
             export BRANCH_CLEAN
             ls -la
-            ll /etc/
             '''
 
         }
