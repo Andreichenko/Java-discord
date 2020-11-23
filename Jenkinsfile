@@ -7,8 +7,7 @@ timestamps {
             // Get some code from a GitHub repository
             checkout scm
         }
-        stage('Build')
-        {
+        stage('Build'){
             sh '''
             BRANCH_CLEAN=$(echo $BRANCH_NAME | sed \'s#feature/##g\' | perl -pe \'s/[^\\w]+//g\' | perl -pe \'s/$//g\')
             VERSION=$(date +%Y.%m.%d)
@@ -18,10 +17,10 @@ timestamps {
 
         }
 
-        stage('Test') {
-            steps {
-                sh './gradlew clean test --no-daemon'
-            }
+        stage('Test'){
+
+            sh './gradlew clean test --no-daemon'
+
         }
 
     }
