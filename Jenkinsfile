@@ -13,7 +13,7 @@ timestamps {
             VERSION=$(date +%Y.%m.%d)
             export BRANCH_CLEAN
             ls -la
-            docker -v
+            cat /etc/centos_release
             '''
 
         }
