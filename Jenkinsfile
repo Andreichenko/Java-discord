@@ -2,7 +2,7 @@ properties([[$class: 'BuildDiscarderProperty', strategy: [$class: 'LogRotator', 
 
 timestamps {
     node('master'){
-       ansiColor('xterm'){
+
         workspace = pwd()
         // Mark the code checkout 'stage'....
         stage('Checkout'){
@@ -25,8 +25,6 @@ timestamps {
 
 
         }
-
-      }
 
     }
   }
