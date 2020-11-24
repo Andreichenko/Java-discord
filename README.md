@@ -5,9 +5,10 @@
         <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
     </a>    <a alt="Docker">
         <img src="https://img.shields.io/badge/Docker-v19-yellowgreen.svg" />
-    </a>      <a alt="License">
-        <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
-    </a>  [![](https://images.microbadger.com/badges/version/anantha/spring-boot-application-template.svg)](https://microbadger.com/images/anantha/spring-boot-application-template)
+    </a>  <a alt="Bootstrap">
+        <img src="https://img.shields.io/badge/Bootstrap-v4.0.0-yellowgreen.svg">
+    </a>
+    [![BCH compliance](https://bettercodehub.com/edge/badge/Andreichenko/discord-bot?branch=master)](https://bettercodehub.com/)
 
 
 
