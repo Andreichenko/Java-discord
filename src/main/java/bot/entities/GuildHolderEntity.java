@@ -6,7 +6,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map.Entry;
 import java.util.Objects;
 
 @Document(collection = "guildholders")
