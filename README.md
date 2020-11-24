@@ -1,7 +1,16 @@
 # discord-bot
 
 
-[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) 
+[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+    </a>    <a alt="Docker">
+        <img src="https://img.shields.io/badge/Docker-v19-yellowgreen.svg" />
+    </a>  <a alt="Bootstrap">
+        <img src="https://img.shields.io/badge/Bootstrap-v4.0.0-yellowgreen.svg">
+    </a>
+    [![BCH compliance](https://bettercodehub.com/edge/badge/Andreichenko/discord-bot?branch=master)](https://bettercodehub.com/)
+
+
 
 version 0.1
 
