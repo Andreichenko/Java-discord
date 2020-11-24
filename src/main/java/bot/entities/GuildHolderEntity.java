@@ -24,4 +24,10 @@ public class GuildHolderEntity {
         this.guildId = guildId;
         this.entityList = entityList;
     }
+
+    public void addNewEntity(Entity entity){
+        entityList.add(entity);
+    }
+
+
 }
