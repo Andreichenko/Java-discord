@@ -39,7 +39,7 @@ public class GuildHolderEntity {
         this.guildId = guildId;
     }
 
-    public void removeEntityWithName(String commandName) {
+    public void removeEntityWithName(String commandName) throws IllegalArgumentException {
 
         Entity entityToRemove = null;
 
@@ -49,5 +49,15 @@ public class GuildHolderEntity {
                  entityToRemove = entity;
             }
         }
+
+        if (entityToRemove == null){
+            throw  new IllegalArgumentException(String.format("%s is not an alias that can be removed", commandName));
+        }
+
+        entityList.remove(entityToRemove);
+    }
+
+    public List<Entity> getEntityList(){
+        return entityList;
     }
 }
