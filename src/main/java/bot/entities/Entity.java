@@ -4,6 +4,10 @@ package bot.entities;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
+/**
+ *  Save and load some information to mongo database
+ */
+
 @Document(collection = "mapping")
 public class Entity {
 
