@@ -1,8 +1,9 @@
 # discord-bot
 
 
-[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) current version "v0.1"
+[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) 
 
+version 0.1
 
 This bot is deployed in a separate container and connected to your platform ID. This allows you to broadcast an audio stream, and it is also possible to store commands in a separate database based on mongoDB.
 
