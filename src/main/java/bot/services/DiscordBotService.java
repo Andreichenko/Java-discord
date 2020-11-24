@@ -1,18 +1,19 @@
 package bot.services;
 
 
+import bot.repository.EntityGuildHolderRepository;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.stereotype.Service;
 
+import javax.security.auth.login.LoginException;
+
 @Service
-public class DiscordBotService {
+public interface DiscordBotService {
 
-    void startLoad() {
+    void startLoad(EntityGuildHolderRepository entityGuildHolderRepository) throws LoginException;
 
-    }
+    void off();
 
-    void off(){
-
-    }
+    JDA getJda();
 
 }

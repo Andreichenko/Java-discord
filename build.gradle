@@ -21,6 +21,7 @@ dependencies {
 
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.3.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
+    //springboot framework mongodb starter
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.3.1.RELEASE'
 }
 
