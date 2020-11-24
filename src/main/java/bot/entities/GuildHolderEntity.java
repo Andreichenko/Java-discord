@@ -29,5 +29,13 @@ public class GuildHolderEntity {
         entityList.add(entity);
     }
 
+    public String getGuildId() {
+        return guildId;
+    }
+
+    public void setGuildId(String guildId) {
+        this.guildId = guildId;
+    }
+
 
 }
