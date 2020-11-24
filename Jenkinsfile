@@ -16,7 +16,7 @@ timestamps {
             export BRANCH_CLEAN
             ls -la
             java -version
-            gradle -v
+           ./gradlew tasks
             '''
 
         }
