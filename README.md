@@ -1,8 +1,12 @@
 # discord-bot
 
 
-[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot)
+[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) current version "v0.1"
 
-The bot will be used primarily on Discord. The basic commands will be described later. Discord bot with a bunch of useful features.
 
-Basic functions are pre-defined
+This bot is deployed in a separate container and connected to your platform ID. This allows you to broadcast an audio stream, and it is also possible to store commands in a separate database based on mongoDB.
+
+The main variables
+
+DISCORD_BOT_KEY	== The discord API key
+MONGO_LOCATION_URL	== The URL of the Mongo database
