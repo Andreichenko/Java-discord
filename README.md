@@ -1,7 +1,9 @@
 # discord-bot
 
 
-[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+    </a>
 
 version 0.1
 
