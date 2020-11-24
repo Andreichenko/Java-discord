@@ -6,6 +6,8 @@ import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map.Entry;
+import java.util.Objects;
 
 @Document(collection = "guildholders")
 public class GuildHolderEntity {
@@ -37,5 +39,15 @@ public class GuildHolderEntity {
         this.guildId = guildId;
     }
 
+    public void removeEntityWithName(String commandName) {
 
+        Entity entityToRemove = null;
+
+        for (Entity entity : entityList){
+            if (Objects.equals(entity.getCommandName(), commandName)) {
+
+                 entityToRemove = entity;
+            }
+        }
+    }
 }
