@@ -7,30 +7,7 @@
         <img src="https://img.shields.io/badge/Docker-v19-yellowgreen.svg" />
     </a>      <a alt="License">
         <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
-    </a>  <a alt="GitHub tag (latest SemVer)">
-        <img src="https://img.shields.io/github/tag/Spring-Boot-Framework/Spring-Boot-Application-Template.svg" />
-    </a>
-	<a alt="Docker Image Size (latest by date)">
-        <img src="https://img.shields.io/docker/image-size/anantha/spring-boot-application-template" />
-    </a>
-	<a alt="GitHub code size in bytes">
-        <img src="https://img.shields.io/github/languages/code-size/Spring-Boot-Framework/Spring-Boot-Application-Template" />
-    </a>
-	<a alt="GitHub top language">
-        <img src="https://img.shields.io/github/languages/top/Spring-Boot-Framework/Spring-Boot-Application-Template.svg" />
-    </a>
-	<a alt="GitHub pull requests">
-        <img src="https://img.shields.io/github/issues-pr-raw/Spring-Boot-Framework/Spring-Boot-Application-Template" />
-    </a>
-	<a alt="GitHub repo size">
-        <img src="https://img.shields.io/github/repo-size/Spring-Boot-Framework/Spring-Boot-Application-Template" />
-    </a>
-	<a alt="GitHub language count">
-        <img src="https://img.shields.io/github/languages/count/Spring-Boot-Framework/Spring-Boot-Application-Template" />
-    </a>
-	<a alt="GitHub last commit">
-        <img src="https://img.shields.io/github/last-commit/anantharajuc/Spring-Boot-Application-Template" />
-    </a>
+    </a>  [![](https://images.microbadger.com/badges/version/anantha/spring-boot-application-template.svg)](https://microbadger.com/images/anantha/spring-boot-application-template)
 
 
 
