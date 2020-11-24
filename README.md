@@ -3,7 +3,13 @@
 
 [![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a alt="Java">
         <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+    </a>    <a alt="Docker">
+        <img src="https://img.shields.io/badge/Docker-v19-yellowgreen.svg" />
+    </a>      <a alt="License">
+        <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
     </a>
+
+
 
 version 0.1
 
