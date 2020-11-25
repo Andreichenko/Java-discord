@@ -9,7 +9,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  */
 
 @Document(collection = "mapping")
-public class Entity {
+public class AliasEntity {
 
     @Field
     public String name;
@@ -20,10 +20,10 @@ public class Entity {
     @Field
     public String commandArgs;
 
-    public Entity() {
+    public AliasEntity() {
     }
 
-    public Entity(String name, String commandName, String commandArgs) {
+    public AliasEntity(String name, String commandName, String commandArgs) {
         this.name = name;
         this.commandName = commandName;
         this.commandArgs = commandArgs;
