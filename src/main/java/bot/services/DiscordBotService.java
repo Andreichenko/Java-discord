@@ -20,6 +20,7 @@ public interface DiscordBotService {
 
     void off();
 
+    // this is Discord api
     JDA getJda();
 
 }
