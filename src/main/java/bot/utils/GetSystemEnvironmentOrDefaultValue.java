@@ -13,7 +13,7 @@ public class GetSystemEnvironmentOrDefaultValue {
     private static Map<String, String> defaultValueMap = new HashMap<>();
 
     static {
-        defaultValueMap.put("BOT_USER_ID", "null-17893234757432");
+        defaultValueMap.put("BOT_USER_ID", "<hereissomeid>");   // need to rework after implementation other components
         }
 
     public static String get(String key) {
