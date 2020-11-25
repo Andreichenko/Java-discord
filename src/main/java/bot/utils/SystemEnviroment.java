@@ -10,4 +10,6 @@ import java.lang.annotation.Target;
 public @interface SystemEnviroment {
 
     String value();
+
+    String id(); // some id for asterisk connection
 }
