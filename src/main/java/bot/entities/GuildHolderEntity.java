@@ -15,19 +15,19 @@ public class GuildHolderEntity {
     public String guildId;
 
     @Field
-    public List<Entity> entityList;
+    public List<AliasEntity> aliasEntityList;
 
     public GuildHolderEntity() {
         this(null, new ArrayList<>());
     }
 
-    public GuildHolderEntity(String guildId, List<Entity> entityList) {
+    public GuildHolderEntity(String guildId, List<AliasEntity> aliasEntityList) {
         this.guildId = guildId;
-        this.entityList = entityList;
+        this.aliasEntityList = aliasEntityList;
     }
 
-    public void addNewEntity(Entity entity){
-        entityList.add(entity);
+    public void addNewEntity(AliasEntity aliasEntity){
+        aliasEntityList.add(aliasEntity);
     }
 
     public String getGuildId() {
@@ -40,23 +40,23 @@ public class GuildHolderEntity {
 
     public void removeEntityWithName(String commandName) throws IllegalArgumentException {
 
-        Entity entityToRemove = null;
+        AliasEntity aliasEntityToRemove = null;
 
-        for (Entity entity : entityList){
-            if (Objects.equals(entity.getCommandName(), commandName)) {
+        for (AliasEntity aliasEntity : aliasEntityList){
+            if (Objects.equals(aliasEntity.getAliasName(), commandName)) {
 
-                 entityToRemove = entity;
+                 aliasEntityToRemove = aliasEntity;
             }
         }
 
-        if (entityToRemove == null){
+        if (aliasEntityToRemove == null){
             throw  new IllegalArgumentException(String.format("%s is not an alias that can be removed", commandName));
         }
 
-        entityList.remove(entityToRemove);
+        aliasEntityList.remove(aliasEntityToRemove);
     }
 
-    public List<Entity> getEntityList(){
-        return entityList;
+    public List<AliasEntity> getAliasEntityList(){
+        return aliasEntityList;
     }
 }
