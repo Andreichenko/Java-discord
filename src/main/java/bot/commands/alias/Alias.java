@@ -24,7 +24,6 @@ public class Alias extends AliasEntity{
         this(aliasEntity.getAliasName(), aliasEntity.getAliasCommandArgs(), command);
     }
 
-
     public Alias(String aliasName, String aliasCommandArgs, Command command){
         super(aliasName, aliasCommandArgs, command.getName());
         this.command = command;
