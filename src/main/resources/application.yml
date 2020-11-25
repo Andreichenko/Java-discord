@@ -1,0 +1,5 @@
+spring:
+   application:
+      name: discordbot
+server:
+   port: 8081
