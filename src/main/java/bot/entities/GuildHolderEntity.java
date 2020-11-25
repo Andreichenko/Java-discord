@@ -43,7 +43,7 @@ public class GuildHolderEntity {
         AliasEntity aliasEntityToRemove = null;
 
         for (AliasEntity aliasEntity : aliasEntityList){
-            if (Objects.equals(aliasEntity.getCommandName(), commandName)) {
+            if (Objects.equals(aliasEntity.getAliasName(), commandName)) {
 
                  aliasEntityToRemove = aliasEntity;
             }

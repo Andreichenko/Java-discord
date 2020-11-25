@@ -11,6 +11,7 @@ public class Alias extends AliasEntity{
     @Transient
     private final Logger LOGGER = LogManager.getLogger(Alias.class);
 
+    @Transient
     private Command command;
 
     public Alias() {
@@ -23,5 +24,9 @@ public class Alias extends AliasEntity{
 
     public Alias(Command command) {
         this.command = command;
+    }
+
+    public Command getCommand() {
+        return command;
     }
 }

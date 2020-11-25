@@ -12,29 +12,21 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class AliasEntity {
 
     @Field
-    public String name;
-
-    @Field
     public String commandName;
 
     @Field
-    public String commandArgs;
+    public String aliasName;
+
+    @Field
+    public String aliasCommandArgs;
 
     public AliasEntity() {
     }
 
-    public AliasEntity(String name, String commandName, String commandArgs) {
-        this.name = name;
+    public AliasEntity(String commandName, String aliasName, String aliasCommandArgs) {
         this.commandName = commandName;
-        this.commandArgs = commandArgs;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.aliasName = aliasName;
+        this.aliasCommandArgs = aliasCommandArgs;
     }
 
     public String getCommandName() {
@@ -45,11 +37,19 @@ public class AliasEntity {
         this.commandName = commandName;
     }
 
-    public String getCommandArgs() {
-        return commandArgs;
+    public String getAliasName() {
+        return aliasName;
     }
 
-    public void setCommandArgs(String commandArgs) {
-        this.commandArgs = commandArgs;
+    public void setAliasName(String aliasName) {
+        this.aliasName = aliasName;
+    }
+
+    public String getAliasCommandArgs() {
+        return aliasCommandArgs;
+    }
+
+    public void setAliasCommandArgs(String aliasCommandArgs) {
+        this.aliasCommandArgs = aliasCommandArgs;
     }
 }
