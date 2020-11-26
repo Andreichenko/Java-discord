@@ -1,5 +1,6 @@
 package bot.commands.audio.utils;
 
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
@@ -22,9 +23,7 @@ public class VoiceChannel {
 
         AudioManager audioManager = guild.getAudioManager();
 
-
-
-
+        AudioPlayer player = playerManager.createPlayer();
     }
 }
 
