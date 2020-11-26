@@ -7,6 +7,12 @@ import static bot.utils.ChannelTextResponses.ECHO_COMMAND_NO_ARGS;
 
 public class TextCommand extends Command{
 
+    public TextCommand() {
+        this.name = "stringtext";
+        this.aliases = new String[]{"echo", "text"};
+        this.help = "Sends a message with text passed as an argument";
+    }
+
     @Override
     protected void execute(CommandEvent event) {
 
