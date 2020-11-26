@@ -26,8 +26,8 @@ public class VoiceChannel {
 
         AudioPlayer player = playerManager.createPlayer();
 
-        if (memberVoiceState == null || !memberVoiceState.inVoiceChannel())
-        {
+        if (memberVoiceState == null || !memberVoiceState.inVoiceChannel()) {
+
             throw new IllegalArgumentException("Unable to join the voice channel");
         }
     }
