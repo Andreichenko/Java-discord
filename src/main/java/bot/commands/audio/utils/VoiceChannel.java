@@ -2,6 +2,7 @@ package bot.commands.audio.utils;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
@@ -24,6 +25,17 @@ public class VoiceChannel {
         AudioManager audioManager = guild.getAudioManager();
 
         AudioPlayer player = playerManager.createPlayer();
+
+        if (memberVoiceState == null || !memberVoiceState.inVoiceChannel())
+        {
+            throw new IllegalArgumentException("Unable to join the voice channel");
+        }
     }
+
+    public static void SearchAndPlaySong(JDA jda, String argument, String guildId, String textChannelId,
+                                         String memberId, boolean playTop, AudioPlayerManager playerManager) {
+
+    }
+
 }
 
