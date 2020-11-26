@@ -18,12 +18,19 @@ dependencies {
     compile 'org.asteriskjava:asterisk-java:1.0.0-final'
     compile 'net.dv8tion:JDA:+'
     compile 'com.jagrosh:jda-utilities:+'
-    compile 'com.sedmelluq:lavaplayer:1.3.49'
+    compile 'com.sedmelluq:lavaplayer:1.3.55'
 
+    // from youtube
+    compile 'com.google.apis:google-api-services-youtube:v3-rev212-1.25.0'
+    compile 'com.google.api-client:google-api-client:1.23.0'
+    compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
+
+    // springboot
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.3.1.RELEASE'
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
     //springboot framework mongodb starter
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-mongodb', version: '2.3.1.RELEASE'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.1.RELEASE'
 }
 
 test {
