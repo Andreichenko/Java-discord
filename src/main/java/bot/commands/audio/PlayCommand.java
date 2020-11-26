@@ -15,6 +15,8 @@ public class PlayCommand extends Command{
 
     public PlayCommand(AudioPlayerManager playerManager) {
         this.playerManager = playerManager;
+        this.name = "play";
+        this.help = "Please submit a song with the specified name or url.";
     }
 
     @Override
