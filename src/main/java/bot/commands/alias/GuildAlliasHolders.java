@@ -31,7 +31,8 @@ public class GuildAlliasHolders extends GuildHolderEntity{
     }
 
     public void executeAlias(String command, MessageReceivedEvent event, CommandClient commandClient){
-
+        Alias alias = aliasNameToAliasObjects.get(command);
+        alias.execute(event, commandClient);
     }
     public void addCommandWithAlias(String command, Alias alias){
 
