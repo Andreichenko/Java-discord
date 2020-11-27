@@ -4,6 +4,7 @@ import bot.entities.AliasEntity;
 import bot.entities.GuildHolderEntity;
 import com.jagrosh.jdautilities.command.CommandClient;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
+import org.springframework.data.annotation.Transient;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -11,8 +12,7 @@ import java.util.List;
 
 public class GuildAlliasHolders extends GuildHolderEntity{
 
-
-
+    @Transient
     private final HashMap<String, Alias> aliasNameToAliasObjects = new HashMap<>();
 
     public GuildAlliasHolders() {
