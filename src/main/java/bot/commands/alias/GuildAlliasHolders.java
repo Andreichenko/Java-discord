@@ -40,6 +40,8 @@ public class GuildAlliasHolders extends GuildHolderEntity{
     }
 
     public void removeCommandWithAlias(String command){
+        aliasNameToAliasObjects.remove(command);
+        super.removeEntityWithName(command);
 
     }
 
