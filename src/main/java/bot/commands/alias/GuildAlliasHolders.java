@@ -47,12 +47,12 @@ public class GuildAlliasHolders extends GuildHolderEntity{
 
     public Alias getCommandWithAlias(String command){
 
-        return null;
+        return aliasNameToAliasObjects.get(command);
     }
 
     public HashMap<String, Alias> getAliasNameToAliasObject(){
 
-        return null;
+        return aliasNameToAliasObjects;
     }
 
 }
