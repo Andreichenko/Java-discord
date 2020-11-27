@@ -27,7 +27,7 @@ public class GuildAlliasHolders extends GuildHolderEntity{
     }
 
     public boolean doesAliasExistForCommand(String command){
-        return true;
+        return aliasNameToAliasObjects.containsKey(command);
     }
 
     public void executeAlias(String command, MessageReceivedEvent event, CommandClient commandClient){
