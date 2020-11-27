@@ -5,6 +5,7 @@ import bot.entities.GuildHolderEntity;
 import com.jagrosh.jdautilities.command.CommandClient;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -18,11 +19,11 @@ public class GuildAlliasHolders extends GuildHolderEntity{
     }
 
     public GuildAlliasHolders(String guildId){
-
+        this(guildId, new ArrayList<>());
     }
 
     public GuildAlliasHolders(String guildId, List<AliasEntity> aliasEntityList){
-
+        super(guildId, aliasEntityList);
     }
 
     public boolean doesAliasExistForCommand(String command){
