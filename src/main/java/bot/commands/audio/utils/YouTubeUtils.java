@@ -4,6 +4,7 @@ import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
 import com.sedmelluq.discord.lavaplayer.track.AudioItem;
+import com.sedmelluq.discord.lavaplayer.track.AudioReference;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.BasicAudioPlaylist;
 import org.apache.logging.log4j.LogManager;
@@ -46,14 +47,26 @@ public class YouTubeUtils {
             } else {
                 return null;
             }
+        } else {
+
+            if (result instanceof AudioReference){
+
+                LOGGER.error("Trying to search for a video but the result is an AudioReference, uri is {}, identifier is " +
+                        "{}", ((AudioReference) result).getUri(), ((AudioReference) result).getIdentifier());
+            }
+
+            throw new IllegalAccessException("YouTube Search Result is not instance of BasicAudioPlaylist " + result.getClass().toString());
         }
-        return null;
 
     }
 
-    @Deprecated
+
     public static String getYoutubeThumbnail(AudioTrack audioTrack){
+
+        String youtubeUrl = audioTrack.getInfo().uri;
+
         return null;
+
     }
 
     static AudioTrack getRelatedVideo(String videoID, List<AudioTrack> history){
