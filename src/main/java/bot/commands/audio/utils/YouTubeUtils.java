@@ -94,12 +94,18 @@ public class YouTubeUtils {
         return null;
     }
 
+    // track history from getter implementation
+
     private static boolean isAudioTrackOnHistory(String id, List<AudioTrack> history){
+
         for (AudioTrack historyAudioTrack : history){
+
             if (historyAudioTrack instanceof YoutubeAudioTrack && historyAudioTrack.getIdentifier().equals(id)) {
+
                 return true;
             }
         }
+
         return false;
     }
 }
