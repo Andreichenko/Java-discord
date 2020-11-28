@@ -1,7 +1,11 @@
 package bot.commands.audio.utils;
 
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
+import com.sedmelluq.discord.lavaplayer.track.AudioItem;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.BasicAudioPlaylist;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -16,6 +20,19 @@ public class YouTubeUtils {
         if (argument.startsWith("ytsearch:")){
 
             argument = argument.replace("ytsearch:", "");
+
+        }
+        LOGGER.info("Searching for {}", argument);
+        YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(true);
+        YoutubeSearchProvider yt = new YoutubeSearchProvider();
+        AudioItem result = yt.loadSearchResult(argument, audioTrackInfo -> new YoutubeAudioTrack(audioTrackInfo, youtube));
+
+        if (result instanceof BasicAudioPlaylist){
+
+            BasicAudioPlaylist playlist = (BasicAudioPlaylist) result;
+            List<AudioTrack> tracks = playlist.getTracks();
+
+            LOGGER.info("Received {} results", tracks.size());
         }
         return null;
 
