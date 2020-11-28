@@ -7,9 +7,14 @@ import com.sedmelluq.discord.lavaplayer.track.AudioItem;
 import com.sedmelluq.discord.lavaplayer.track.AudioReference;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.BasicAudioPlaylist;
+import org.apache.http.NameValuePair;
+import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 
 public class YouTubeUtils {
@@ -63,9 +68,17 @@ public class YouTubeUtils {
 
     public static String getYoutubeThumbnail(AudioTrack audioTrack){
 
-        String youtubeUrl = audioTrack.getInfo().uri;
+        try {
+            String youtubeUrl = audioTrack.getInfo().uri;
 
-        return null;
+            // Create a list of objects from URL and parse it
+            List<NameValuePair> params = URLEncodedUtils.parse(new URI(youtubeUrl), StandardCharsets.UTF_8);
+            String videoID = params.get(0).getValue();
+            return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
+        } catch (URISyntaxException e) {
+            e.printStackTrace();
+            return "";
+        }
 
     }
 
