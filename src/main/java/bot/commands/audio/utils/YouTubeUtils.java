@@ -104,6 +104,9 @@ public class YouTubeUtils {
         search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY")); //get apikey
         // need to review https://developers.google.com/youtube/v3/docs/search/list#type
         // ?????????????????????????????????? how????????
+        // after find need to add some logs
+        String id = null; //null is temp
+        LOGGER.info("Found videoID {} as the related video", id);
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
         return null;
     }
