@@ -1,5 +1,8 @@
 package bot.commands.audio.utils;
 
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.jackson2.JacksonFactory;
+import com.google.api.services.youtube.YouTube;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
@@ -12,6 +15,7 @@ import org.apache.http.client.utils.URLEncodedUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.nio.charset.StandardCharsets;
@@ -88,8 +92,13 @@ public class YouTubeUtils {
 
     }
 
-    static AudioTrack getRelatedVideo(String videoID, List<AudioTrack> history){
+    static AudioTrack getRelatedVideo(String videoID, List<AudioTrack> history) throws IOException {
 
+        LOGGER.info("finding related video for videoID {}", videoID);
+        YouTube youtube = new YouTube.Builder(new NetHttpTransport(), new JacksonFactory(), request ->
+        { }).setApplicationName("bot").build(); // some Lambda with HTTP request builder get ro YB builder with new application
+        // Define the API request for retrieving search results.
+        YouTube.Search.List search = youtube.search().list("id"); //with some exception
         // ?????????????????????????????????? how????????
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
         return null;
