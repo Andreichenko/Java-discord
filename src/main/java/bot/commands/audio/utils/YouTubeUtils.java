@@ -12,8 +12,13 @@ public class YouTubeUtils {
     private static final Logger LOGGER = LogManager.getLogger(YouTubeUtils.class);
 
     @Deprecated
-    static AudioTrack searchForVideo(String argument){
+    static AudioTrack searchForVideo(String argument) throws IllegalAccessException{
+        if (argument.startsWith("ytsearch:")){
+
+            argument = argument.replace("ytsearch:", "");
+        }
         return null;
+
     }
 
     @Deprecated
