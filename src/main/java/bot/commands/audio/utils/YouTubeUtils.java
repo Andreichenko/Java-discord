@@ -39,6 +39,13 @@ public class YouTubeUtils {
             List<AudioTrack> tracks = playlist.getTracks();
 
             LOGGER.info("Received {} results", tracks.size());
+
+            if (tracks.size() > 0){
+
+                return tracks.get(0);
+            } else {
+                return null;
+            }
         }
         return null;
 
