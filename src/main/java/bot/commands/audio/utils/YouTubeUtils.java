@@ -23,13 +23,19 @@ public class YouTubeUtils {
 
         }
         LOGGER.info("Searching for {}", argument);
+
         YoutubeAudioSourceManager youtube = new YoutubeAudioSourceManager(true);
+
         YoutubeSearchProvider yt = new YoutubeSearchProvider();
+
+        // Lambda function for creating new Object from YoutubeAudioTrack with audioTrackInfo parameters and
+        // YoutubeAudioSourceManager with true trigger
         AudioItem result = yt.loadSearchResult(argument, audioTrackInfo -> new YoutubeAudioTrack(audioTrackInfo, youtube));
 
         if (result instanceof BasicAudioPlaylist){
 
             BasicAudioPlaylist playlist = (BasicAudioPlaylist) result;
+
             List<AudioTrack> tracks = playlist.getTracks();
 
             LOGGER.info("Received {} results", tracks.size());
