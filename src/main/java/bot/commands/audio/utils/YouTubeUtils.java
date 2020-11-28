@@ -23,6 +23,7 @@ public class YouTubeUtils {
 
     @Deprecated
     static AudioTrack searchForVideo(String argument) throws IllegalAccessException{
+
         if (argument.startsWith("ytsearch:")){
 
             argument = argument.replace("ytsearch:", "");
@@ -73,10 +74,15 @@ public class YouTubeUtils {
 
             // Create a list of objects from URL and parse it
             List<NameValuePair> params = URLEncodedUtils.parse(new URI(youtubeUrl), StandardCharsets.UTF_8);
+
             String videoID = params.get(0).getValue();
+
             return "http://img.youtube.com/vi/" + videoID + "/0.jpg";
+
         } catch (URISyntaxException e) {
+
             e.printStackTrace();
+
             return "";
         }
 
