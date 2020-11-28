@@ -1,5 +1,6 @@
 package bot.commands.audio.utils;
 
+import bot.utils.GetSystemEnvironmentOrDefaultValue;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
@@ -99,6 +100,9 @@ public class YouTubeUtils {
         { }).setApplicationName("bot").build(); // some Lambda with HTTP request builder get ro YB builder with new application
         // Define the API request for retrieving search results.
         YouTube.Search.List search = youtube.search().list("id"); //with some exception
+        //set the API key
+        search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY")); //get apikey
+        // need to review https://developers.google.com/youtube/v3/docs/search/list#type
         // ?????????????????????????????????? how????????
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
         return null;
