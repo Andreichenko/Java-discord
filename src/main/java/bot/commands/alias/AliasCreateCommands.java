@@ -11,6 +11,8 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
+import static bot.utils.ChannelTextResponses.HOW_TO_MAKE_ALIAS;
+
 /**
  * @apiNote this class implements the validation of commands that are written in the main class
  */
@@ -27,6 +29,9 @@ public class AliasCreateCommands extends Command {
     private HashMap<String, Command> commandNameToCommandMap;
 
     public AliasCreateCommands(CommandEventListener commandEventListener, EntityGuildHolderRepository entityGuildHolderRepository) {
+        this.name = "aliascreate";
+        this.aliases = new String[]{"alias", "ac"};
+        this.help = "Create a new alias for a command. Created using " + HOW_TO_MAKE_ALIAS;
         this.commandEventListener = commandEventListener;
         this.entityGuildHolderRepository = entityGuildHolderRepository;
     }

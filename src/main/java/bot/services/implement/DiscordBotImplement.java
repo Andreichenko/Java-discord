@@ -1,9 +1,10 @@
 package bot.services.implement;
 
-import bot.commands.alias.AliasCreateCommands;
+import bot.commands.audio.PlayCommand;
 import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
+import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
@@ -31,6 +32,14 @@ public class DiscordBotImplement implements DiscordBotService{
 
         CommandEventListener commandEventListener = new CommandEventListener();
         //??? need to add all commands listeners and discord listeners
+
+        CommandClientBuilder builder = new CommandClientBuilder();
+        builder.setPrefix(COMMAND_PREFIX);
+        builder.setActivity(null);
+        builder.setOwnerId(OWNER_ID);
+        builder.addCommands(new PlayCommand(playerManager));
+
+        // need to implement more commands and alias
     }
 
     @Override
