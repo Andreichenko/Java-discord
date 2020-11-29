@@ -8,4 +8,6 @@ public class ChannelTextResponses {
 
     public static final String LOOP_ENABLED = "**Loop enabled!**";
     public static final String LOOP_DISABLED = "**Loop disabled!**";
+    public static final String NO_HISTORY_TO_SHOW = "**There is no history to show.**";
+    public static final String CANT_DISPLAY_QUEUE_PAGE = "**Cannot display that page**";
 }
