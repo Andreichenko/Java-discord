@@ -27,5 +27,24 @@ timestamps {
             sh 'find $PWD -mindepth 1 -maxdepth 1 -exec du -hs {} + 2>/dev/null | sort -hr | head -20 '
         }
 
+        stage('Unit test'){
+
+        sh './gradlew clean test --no-daemon'
+        sh './gradlew build -x check'
+
+
+        }
+
+        stage('Create artifact and copy to DEV'){
+
+        //create artifact and build docker container
+
+            sh 'echo $PATH'
+        }
+
+        stage('Deploy to Pre-Prod'){
+            sh 'find $PWD -mindepth 1 -maxdepth 1 -exec du -hs {} + 2>/dev/null | sort -hr | head -20'
+        }
+
     }
   }
