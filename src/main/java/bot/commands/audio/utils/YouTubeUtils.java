@@ -137,12 +137,11 @@ public class YouTubeUtils {
 
             } while (isAudioTrackOnHistory(id, history));
 
-
+        LOGGER.info("Found videoID {} as the related video", id);
 
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
 
         return (AudioTrack) youtubeAudioSourceManager.loadTrackWithVideoId(id, true);
-
 
     }
 
