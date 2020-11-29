@@ -137,8 +137,11 @@ public class YouTubeUtils {
 
             } while (isAudioTrackOnHistory(id, history));
 
+
+
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
-        return null;
+
+        return (AudioTrack) youtubeAudioSourceManager.loadTrackWithVideoId(id, true);
 
 
     }
