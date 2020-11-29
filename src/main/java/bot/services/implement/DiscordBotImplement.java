@@ -1,8 +1,12 @@
 package bot.services.implement;
 
+import bot.commands.alias.AliasCreateCommands;
+import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.beans.factory.annotation.Value;
 
@@ -22,6 +26,11 @@ public class DiscordBotImplement implements DiscordBotService{
     @Override
     public void startLoad(EntityGuildHolderRepository entityGuildHolderRepository) throws LoginException {
 
+        playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        CommandEventListener commandEventListener = new CommandEventListener();
+        //??? need to add all commands listeners and discord listeners
     }
 
     @Override

@@ -4,6 +4,9 @@ import bot.utils.GetSystemEnvironmentOrDefaultValue;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.ResourceId;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
@@ -100,15 +103,46 @@ public class YouTubeUtils {
         { }).setApplicationName("bot").build(); // some Lambda with HTTP request builder get ro YB builder with new application
         // Define the API request for retrieving search results.
         YouTube.Search.List search = youtube.search().list("id"); //with some exception
-        //set the API key
-        search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY")); //get apikey
-        // need to review https://developers.google.com/youtube/v3/docs/search/list#type
-        // ?????????????????????????????????? how????????
-        // after find need to add some logs
-        String id = null; //null is temp
+        //set the API key for youtube
+        search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY"));
+        search.setRelatedToVideoId(videoID);
+        search.setEventType("none");
+        search.setSafeSearch("none");
+        search.setMaxResults(5L);
+
+        search.setType("video");
+
+        SearchListResponse searchResponse = search.execute();
+        List<SearchResult> searchResultList = searchResponse.getItems();
+        LOGGER.info("Found {} related videos", searchResultList.size());
+
+        int searchResultListPosition = 0;
+        SearchResult video;
+
+        String id = null;
         LOGGER.info("Found videoID {} as the related video", id);
+
+        // this is the check if this video is in the history
+
+        do {
+
+            if (searchResultListPosition >= searchResultList.size()){
+
+                throw new IllegalArgumentException("Unable to find a related video - list was missed or exhausted");
+            }
+
+            searchResultListPosition++;
+            video = searchResultList.get(searchResultListPosition);
+            id = (String) ((ResourceId) video.get("id")).get("videoId");
+
+            } while (isAudioTrackOnHistory(id, history));
+
+        LOGGER.info("Found videoID {} as the related video", id);
+
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
-        return null;
+
+        return (AudioTrack) youtubeAudioSourceManager.loadTrackWithVideoId(id, true);
+
     }
 
     // track history from getter implementation
