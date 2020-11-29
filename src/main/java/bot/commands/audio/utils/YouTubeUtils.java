@@ -4,6 +4,8 @@ import bot.utils.GetSystemEnvironmentOrDefaultValue;
 import com.google.api.client.http.javanet.NetHttpTransport;
 import com.google.api.client.json.jackson2.JacksonFactory;
 import com.google.api.services.youtube.YouTube;
+import com.google.api.services.youtube.model.SearchListResponse;
+import com.google.api.services.youtube.model.SearchResult;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioSourceManager;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeSearchProvider;
@@ -101,10 +103,18 @@ public class YouTubeUtils {
         // Define the API request for retrieving search results.
         YouTube.Search.List search = youtube.search().list("id"); //with some exception
         //set the API key
-        search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY")); //get apikey
-        // need to review https://developers.google.com/youtube/v3/docs/search/list#type
-        // ?????????????????????????????????? how????????
-        // after find need to add some logs
+        search.setKey(GetSystemEnvironmentOrDefaultValue.get("YOUTUBE_API_KEY"));
+        search.setRelatedToVideoId(videoID);
+        search.setEventType("none");
+        search.setSafeSearch("none");
+        search.setMaxResults(5L);
+
+        search.setType("video");
+
+        SearchListResponse searchResponse = search.execute();
+        List<SearchResult> searchResultList = searchResponse.getItems();
+        LOGGER.info("Found {} related videos", searchResultList.size());
+
         String id = null; //null is temp
         LOGGER.info("Found videoID {} as the related video", id);
         YoutubeAudioSourceManager youtubeAudioSourceManager = new YoutubeAudioSourceManager(true);
