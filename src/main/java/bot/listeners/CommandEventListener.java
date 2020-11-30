@@ -39,4 +39,9 @@ public class CommandEventListener extends ListenerAdapter{
             }
         }
     }
+
+    public void setCommandClient(CommandClient commandClient) {
+
+        this.commandClient = commandClient;
+    }
 }
