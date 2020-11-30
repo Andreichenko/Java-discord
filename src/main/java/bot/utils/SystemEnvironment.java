@@ -7,9 +7,8 @@ import java.lang.annotation.Target;
 
 @Target(ElementType.FIELD)
 @Retention(RetentionPolicy.RUNTIME)
-public @interface SystemEnviroment {
+public @interface SystemEnvironment {
 
     String value();
 
-    String id(); // some id for asterisk connection
 }
