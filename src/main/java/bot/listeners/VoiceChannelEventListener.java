@@ -37,11 +37,16 @@ public class VoiceChannelEventListener extends ListenerAdapter {
 
         Timer timer = new Timer();
         timer.schedule(new TimerTask(){
+
             @Override
             public void run() {
+                int membersInVoiceChannel = event.getChannelLeft().getMembers().size();
+                if (membersInVoiceChannel == 1) {
+                    leaveVoiceChannel(event);
+                }
 
             }
-        }
+        }, VOICE_CHECK_DELAY;
     }
 
     private void leaveVoiceChannel(@Nonnull GenericGuildVoiceEvent event) {
