@@ -39,4 +39,27 @@ public class CommandEventListener extends ListenerAdapter{
             }
         }
     }
+
+    /**
+     * return the GuildAliasHolder that this class is holding will return NULL if a GuildAliasHolder doesn't exist for
+     * that guildID
+     *
+     * @param guildId The guild ID you want the GuildAliasHolder for
+     * @return The GuildAliasHolder if it exists or NULL if one doesn't exist for that Guild
+     */
+
+    public GuildAlliasHolders getGuildAliasHolderForGuildWithId(String guildId) {
+
+        return guildIdToGuildAliasHolderMap.get(guildId);
+    }
+
+    public void putGuildAliasHolderForGuildWithId(String guildId, GuildAlliasHolders guildAlliasHolders){
+
+        guildIdToGuildAliasHolderMap.put(guildId, guildAlliasHolders);
+    }
+
+    public void setCommandClient(CommandClient commandClient) {
+
+        this.commandClient = commandClient;
+    }
 }
