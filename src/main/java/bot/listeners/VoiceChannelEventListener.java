@@ -8,6 +8,8 @@ import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 
 import javax.annotation.Nonnull;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class VoiceChannelEventListener extends ListenerAdapter {
 
@@ -33,6 +35,13 @@ public class VoiceChannelEventListener extends ListenerAdapter {
             return;
         }
 
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask(){
+            @Override
+            public void run() {
+
+            }
+        }
     }
 
     private void leaveVoiceChannel(@Nonnull GenericGuildVoiceEvent event) {
