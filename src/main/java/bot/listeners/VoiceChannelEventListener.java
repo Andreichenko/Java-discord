@@ -1,11 +1,13 @@
 package bot.listeners;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.utils.Injectors;
 import bot.utils.SystemEnvironment;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.guild.voice.GenericGuildVoiceEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
+import net.dv8tion.jda.api.managers.AudioManager;
 
 import javax.annotation.Nonnull;
 import java.util.Timer;
@@ -50,6 +52,8 @@ public class VoiceChannelEventListener extends ListenerAdapter {
     }
 
     private void leaveVoiceChannel(@Nonnull GenericGuildVoiceEvent event) {
+        AudioManager audioManager = event.getGuild().getAudioManager();
+        AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
 
     }
 }
