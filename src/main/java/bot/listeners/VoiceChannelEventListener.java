@@ -22,6 +22,7 @@ public class VoiceChannelEventListener extends ListenerAdapter {
         Injectors.injectionFieldEnvValue(this);  // add the environment value
     }
 
+    @Override
     public void onGuildVoiceMove(@Nonnull GuildVoiceMoveEvent event) {
 
     }
