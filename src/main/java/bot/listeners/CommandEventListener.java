@@ -40,6 +40,11 @@ public class CommandEventListener extends ListenerAdapter{
         }
     }
 
+    public void putGuildAliasHolderForGuildWithId(String guildId, GuildAlliasHolders guildAlliasHolders){
+
+        guildIdToGuildAliasHolderMap.put(guildId, guildAlliasHolders);
+    }
+
     public void setCommandClient(CommandClient commandClient) {
 
         this.commandClient = commandClient;
