@@ -10,6 +10,7 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.managers.AudioManager;
 
 import javax.annotation.Nonnull;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -51,6 +52,27 @@ public class VoiceChannelEventListener extends ListenerAdapter {
         }, VOICE_CHECK_DELAY);
     }
 
+    private boolean isOnlyBotsLeft(@Nonnull List<Member> membersInChannel)
+    {
+        boolean onlyBotsLeft = true;
+        for (Member member : membersInChannel)
+        {
+            // If the member is not a bot then set the boolean to false and break the loop
+            if (!member.getUser().isBot())
+            {
+                onlyBotsLeft = false;
+                break;
+            }
+        }
+        return onlyBotsLeft;
+    }
+
+
+    /**
+     * If still connected leave the currently connected voice channel and cleanup
+     *
+     * @param event The voice event that triggered this handler
+     */
     private void leaveVoiceChannel(@Nonnull GenericGuildVoiceEvent event) {
         AudioManager audioManager = event.getGuild().getAudioManager();
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
