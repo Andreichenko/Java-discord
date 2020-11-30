@@ -2,6 +2,7 @@ package bot.listeners;
 
 import bot.utils.Injectors;
 import bot.utils.SystemEnvironment;
+import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.guild.voice.GenericGuildVoiceEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -24,6 +25,13 @@ public class VoiceChannelEventListener extends ListenerAdapter {
 
     @Override
     public void onGuildVoiceMove(@Nonnull GuildVoiceMoveEvent event) {
+
+        Member movedMember = event.getMember();
+
+        if (!movedMember.getId().equals(BOT_USER_ID)) {
+
+            return;
+        }
 
     }
 
