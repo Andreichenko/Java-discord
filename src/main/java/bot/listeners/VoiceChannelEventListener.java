@@ -46,7 +46,7 @@ public class VoiceChannelEventListener extends ListenerAdapter {
                 }
 
             }
-        }, VOICE_CHECK_DELAY;
+        }, VOICE_CHECK_DELAY);
     }
 
     private void leaveVoiceChannel(@Nonnull GenericGuildVoiceEvent event) {
