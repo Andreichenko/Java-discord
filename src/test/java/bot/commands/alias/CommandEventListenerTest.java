@@ -25,7 +25,7 @@ import static org.mockito.Mockito.when;
 import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
 
 //will be run using mockito runner
-@RunWith(MockitoJUnitRunner.class)
+//@RunWith(MockitoJUnitRunner.class)
 public class CommandEventListenerTest {
 
 //    private final Set<String> ALL_CURRENT_COMMAND_NAMES = new HashSet<>();
