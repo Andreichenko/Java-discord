@@ -13,6 +13,8 @@ import net.dv8tion.jda.api.managers.AudioManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.net.URL;
+
 public class VoiceChannel {
 
     private static final Logger LOGGER = LogManager.getLogger(VoiceChannel.class);
@@ -94,8 +96,22 @@ public class VoiceChannel {
         channel.sendMessage("Searching for `").append(argument).append("`").queue();
         channel.sendTyping().queue();
 
+        AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
+        TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
 
 
+
+    }
+
+    private static boolean isValidURL(String urlString){
+
+        try {
+            URL url = new URL(urlString);
+            url.toURI();
+            return true;
+        }catch (Exception exception){
+            return false;
+        }
     }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
