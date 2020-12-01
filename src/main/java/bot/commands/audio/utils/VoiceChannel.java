@@ -99,7 +99,10 @@ public class VoiceChannel {
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
         TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
 
-
+        if (!isValidURL(argument)){
+            LOGGER.info("argument is not a url so prepending ytsearch");
+            argument = "ytsearch: ".concat(argument);
+        }
 
     }
 
