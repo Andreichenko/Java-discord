@@ -74,8 +74,27 @@ public class VoiceChannel {
         AudioManager audioManager = guild.getAudioManager();
         if (!audioManager.isConnected()){
 
+            try {
+                VoiceChannel.joinVoiceChannel(member, guild, playerManager);
 
+            }catch (InsufficientPermissionException e){
+                channel.sendMessage(ChannelTextResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
+                return;
+            }catch (IllegalArgumentException e){
+                channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+                return;
+            }
         }
+
+        if (audioManager.getConnectedChannel() != null && !audioManager.getConnectedChannel().getMembers().contains(member)){
+            channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            return;
+        }
+
+        channel.sendMessage("Searching for `").append(argument).append("`").queue();
+        channel.sendTyping().queue();
+
+
 
     }
 
