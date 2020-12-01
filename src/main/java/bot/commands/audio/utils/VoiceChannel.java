@@ -113,6 +113,12 @@ public class VoiceChannel {
             return false;
         }
     }
+    public static void setPauseStatusOnAudioPlayer(Guild guild, MessageChannel channel,
+                                                   Member member, boolean pauseStatus) {
+
+        AudioManager audioManager = guild.getAudioManager();
+
+    }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
         return null;
