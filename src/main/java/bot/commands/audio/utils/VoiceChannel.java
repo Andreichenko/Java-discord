@@ -117,9 +117,15 @@ public class VoiceChannel {
         }
     }
     public static void setPauseStatusOnAudioPlayer(Guild guild, MessageChannel channel,
-                                                   Member member, boolean pauseStatus) {
+                                                   Member member, boolean pauseStatus) throws IllegalArgumentException,
+            IllegalAccessException {
 
         AudioManager audioManager = guild.getAudioManager();
+
+        if (!audioManager.isConnected()){
+            channel.sendMessage(ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
+            throw new IllegalAccessException("Bot not connected to the voice channel");
+        }
 
     }
 
