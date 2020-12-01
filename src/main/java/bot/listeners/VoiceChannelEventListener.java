@@ -76,8 +76,20 @@ public class VoiceChannelEventListener extends ListenerAdapter {
 
         boolean onlyBotsLeft = isOnlyBotsLeft(event.getChannelLeft().getMembers());
 
-
         boolean botAlone = (membersLeft.size() == 1 && !leftMemberIsBot) || onlyBotsLeft;
+
+        if (leftMemberIsBot || membersLeft.size() == 0){
+
+            leaveVoiceChannel(event);
+        }else if (botAlone){
+            Timer timer = new Timer();
+            timer.schedule(new TimerTask(){
+                @Override
+                public void run() {
+
+                }
+            }, VOICE_CHECK_DELAY);
+        }
 
     }
 
