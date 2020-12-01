@@ -30,6 +30,12 @@ public class VoiceChannel {
 
             throw new IllegalArgumentException("Unable to join the voice channel");
         }
+
+        TrackSchedulers trackScheduler = new TrackSchedulers();
+        player.addListener(trackScheduler);
+
+        audioManager.setSendingHandler(new AudioPlayerSendHandler(player, trackScheduler));
+        audioManager.openAudioConnection(memberVoiceState.getChannel());
     }
 
     public static void SearchAndPlaySong(JDA jda, String argument, String guildId, String textChannelId,
