@@ -87,6 +87,11 @@ public class VoiceChannelEventListener extends ListenerAdapter {
                 @Override
                 public void run() {
 
+                    int membersInVoiceChannel = event.getChannelLeft().getMembers().size();
+                    boolean onlyBotsLeft = isOnlyBotsLeft(event.getChannelLeft().getMembers());
+                    if (membersInVoiceChannel == 1 || onlyBotsLeft){
+                        leaveVoiceChannel(event);
+                    }
                 }
             }, VOICE_CHECK_DELAY);
         }
