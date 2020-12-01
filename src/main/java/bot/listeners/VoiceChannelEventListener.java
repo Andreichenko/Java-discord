@@ -4,6 +4,7 @@ import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.utils.Injectors;
 import bot.utils.SystemEnvironment;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.VoiceChannel;
 import net.dv8tion.jda.api.events.guild.voice.GenericGuildVoiceEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMoveEvent;
@@ -53,11 +54,30 @@ public class VoiceChannelEventListener extends ListenerAdapter {
         }, VOICE_CHECK_DELAY);
     }
 
+    /**
+     *
+     * @param event this event is triggered whenever something happens on the server, and then should check if the bot was
+
+     */
     @Override
     public void onGuildVoiceLeave(@Nonnull GuildVoiceLeaveEvent event){
 
         Member leftMember = event.getMember();
         boolean leftMemberIsBot = leftMember.getId().equals(BOT_USER_ID);
+        List<Member> membersLeft = event.getChannelLeft().getMembers();
+
+        AudioManager audioManager = event.getGuild().getAudioManager();
+        VoiceChannel connectedChannel = audioManager.getConnectedChannel();
+
+        // even if someone connects to this voice channel
+        if (connectedChannel == null || !connectedChannel.getId().equals(event.getChannelLeft().getId())){
+            return;
+        }
+
+        boolean onlyBotsLeft = isOnlyBotsLeft(event.getChannelLeft().getMembers());
+
+
+        boolean botAlone = (membersLeft.size() == 1 && !leftMemberIsBot) || onlyBotsLeft;
 
     }
 
