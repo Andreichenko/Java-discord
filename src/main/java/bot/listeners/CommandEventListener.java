@@ -15,6 +15,11 @@ public class CommandEventListener extends ListenerAdapter{
 
     private CommandClient commandClient;
 
+    /**
+     *
+     * @param event return if getAuthor is bot
+     */
+    @Override
     public void onMessageReceived(@Nonnull MessageReceivedEvent event){
 
         if (event.getAuthor().isBot()){
