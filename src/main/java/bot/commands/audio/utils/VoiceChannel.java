@@ -44,6 +44,18 @@ public class VoiceChannel {
         if (guildId == null || guildId.equals("")){
             throw new IllegalArgumentException("Guild ID is NULL");
         }
+        if (memberId == null || memberId.equals("")){
+            throw new IllegalArgumentException("member ID is NULL");
+        }
+
+        if (textChannelId == null || textChannelId.equals("")){
+            throw new IllegalArgumentException("message channel ID is NULL");
+        }
+
+        Guild guild = jda.getGuildById(guildId);
+        if (guild == null){
+            throw new IllegalArgumentException("Guild is NULL is the ID correct?");
+        }
 
     }
 
