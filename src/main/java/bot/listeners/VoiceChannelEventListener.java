@@ -5,6 +5,7 @@ import bot.utils.Injectors;
 import bot.utils.SystemEnvironment;
 import net.dv8tion.jda.api.entities.Member;
 import net.dv8tion.jda.api.events.guild.voice.GenericGuildVoiceEvent;
+import net.dv8tion.jda.api.events.guild.voice.GuildVoiceLeaveEvent;
 import net.dv8tion.jda.api.events.guild.voice.GuildVoiceMoveEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -50,6 +51,14 @@ public class VoiceChannelEventListener extends ListenerAdapter {
 
             }
         }, VOICE_CHECK_DELAY);
+    }
+
+    @Override
+    public void onGuildVoiceLeave(@Nonnull GuildVoiceLeaveEvent event){
+
+        Member leftMember = event.getMember();
+        boolean leftMemberIsBot = leftMember.getId().equals(BOT_USER_ID);
+
     }
 
     private boolean isOnlyBotsLeft(@Nonnull List<Member> membersInChannel)
