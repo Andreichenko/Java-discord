@@ -1,5 +1,6 @@
 package bot.controllers;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.VoiceChannel;
 import bot.services.DiscordBotService;
 import org.apache.logging.log4j.LogManager;
@@ -30,7 +31,7 @@ public class AudioController {
             VoiceChannel.SearchAndPlaySong(discordBotService.getJda(), argument, guildId, textChannelId,
                     memberId, top, discordBotService.getAudioPlayerManager());
         }catch (IllegalArgumentException e){
-            LOGGER.error("Error perf play command", e);
+            LOGGER.error("Error performing play command", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
 
@@ -39,6 +40,19 @@ public class AudioController {
     }
     @PostMapping("/skip")
     public ResponseEntity<String> addNewSong(@RequestParam String guildId){
-        return null;
+
+        AudioPlayerSendHandler audioPlayerSendHandler;
+        try {
+            audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(discordBotService.getJda(), guildId);
+        }catch (IllegalArgumentException e){
+            LOGGER.error("Error performing skip command", e);
+            return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+
+        if (audioPlayerSendHandler != null){
+            audioPlayerSendHandler.getAudioPlayer().stopTrack();
+            return new ResponseEntity<>(HttpStatus.OK);
+        }
+        return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
 }

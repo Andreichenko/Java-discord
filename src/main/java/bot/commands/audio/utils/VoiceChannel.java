@@ -37,5 +37,9 @@ public class VoiceChannel {
 
     }
 
+    public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
+        return null;
+    }
+
 }
 
