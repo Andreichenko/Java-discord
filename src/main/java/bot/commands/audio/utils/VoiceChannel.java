@@ -1,11 +1,13 @@
 package bot.commands.audio.utils;
 
+import bot.utils.ChannelTextResponses;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.GuildVoiceState;
 import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.MessageChannel;
 import net.dv8tion.jda.api.exceptions.InsufficientPermissionException;
 import net.dv8tion.jda.api.managers.AudioManager;
 import org.apache.logging.log4j.LogManager;
@@ -55,6 +57,24 @@ public class VoiceChannel {
         Guild guild = jda.getGuildById(guildId);
         if (guild == null){
             throw new IllegalArgumentException("Guild is NULL is the ID correct?");
+        }
+        MessageChannel channel = guild.getTextChannelById(textChannelId);
+        if (channel == null){
+            throw new IllegalArgumentException("Channel is NULL is the ID correct?");
+        }
+        Member member = guild.getMemberById(memberId);
+        if (member == null){
+            throw new IllegalArgumentException("Member is NULL is the ID correct?");
+        }
+        if (argument.isEmpty()){
+            channel.sendMessage(ChannelTextResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND).queue();
+            return;
+        }
+
+        AudioManager audioManager = guild.getAudioManager();
+        if (!audioManager.isConnected()){
+
+
         }
 
     }
