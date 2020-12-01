@@ -41,6 +41,10 @@ public class VoiceChannel {
     public static void SearchAndPlaySong(JDA jda, String argument, String guildId, String textChannelId,
                                          String memberId, boolean playTop, AudioPlayerManager playerManager) {
 
+        if (guildId == null || guildId.equals("")){
+            throw new IllegalArgumentException("Guild ID is NULL");
+        }
+
     }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
