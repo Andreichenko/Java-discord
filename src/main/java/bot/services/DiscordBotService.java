@@ -2,6 +2,7 @@ package bot.services;
 
 
 import bot.repository.EntityGuildHolderRepository;
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import net.dv8tion.jda.api.JDA;
 import org.springframework.stereotype.Service;
 
@@ -20,6 +21,7 @@ public interface DiscordBotService {
 
     void off();
 
+    AudioPlayerManager getAudioPlayerManager();
     // this is Discord api
     JDA getJda();
 
