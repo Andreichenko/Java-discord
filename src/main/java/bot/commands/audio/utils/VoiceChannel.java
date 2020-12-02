@@ -148,6 +148,13 @@ public class VoiceChannel {
         }
 
         Guild guild = jda.getGuildById(guildId);
+
+        if (guild == null){
+            throw new IllegalArgumentException("Guild is NULL is the ID correct?");
+        }
+
+        AudioManager audioManager = guild.getAudioManager();
+
         return null;
     }
 
