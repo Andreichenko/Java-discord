@@ -19,6 +19,18 @@ public class VoiceChannel {
 
     private static final Logger LOGGER = LogManager.getLogger(VoiceChannel.class);
 
+    /**
+     *
+     * Connect to the voice channel that member is in
+     *
+     *
+     * @param member        The member to join
+     * @param guild         The server that the member is in
+     * @param playerManager The player manager for this guild
+     * @throws IllegalArgumentException        If the voice channel can't be joined
+     * @throws InsufficientPermissionException If the bot lacks the permission to join the voice channel
+     */
+
     public static void joinVoiceChannel(Member member,
                                         Guild guild,
                                         AudioPlayerManager playerManager)
@@ -127,10 +139,39 @@ public class VoiceChannel {
             throw new IllegalAccessException("Bot not connected to the voice channel");
         }
 
+        if (audioManager.getConnectedChannel() != null && !audioManager.getConnectedChannel().getMembers().contains(member)){
+            channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            throw new IllegalAccessException("Member not in the voice channel");
+        }
+        AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
+        AudioPlayer audioPlayer = audioPlayerSendHandler.getAudioPlayer();
+        if (audioPlayer.isPaused() == pauseStatus){
+            throw new IllegalArgumentException("Setting the same pause status");
+        }
+        audioPlayer.setPaused(pauseStatus);
+
     }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
-        return null;
+
+        if (guildId == null || guildId.equals("")){
+            throw new IllegalArgumentException("Guild ID is NULL");
+
+        }
+
+        Guild guild = jda.getGuildById(guildId);
+
+        if (guild == null){
+            throw new IllegalArgumentException("Guild is NULL is the ID correct?");
+        }
+
+        AudioManager audioManager = guild.getAudioManager();
+
+        if (!audioManager.isConnected()){
+            throw new IllegalArgumentException("Not currently connected to the voice channel");
+        }
+
+        return (AudioPlayerSendHandler) audioManager.getSendingHandler();
     }
 
 }
