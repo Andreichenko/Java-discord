@@ -141,6 +141,13 @@ public class VoiceChannel {
     }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
+
+        if (guildId == null || guildId.equals("")){
+            throw new IllegalArgumentException("Guild ID is NULL");
+
+        }
+
+        Guild guild = jda.getGuildById(guildId);
         return null;
     }
 
