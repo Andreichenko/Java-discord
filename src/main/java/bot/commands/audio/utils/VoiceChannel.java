@@ -127,6 +127,11 @@ public class VoiceChannel {
             throw new IllegalAccessException("Bot not connected to the voice channel");
         }
 
+        if (audioManager.getConnectedChannel() != null && !audioManager.getConnectedChannel().getMembers().contains(member)){
+            channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            throw new IllegalAccessException("Member not in the voice channel");
+        }
+
     }
 
     public static AudioPlayerSendHandler getAudioPlayerSendHandler(JDA jda, String guildId){
