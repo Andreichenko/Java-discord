@@ -19,6 +19,18 @@ public class VoiceChannel {
 
     private static final Logger LOGGER = LogManager.getLogger(VoiceChannel.class);
 
+    /**
+     *
+     * Connect to the voice channel that member is in
+     *
+     *
+     * @param member        The member to join
+     * @param guild         The server that the member is in
+     * @param playerManager The player manager for this guild
+     * @throws IllegalArgumentException        If the voice channel can't be joined
+     * @throws InsufficientPermissionException If the bot lacks the permission to join the voice channel
+     */
+
     public static void joinVoiceChannel(Member member,
                                         Guild guild,
                                         AudioPlayerManager playerManager)
