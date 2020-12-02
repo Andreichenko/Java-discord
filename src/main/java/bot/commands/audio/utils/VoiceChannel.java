@@ -155,7 +155,11 @@ public class VoiceChannel {
 
         AudioManager audioManager = guild.getAudioManager();
 
-        return null;
+        if (!audioManager.isConnected()){
+            throw new IllegalArgumentException("Not currently connected to the voice channel");
+        }
+
+        return (AudioPlayerSendHandler) audioManager.getSendingHandler();
     }
 
 }
