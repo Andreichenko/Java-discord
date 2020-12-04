@@ -1,8 +1,10 @@
 package bot.commands.audio.utils;
 
 import com.google.common.collect.EvictingQueue;
+import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,6 +28,11 @@ public class TrackSchedulers extends AudioEventAdapter{
 
     }
     public void setQueue(List<AudioTrack> queue){
+
+    }
+
+    @Override
+    public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason){
 
     }
 }
