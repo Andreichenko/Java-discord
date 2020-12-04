@@ -20,6 +20,7 @@ public class TrackSchedulers extends AudioEventAdapter{
     private final EvictingQueue<AudioTrack> historyQueue = EvictingQueue.create(40);
 
     private AudioTrack loopTrack = null;
+
     private long durationInMilliSeconds = 0;
 
     public void queue(AudioTrack track, boolean queueFirst){
@@ -66,6 +67,8 @@ public class TrackSchedulers extends AudioEventAdapter{
             queue.remove(0);
             return audioTrack;
         }
+
+        return null;
     }
 
     public AudioTrack getLoopTrack(){
