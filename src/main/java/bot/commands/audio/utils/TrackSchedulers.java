@@ -27,9 +27,13 @@ public class TrackSchedulers extends AudioEventAdapter{
     }
     public void clearQueue(){
 
+        durationInMilliSeconds = 0;
+        queue.clear();
+
     }
     public void setQueue(List<AudioTrack> queue){
 
+        this.queue = queue;
     }
 
     @Override
