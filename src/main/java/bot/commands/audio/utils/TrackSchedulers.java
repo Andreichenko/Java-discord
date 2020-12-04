@@ -47,6 +47,11 @@ public class TrackSchedulers extends AudioEventAdapter{
 
     }
 
+    public void setLoopTrack(AudioTrack loopTrack){
+
+        this.loopTrack = loopTrack;
+    }
+
     public EvictingQueue<AudioTrack> getHistory(){
         return historyQueue;
     }
