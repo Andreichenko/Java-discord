@@ -36,6 +36,10 @@ public class TrackSchedulers extends AudioEventAdapter{
         this.queue = queue;
     }
 
+    public int getQueueSize(){
+        return queue.size();
+    }
+
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason){
 
@@ -52,6 +56,16 @@ public class TrackSchedulers extends AudioEventAdapter{
     @Override
     public void onTrackStuck(AudioPlayer player, AudioTrack track, long thresholdMs){
 
+    }
+
+    AudioTrack nextTrack(){
+
+        if (queue.size() > 0){
+            AudioTrack audioTrack = queue.get(0);
+            durationInMilliSeconds -= audioTrack.getDuration();
+            queue.remove(0);
+            return audioTrack;
+        }
     }
 
     public AudioTrack getLoopTrack(){
