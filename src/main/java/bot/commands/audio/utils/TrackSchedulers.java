@@ -10,6 +10,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,6 +26,8 @@ public class TrackSchedulers extends AudioEventAdapter{
     private long durationInMilliSeconds = 0;
 
     public void queue(AudioTrack track, boolean queueFirst){
+
+        durationInMilliSeconds += track.getDuration();
 
     }
     public void clearQueue(){
@@ -66,9 +69,18 @@ public class TrackSchedulers extends AudioEventAdapter{
 
         if (track instanceof YoutubeAudioTrack){
 
-            String oldTrackId = track.getInfo().identifier;
-            //looks like here will be some exception
+            try {
+                String oldTrackId = track.getInfo().identifier;
 
+                //looks like here will be some exception
+                AudioTrack nextTrack = YouTubeUtils.getRelatedVideo(oldTrackId, new ArrayList<>(historyQueue));
+                durationInMilliSeconds += nextTrack.getDuration();
+                queue.add(nextTrack);
+                player.playTrack(nextTrack());
+            }catch(IOException | IllegalArgumentException | FriendlyException e){
+
+                LOGGER.error("Encountered error when trying to find a related video", e);
+            }
         }
     }
 
@@ -79,6 +91,8 @@ public class TrackSchedulers extends AudioEventAdapter{
 
     @Override
     public void onTrackStuck(AudioPlayer player, AudioTrack track, long thresholdMs){
+
+        super.onTrackStuck(player, track, thresholdMs);
 
     }
 
