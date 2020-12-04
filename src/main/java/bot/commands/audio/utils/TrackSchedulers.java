@@ -3,6 +3,7 @@ package bot.commands.audio.utils;
 import com.google.common.collect.EvictingQueue;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventAdapter;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrackEndReason;
@@ -61,6 +62,10 @@ public class TrackSchedulers extends AudioEventAdapter{
 
             player.playTrack(nextTrack());
             return;
+        }
+
+        if (track instanceof YoutubeAudioTrack){
+
         }
     }
 
