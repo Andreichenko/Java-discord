@@ -35,6 +35,9 @@ public class TrackSchedulers extends AudioEventAdapter{
     @Override
     public void onTrackEnd(AudioPlayer player, AudioTrack track, AudioTrackEndReason endReason){
 
+        LOGGER.info("Track {} ended {}", track.getIdentifier(), endReason.toString());
+
+        historyQueue.add(track);
     }
 
     @Override
@@ -45,6 +48,11 @@ public class TrackSchedulers extends AudioEventAdapter{
     @Override
     public void onTrackStuck(AudioPlayer player, AudioTrack track, long thresholdMs){
 
+    }
+
+    public AudioTrack getLoopTrack(){
+
+        return loopTrack;
     }
 
     public void setLoopTrack(AudioTrack loopTrack){
