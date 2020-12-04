@@ -47,6 +47,21 @@ public class TrackSchedulers extends AudioEventAdapter{
         LOGGER.info("Track {} ended {}", track.getIdentifier(), endReason.toString());
 
         historyQueue.add(track);
+
+        if (!endReason.mayStartNext && !endReason.equals(AudioTrackEndReason.STOPPED)){
+            return;
+        }
+
+        if (loopTrack != null){
+            player.playTrack(loopTrack.makeClone());
+            return;
+        }
+
+        if (queue.size() > 0){
+
+            player.playTrack(nextTrack());
+            return;
+        }
     }
 
     @Override
@@ -74,6 +89,11 @@ public class TrackSchedulers extends AudioEventAdapter{
     public AudioTrack getLoopTrack(){
 
         return loopTrack;
+    }
+
+    public long getDurationInMilliSeconds(){
+
+        return durationInMilliSeconds;
     }
 
     public void setLoopTrack(AudioTrack loopTrack){
