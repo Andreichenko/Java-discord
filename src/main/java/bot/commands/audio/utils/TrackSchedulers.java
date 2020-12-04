@@ -66,6 +66,9 @@ public class TrackSchedulers extends AudioEventAdapter{
 
         if (track instanceof YoutubeAudioTrack){
 
+            String oldTrackId = track.getInfo().identifier;
+            //looks like here will be some exception
+
         }
     }
 
