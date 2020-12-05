@@ -21,7 +21,7 @@ timestamps {
 
         }
 
-        stage('Graddle heck'){
+        stage('Gradle check'){
             sh './gradlew check'
             sh 'find $PWD -mindepth 1 -maxdepth 1 -exec du -hs {} + 2>/dev/null | sort -hr | head -20 '
         }
