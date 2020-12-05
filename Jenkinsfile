@@ -21,9 +21,8 @@ timestamps {
 
         }
 
-        stage('Test and check'){
+        stage('Gradle check'){
             sh './gradlew check'
-            sh './gradlew clean test --no-daemon'
             sh 'find $PWD -mindepth 1 -maxdepth 1 -exec du -hs {} + 2>/dev/null | sort -hr | head -20 '
         }
 
