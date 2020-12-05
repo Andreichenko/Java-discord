@@ -6,6 +6,12 @@ import org.jetbrains.annotations.NotNull;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.mongodb.config.AbstractMongoClientConfiguration;
 
+/**
+ * Primary configuration of MongoDB
+ * @see org.springframework.data.mongodb.config.AbstractMongoClientConfiguration
+ * @see org.springframework.data.mongodb.config.MongoConfigurationSupport
+ * @version 1.0
+ */
 @Configuration
 public class MongoConfig extends AbstractMongoClientConfiguration {
 
