@@ -23,6 +23,7 @@ import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
@@ -82,7 +83,7 @@ public class CommandEventListenerTest {
         GuildAlliasHolders guildAliasHolder = aliasCommandEventListener.getGuildAliasHolderForGuildWithId(GUILD_ID);
         assertTrue(guildAliasHolder.doesAliasExistForCommand(ALIAS_NAME));
         Alias alias = guildAliasHolder.getCommandWithAlias(ALIAS_NAME);
-       // assertEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
+        assertNotEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
         assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND,
                 ALIAS_ARGUMENTS));
     }
@@ -116,7 +117,7 @@ public class CommandEventListenerTest {
         assertTrue(guildAliasHolder.doesAliasExistForCommand(ALIAS_NAME));
         Alias alias = guildAliasHolder.getCommandWithAlias(ALIAS_NAME);
 
-       // assertEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
+        assertNotEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
 
         assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND,
                 ALIAS_ARGUMENTS));
