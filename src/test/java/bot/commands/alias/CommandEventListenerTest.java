@@ -8,6 +8,7 @@ import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -126,6 +127,10 @@ public class CommandEventListenerTest {
 
 
     public void testSomeAliasExecutesSuccessfully(){
+
+        ArgumentCaptor<MessageReceivedEvent> messageReceivedEventArgumentCaptor =
+                ArgumentCaptor.forClass(MessageReceivedEvent.class);
+
         final String ALIAS_NAME = "commands";
         final String CALL_ALIAS_MESSAGE = "-" + ALIAS_NAME;
         final String ALIAS_COMMAND = "play";
