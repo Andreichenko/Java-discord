@@ -175,7 +175,8 @@ public class CommandEventListenerTest {
         when(mockMessageReceivedEvent.getAuthor().isBot()).thenReturn(false);
         when(mockMessageReceivedEvent.getMessage()).thenReturn(mock(Message.class));
         when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn("not command a message");
-
+        when(mockMessageReceivedEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockMessageReceivedEvent.getGuild().getId()).thenReturn(GUILD_ID);
 
     }
 
