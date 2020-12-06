@@ -118,6 +118,12 @@ public class TrackSchedulers extends AudioEventAdapter{
         return durationInMilliSeconds;
     }
 
+    public List<AudioTrack> getQueue(){
+
+        return queue;
+    }
+
+
     public void setLoopTrack(AudioTrack loopTrack){
 
         this.loopTrack = loopTrack;
@@ -126,4 +132,5 @@ public class TrackSchedulers extends AudioEventAdapter{
     public EvictingQueue<AudioTrack> getHistory(){
         return historyQueue;
     }
+
 }
