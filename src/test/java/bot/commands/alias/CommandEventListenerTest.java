@@ -125,6 +125,9 @@ public class CommandEventListenerTest {
     }
 
 
+    public void testAliasExecutesSuccessfully(){
+
+    }
 
 
 }
