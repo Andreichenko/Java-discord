@@ -5,6 +5,11 @@
             <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
         </Console>
     </Appenders>
+    <Appenders>
+        <Console commandName="Console" target="SYSTEM_IN">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+    </Appenders>
     <Loggers>
         <Root level="info">
             <AppenderRef ref="Console"/>
