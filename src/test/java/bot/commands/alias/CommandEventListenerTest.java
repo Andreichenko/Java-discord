@@ -189,6 +189,9 @@ public class CommandEventListenerTest {
         when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn("-not-command");
         aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
 
+        when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn(CALL_ALIAS_MESSAGE);
+        aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
+
     }
 
 
