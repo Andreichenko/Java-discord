@@ -180,6 +180,9 @@ public class CommandEventListenerTest {
 
         aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
 
+        when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn("a message");
+        aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
+
     }
 
 
