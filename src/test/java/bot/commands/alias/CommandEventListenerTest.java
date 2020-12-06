@@ -136,6 +136,8 @@ public class CommandEventListenerTest {
         final String ALIAS_COMMAND = "play";
         final String ALIAS_ARGUMENTS = "marsh song";
 
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
 
 
     }
