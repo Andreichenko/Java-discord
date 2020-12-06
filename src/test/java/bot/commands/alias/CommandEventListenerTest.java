@@ -125,8 +125,8 @@ public class CommandEventListenerTest {
     }
 
 
-    public void testAliasExecutesSuccessfully(){
-
+    public void testSomeAliasExecutesSuccessfully(){
+        final String ALIAS_NAME = "commands";
     }
 
 
