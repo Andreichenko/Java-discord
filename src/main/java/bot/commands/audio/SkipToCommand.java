@@ -1,5 +1,6 @@
 package bot.commands.audio;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -17,6 +18,8 @@ public class SkipToCommand extends Command{
 
     @Override
     protected void execute(CommandEvent event) {
+
+        AudioPlayerSendHandler audioPlayerSendHandler;
 
     }
 }
