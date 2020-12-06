@@ -23,8 +23,9 @@ import java.util.Set;
 import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
@@ -153,6 +154,14 @@ public class CommandEventListenerTest {
         when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND + " " + ALIAS_ARGUMENTS);
         when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
         when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+        GuildAlliasHolders guildAliasHolder = aliasCommandEventListener.getGuildAliasHolderForGuildWithId(GUILD_ID);
+        assertTrue(guildAliasHolder.doesAliasExistForCommand(ALIAS_NAME));
+        Alias mockAlias = mock(Alias.class);
+        // Lambda function when replace the alias it's not possible to mock out a command due to the final methods used
+        doAnswer(invocation -> null).when(mockAlias).execute(messageReceivedEventArgumentCaptor.capture(), any());
+
 
 
     }
