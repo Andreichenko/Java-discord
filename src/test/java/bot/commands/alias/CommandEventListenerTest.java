@@ -192,7 +192,7 @@ public class CommandEventListenerTest {
         when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn(CALL_ALIAS_MESSAGE);
         aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
 
-        assertEquals(2, messageReceivedEventArgumentCaptor.getAllValues().size());
+        assertEquals(1, messageReceivedEventArgumentCaptor.getAllValues().size());
 
         MessageReceivedEvent messageReceivedEvent = messageReceivedEventArgumentCaptor.getValue();
         assertEquals(CALL_ALIAS_MESSAGE, messageReceivedEvent.getMessage().getContentRaw());
