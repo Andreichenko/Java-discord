@@ -186,6 +186,9 @@ public class CommandEventListenerTest {
         when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn("-play");
         aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
 
+        when(mockMessageReceivedEvent.getMessage().getContentRaw()).thenReturn("-not-command");
+        aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
+
     }
 
 
