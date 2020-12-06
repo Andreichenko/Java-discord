@@ -128,6 +128,8 @@ public class CommandEventListenerTest {
     public void testSomeAliasExecutesSuccessfully(){
         final String ALIAS_NAME = "commands";
         final String CALL_ALIAS_MESSAGE = "-" + ALIAS_NAME;
+        final String ALIAS_COMMAND = "play";
+        final String ALIAS_ARGUMENTS = "marsh song";
     }
 
 
