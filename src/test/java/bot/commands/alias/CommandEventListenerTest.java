@@ -82,9 +82,45 @@ public class CommandEventListenerTest {
         GuildAlliasHolders guildAliasHolder = aliasCommandEventListener.getGuildAliasHolderForGuildWithId(GUILD_ID);
         assertTrue(guildAliasHolder.doesAliasExistForCommand(ALIAS_NAME));
         Alias alias = guildAliasHolder.getCommandWithAlias(ALIAS_NAME);
+       // assertEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
+        assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND,
+                ALIAS_ARGUMENTS));
+    }
+
+    @Test
+    public void testAliasCreatesSomeSuccessfullyForSingleWordArguments(){
+
+        final String ALIAS_NAME = "anjunadeep";
+        final String ALIAS_COMMAND = "play";
+        final String ALIAS_ARGUMENTS = "marsh";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+        CommandClient mockCommandClient = mock(CommandClient.class);
+
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND + " " + ALIAS_ARGUMENTS);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+        GuildAlliasHolders guildAliasHolder = aliasCommandEventListener.getGuildAliasHolderForGuildWithId(GUILD_ID);
+        assertTrue(guildAliasHolder.doesAliasExistForCommand(ALIAS_NAME));
+        Alias alias = guildAliasHolder.getCommandWithAlias(ALIAS_NAME);
+
+       // assertEquals(ALIAS_ARGUMENTS, alias.getAliasCommandArgs());
 
         assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND,
                 ALIAS_ARGUMENTS));
+
     }
 
 
