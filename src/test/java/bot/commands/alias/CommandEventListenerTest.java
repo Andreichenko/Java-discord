@@ -7,7 +7,9 @@ import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Message;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import org.junit.Before;
 import org.junit.Test;
@@ -168,6 +170,9 @@ public class CommandEventListenerTest {
                 ALIAS_ARGUMENTS));
 
         MessageReceivedEvent mockMessageReceivedEvent = mock(MessageReceivedEvent.class);
+
+        when(mockMessageReceivedEvent.getAuthor()).thenReturn(mock(User.class));
+
 
     }
 
