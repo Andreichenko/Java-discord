@@ -178,6 +178,8 @@ public class CommandEventListenerTest {
         when(mockMessageReceivedEvent.getGuild()).thenReturn(mock(Guild.class));
         when(mockMessageReceivedEvent.getGuild().getId()).thenReturn(GUILD_ID);
 
+        aliasCommandEventListener.onMessageReceived(mockMessageReceivedEvent);
+
     }
 
 
