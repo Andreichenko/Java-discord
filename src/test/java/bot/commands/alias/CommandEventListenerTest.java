@@ -162,7 +162,12 @@ public class CommandEventListenerTest {
         // Lambda function when replace the alias it's not possible to mock out a command due to the final methods used
         doAnswer(invocation -> null).when(mockAlias).execute(messageReceivedEventArgumentCaptor.capture(), any());
 
+        guildAliasHolder.addCommandWithAlias(ALIAS_NAME, mockAlias);
 
+        assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND,
+                ALIAS_ARGUMENTS));
+
+        MessageReceivedEvent mockMessageReceivedEvent = mock(MessageReceivedEvent.class);
 
     }
 
