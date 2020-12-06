@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *  Save and load some information to mongo database
  */
 
-@Document(collection = "mapping")
+@Document(collection = "alias")
 public class AliasEntity {
 
     @Field
