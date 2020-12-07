@@ -22,4 +22,5 @@ public class ChannelTextResponses {
             "`%s`**";
     public static final String ERROR_OCCURRED_CREATING_ALIAS = "**Error when creating alias with name `%s`**";
     public static final String ALIAS_TOO_LONG = "**That Alias is too long. It needs to be less than 2000 characters**";
+    public static final String TRYING_TO_PAUSE_PAUSED_SONG = "**Song is already paused.**";
 }

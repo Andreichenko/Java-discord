@@ -1,6 +1,8 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.VoiceChannel;
+import bot.commands.text.TextCommand;
+import bot.utils.ChannelTextResponses;
 import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -19,8 +21,16 @@ public class PauseCommand extends Command {
     @Override
     protected void execute(CommandEvent event){
 
-        VoiceChannel.setPauseStatusOnAudioPlayer(event.getGuild(), event.getChannel(), event.getMember(), true);
-
+        try {
+            VoiceChannel.setPauseStatusOnAudioPlayer(event.getGuild(), event.getChannel(), event.getMember(), true);
+        }catch(IllegalArgumentException e){
+            LOGGER.debug("Trying to pause a paused song", e);
+            event.getChannel().sendMessage(ChannelTextResponses.TRYING_TO_PAUSE_PAUSED_SONG).queue();
+            return;
+        } catch(IllegalAccessException e){
+            LOGGER.debug("Error while running pause command", e);
+            return;
+        }
 
         event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
 
