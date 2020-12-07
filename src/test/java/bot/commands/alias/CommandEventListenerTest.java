@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
+import static bot.utils.ChannelTextResponses.ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -204,10 +205,11 @@ public class CommandEventListenerTest {
      * characters in commands, or words that can be like commands
      */
 
+    @Test
     public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
 
         final String ALIAS_NAME = "play";
-        final String ALIAS_COMMAND = "np";
+        final String ALIAS_COMMAND = "play";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
@@ -224,6 +226,10 @@ public class CommandEventListenerTest {
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
         when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+
+        assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND, ALIAS_NAME));
 
 
     }
