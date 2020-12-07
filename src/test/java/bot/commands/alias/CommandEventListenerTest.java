@@ -208,8 +208,8 @@ public class CommandEventListenerTest {
     @Test
     public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
 
-        final String ALIAS_NAME = "play";
-        final String ALIAS_COMMAND = "";
+        final String ALIAS_NAME = "";
+        final String ALIAS_COMMAND = "np";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
