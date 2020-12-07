@@ -23,6 +23,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
+import static bot.utils.ChannelTextResponses.ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -204,9 +205,33 @@ public class CommandEventListenerTest {
      * characters in commands, or words that can be like commands
      */
 
+    @Test
     public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
 
-    }
+        final String ALIAS_NAME = "pause";
+        final String ALIAS_COMMAND = "np";
 
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+
+        assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND, ALIAS_NAME));
+
+
+    }
 
 }
