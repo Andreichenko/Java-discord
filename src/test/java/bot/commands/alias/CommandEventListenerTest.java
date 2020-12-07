@@ -205,6 +205,7 @@ public class CommandEventListenerTest {
      * characters in commands, or words that can be like commands
      */
 
+
     @Test
     public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
 
