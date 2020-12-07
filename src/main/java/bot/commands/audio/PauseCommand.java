@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.VoiceChannel;
+import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
@@ -20,6 +21,8 @@ public class PauseCommand extends Command {
 
         VoiceChannel.setPauseStatusOnAudioPlayer(event.getGuild(), event.getChannel(), event.getMember(), true);
 
+
+        event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
 
     }
 }
