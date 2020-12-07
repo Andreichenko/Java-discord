@@ -221,6 +221,10 @@ public class CommandEventListenerTest {
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND);
+
 
     }
 
