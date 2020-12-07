@@ -199,5 +199,14 @@ public class CommandEventListenerTest {
 
     }
 
+    /**
+     * This is a test in which we set the same value for the execution of a command, so we warn a bug when typing
+     * characters in commands, or words that can be like commands
+     */
+
+    public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
+
+    }
+
 
 }
