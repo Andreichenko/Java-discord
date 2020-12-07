@@ -208,7 +208,7 @@ public class CommandEventListenerTest {
     @Test
     public void testAliasCantBeCreatedWithSameNameAsExistingCommand(){
 
-        final String ALIAS_NAME = "";
+        final String ALIAS_NAME = "pause";
         final String ALIAS_COMMAND = "np";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
