@@ -1,0 +1,15 @@
+package bot.commands.audio;
+
+import com.jagrosh.jdautilities.command.Command;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+public class PauseCommand extends Command {
+
+    private final Logger LOGGER = LogManager.getLogger(PauseCommand.class);
+
+    public PauseCommand(){
+        this.name = "pause";
+        this.help = "Pause the currently playing song.";
+    }
+}
