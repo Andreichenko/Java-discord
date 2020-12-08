@@ -235,7 +235,7 @@ public class CommandEventListenerTest {
 
     }
 
-
+    @Test
     public void testAliasCantBeCreatedWhenNotAllParametersAreProvided(){
 
         final String ALIAS_NAME = "play";
