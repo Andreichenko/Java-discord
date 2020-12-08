@@ -24,6 +24,7 @@ import java.util.Set;
 
 import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
 import static bot.utils.ChannelTextResponses.ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND;
+import static bot.utils.ChannelTextResponses.NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -232,6 +233,34 @@ public class CommandEventListenerTest {
         assertEquals(textChannelArgumentCaptor.getValue(), String.format(ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND, ALIAS_NAME));
 
 
+    }
+
+    @Test
+    public void testAliasCantBeCreatedWhenNotAllParametersAreProvided(){
+
+        final String ALIAS_NAME = "play";
+        final String ALIAS_COMMAND = "";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+
+        assertEquals(textChannelArgumentCaptor.getValue(), NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS);
     }
 
 }
