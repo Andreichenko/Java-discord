@@ -24,6 +24,7 @@ import java.util.Set;
 
 import static bot.utils.ChannelTextResponses.ALIAS_CREATED;
 import static bot.utils.ChannelTextResponses.ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND;
+import static bot.utils.ChannelTextResponses.NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS;
 import static junit.framework.TestCase.assertTrue;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
@@ -257,6 +258,9 @@ public class CommandEventListenerTest {
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
         when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND);
 
+        aliasCreateCommand.execute(mockCommandEvent);
+
+        assertEquals(textChannelArgumentCaptor.getValue(), NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS);
     }
 
 }
