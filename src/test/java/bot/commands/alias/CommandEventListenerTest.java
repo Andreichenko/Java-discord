@@ -240,7 +240,8 @@ public class CommandEventListenerTest {
         final String ALIAS_NAME = "play";
         final String ALIAS_COMMAND = "";
 
-        
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
     }
 
 }
