@@ -249,6 +249,10 @@ public class CommandEventListenerTest {
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
                 mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
+
     }
 
 }
