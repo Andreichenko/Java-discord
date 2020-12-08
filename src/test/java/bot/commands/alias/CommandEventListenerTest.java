@@ -247,6 +247,8 @@ public class CommandEventListenerTest {
         CommandEventListener aliasCommandEventListener = new CommandEventListener();
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
     }
 
 }
