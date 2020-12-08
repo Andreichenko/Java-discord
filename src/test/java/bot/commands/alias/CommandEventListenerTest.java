@@ -239,7 +239,7 @@ public class CommandEventListenerTest {
     public void testAliasCantBeCreatedWhenNotAllParametersAreProvided(){
 
         final String ALIAS_NAME = "play";
-        final String ALIAS_COMMAND = "L^#%@&#*$(!@#^$&$(%)";
+        final String ALIAS_COMMAND = "";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
