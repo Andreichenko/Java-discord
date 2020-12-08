@@ -242,6 +242,11 @@ public class CommandEventListenerTest {
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
     }
 
 }
