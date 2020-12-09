@@ -4,6 +4,7 @@ import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -39,8 +40,8 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
     @Override
     public void playlistLoaded(AudioPlaylist playlist){
 
-        if (playlist.isSearchResult())
-        {
+        if (playlist.isSearchResult()) {
+
             AudioTrack audioTrack = playlist.getTracks().get(0);
             queueTracksAndStartNextSongs(audioTrack);
             return;
@@ -61,6 +62,17 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
     private void queueTracksAndStartNextSongs(AudioTrack track){
 
         long queueDurationInMilliSeconds = trackSchedulers.getDurationInMilliSeconds();
+        EmbedBuilder embedBuilder = getAudioTrackMessage(track, trackSchedulers.getQueueSize(), queueDurationInMilliSeconds);
+        channel.sendMessage(embedBuilder.build()).queue();
 
+        if (audioPlayerSendHandler.getAudioPlayer().getPlayingTrack() == null){
+
+            audioPlayerSendHandler.getAudioPlayer().playTrack(trackSchedulers.nextTrack());
+        }
+
+    }
+
+    private EmbedBuilder getAudioTrackMessage(AudioTrack track, int queueSize, long queueDurationInMilliSeconds){
+        return null;
     }
 }
