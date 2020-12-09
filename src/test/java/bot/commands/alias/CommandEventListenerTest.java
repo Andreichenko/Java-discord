@@ -266,6 +266,18 @@ public class CommandEventListenerTest {
     public void testAliasCantBeCreatedWhenCommandCantBeFound(){
         final String ALIAS_NAME = "alias_name";
         final String ALIAS_COMMAND = "";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
     }
 
 }
