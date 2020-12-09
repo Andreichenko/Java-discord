@@ -264,7 +264,7 @@ public class CommandEventListenerTest {
     @Test
     public void testAliasCantBeCreatedWhenCommandCantBeFound(){
         final String ALIAS_NAME = "alias_name";
-        final String ALIAS_COMMAND = "";
+        final String ALIAS_COMMAND = "no_items";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
