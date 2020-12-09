@@ -55,4 +55,10 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
     public void loadFailed(FriendlyException throwable){
 
     }
+
+    private void queueTracksAndStartNextSongs(AudioTrack track){
+
+        long queueDurationInMilliSeconds = trackSchedulers.getDurationInMilliSeconds();
+
+    }
 }
