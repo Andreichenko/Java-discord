@@ -24,4 +24,5 @@ public class ChannelTextResponses {
     public static final String ALIAS_TOO_LONG = "**That Alias is too long. It needs to be less than 2000 characters**";
     public static final String TRYING_TO_PAUSE_PAUSED_SONG = "**Song is already paused.**";
     public static final String TRYING_TO_RESUME_PLAYING_SONG = "**The song is not paused.**";
+    public static final String ERROR_LOADING_VIDEO = "**There was a problem loading that video.**";
 }
