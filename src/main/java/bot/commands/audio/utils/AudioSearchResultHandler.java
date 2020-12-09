@@ -1,5 +1,6 @@
 package bot.commands.audio.utils;
 
+import bot.utils.TimeLineStamp;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
@@ -115,7 +116,17 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
             embedBuilder.setColor(Color.RED);
 
         }
+        embedBuilder.addField("Song duration", TimeLineStamp.timeString(track.getDuration() / 1000), true);
+        embedBuilder.addField("Channel", track.getInfo().author, true);
+        embedBuilder.addField("Queue position", playTop ? "1" : String.valueOf(queueSize), true);
 
+        //the song will be played when the queue has finished and the currently playing song has stopped
+        long timeUntilPlaying;
+        AudioTrack nowPlayingTrack = audioPlayerSendHandler.getAudioPlayer().getPlayingTrack();
+        timeUntilPlaying = nowPlayingTrack == null ? 0 :
+                (queueDurationInMilliSeconds + (nowPlayingTrack.getDuration() - nowPlayingTrack.getPosition()));
+        embedBuilder.addField("Estimated time until playing", TimeLineStamp.timeString(timeUntilPlaying / 1000), true);
+        return embedBuilder;
 
     }
 }
