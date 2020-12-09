@@ -47,6 +47,17 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
             return;
         }
 
+        for (AudioTrack track : playlist.getTracks()){
+            trackSchedulers.queue(track, playTop);
+        }
+
+        channel.sendMessage(String.format("**Queued `%d` tracks**", playlist.getTracks().size())).queue();
+
+        if (audioPlayerSendHandler.getAudioPlayer().getPlayingTrack() == null){
+            AudioTrack track = trackSchedulers.nextTrack();
+            audioPlayerSendHandler.getAudioPlayer().playTrack(track);
+        }
+
     }
 
     @Override
