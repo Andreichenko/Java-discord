@@ -19,5 +19,3 @@ Jenkins.instance.getAllItems(AbstractItem.class)
     }
     project.save()
 }
-
-null
