@@ -9,6 +9,8 @@ import net.dv8tion.jda.api.entities.MessageChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import static bot.utils.ChannelTextResponses.ERROR_LOADING_VIDEO;
+
 public class AudioSearchResultHandler implements AudioLoadResultHandler {
 
     private final Logger LOGGER = LogManager.getLogger(AudioSearchResultHandler.class);
@@ -78,7 +80,13 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
 
     @Override
     public void loadFailed(FriendlyException throwable){
+        LOGGER.error("Failed to load video", throwable);
+        if (throwable.severity == FriendlyException.Severity.COMMON){
+            channel.sendMessage(String.format("Loading failed for %s", throwable.getMessage())).queue();
 
+        }
+
+        channel.sendMessage(ERROR_LOADING_VIDEO).queue();
     }
 
     private void queueTracksAndStartNextSongs(AudioTrack track){
