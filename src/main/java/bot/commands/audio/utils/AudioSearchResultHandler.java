@@ -32,6 +32,7 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
     @Override
     public void trackLoaded(AudioTrack track) {
 
+        queueTracksAndStartNextSongs(track);
 
     }
 
@@ -41,6 +42,7 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
         if (playlist.isSearchResult())
         {
             AudioTrack audioTrack = playlist.getTracks().get(0);
+            queueTracksAndStartNextSongs(audioTrack);
             return;
         }
 
