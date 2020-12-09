@@ -263,4 +263,9 @@ public class CommandEventListenerTest {
         assertEquals(textChannelArgumentCaptor.getValue(), NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS);
     }
 
+    public void testAliasCantBeCreatedWhenCommandCantBeFound(){
+        final String ALIAS_NAME = "alias_name";
+        final String ALIAS_COMMAND = "";
+    }
+
 }
