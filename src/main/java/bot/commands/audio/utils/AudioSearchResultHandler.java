@@ -1,6 +1,7 @@
 package bot.commands.audio.utils;
 
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
+import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;
 import com.sedmelluq.discord.lavaplayer.track.AudioPlaylist;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -8,6 +9,8 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageChannel;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
+import java.awt.*;
 
 import static bot.utils.ChannelTextResponses.ERROR_LOADING_VIDEO;
 
@@ -103,6 +106,16 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
     }
 
     private EmbedBuilder getAudioTrackMessage(AudioTrack track, int queueSize, long queueDurationInMilliSeconds){
-        return null;
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setAuthor("Added queue");
+        embedBuilder.setTitle(track.getInfo().title, track.getInfo().uri);
+        if (track instanceof YoutubeAudioTrack){
+            String url = YouTubeUtils.getYoutubeThumbnail(track);
+            embedBuilder.setThumbnail(url);
+            embedBuilder.setColor(Color.RED);
+
+        }
+
+
     }
 }
