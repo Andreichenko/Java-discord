@@ -30,13 +30,19 @@ public class AudioSearchResultHandler implements AudioLoadResultHandler {
 
 
     @Override
-    public void trackLoaded(AudioTrack track)
-    {
+    public void trackLoaded(AudioTrack track) {
+
 
     }
 
     @Override
     public void playlistLoaded(AudioPlaylist playlist){
+
+        if (playlist.isSearchResult())
+        {
+            AudioTrack audioTrack = playlist.getTracks().get(0);
+            return;
+        }
 
     }
 
