@@ -20,6 +20,7 @@ public class ShufflesCommand extends Command{
 
     @Override
     protected void execute(CommandEvent event) {
+
         AudioManager audioManager = event.getGuild().getAudioManager();
 
         if (!audioManager.isConnected()) {
