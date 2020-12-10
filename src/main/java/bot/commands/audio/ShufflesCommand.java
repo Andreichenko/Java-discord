@@ -14,8 +14,8 @@ import java.util.List;
 public class ShufflesCommand extends Command{
 
     public ShufflesCommand() {
-        this.name = name;
-        this.help = help;
+        this.name = "shuffle";
+        this.help = "queue";
     }
 
     @Override
