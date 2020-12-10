@@ -2,11 +2,12 @@ package bot.commands.audio;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import net.dv8tion.jda.api.managers.AudioManager;
 
 public class ShufflesCommand extends Command{
 
     @Override
     protected void execute(CommandEvent event) {
-
+        AudioManager audioManager = event.getGuild().getAudioManager();
     }
 }
