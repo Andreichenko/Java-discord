@@ -13,9 +13,20 @@ import java.util.List;
 
 public class ShufflesCommand extends Command{
 
+    public ShufflesCommand() {
+        this.name = name;
+        this.help = help;
+    }
+
     @Override
     protected void execute(CommandEvent event) {
         AudioManager audioManager = event.getGuild().getAudioManager();
+
+        if (!audioManager.isConnected()) {
+
+            event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
+            return;
+        }
 
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
         TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
