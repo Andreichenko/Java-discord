@@ -6,7 +6,10 @@ import com.google.common.collect.EvictingQueue;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
+import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.managers.AudioManager;
+
+import java.util.ArrayList;
 
 /**
  * Add history command
@@ -36,6 +39,8 @@ public class HistoryCommand extends Command{
         if (history.size() == 0){
             return;
         }
+
+       //?????
 
     }
 }
