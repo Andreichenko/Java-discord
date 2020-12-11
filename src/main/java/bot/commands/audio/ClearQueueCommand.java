@@ -2,6 +2,7 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.VoiceChannel;
+import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -16,18 +17,20 @@ public class ClearQueueCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        try {
-
             AudioPlayerSendHandler audioPlayerSendHandler;
 
-            audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
+            try {
 
-        } catch (IllegalArgumentException ex) {
+             audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
 
-            event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
-            return;
+            } catch (IllegalArgumentException ex) {
+
+                event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
+                return;
         }
 
+        audioPlayerSendHandler.getTrackScheduler().clearQueue();
+        event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
 
     }
 }
