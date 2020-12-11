@@ -1,6 +1,7 @@
 package bot.utils;
 
 import com.jagrosh.jdautilities.command.CommandEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.util.Random;
 
@@ -11,6 +12,9 @@ import java.util.Random;
  */
 public class EmBuilder {
 
+    public static EmbedBuilder createEmbedBuilder(){
+
+    }
 
     Random rand = new Random();
 
