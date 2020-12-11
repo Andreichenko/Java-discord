@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
+import bot.commands.audio.utils.VoiceChannel;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
@@ -15,7 +16,18 @@ public class ClearQueueCommand extends Command {
     @Override
     protected void execute(CommandEvent event) {
 
-        AudioPlayerSendHandler audioPlayerSendHandler;
+        try {
+
+            AudioPlayerSendHandler audioPlayerSendHandler;
+
+            audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
+
+        } catch (IllegalArgumentException ex) {
+
+            event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
+            return;
+        }
+
 
     }
 }
