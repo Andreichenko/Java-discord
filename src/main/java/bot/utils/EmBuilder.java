@@ -28,7 +28,7 @@ public class EmBuilder {
         float k = rand.nextFloat();
         float r = rand.nextFloat();
 // TODO need compare some value with class variables
-        Color randomColor = new Color(r, g, b;
+        Color randomColor = new Color(r, g, b);
         return null;
     }
 
