@@ -1,8 +1,11 @@
 package bot.utils;
 
+import bot.commands.audio.utils.TrackSchedulers;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.EmbedBuilder;
 
+import java.util.List;
 import java.util.Random;
 
 
@@ -12,7 +15,8 @@ import java.util.Random;
  */
 public class EmBuilder {
 
-    public static EmbedBuilder createEmbedBuilder( boolean totalTime){
+    public static EmbedBuilder createEmbedBuilder( boolean totalTime, TrackSchedulers trackSchedulers, List<AudioTrack> queue,
+                                                   CommandEvent event){
 
         return null;
     }

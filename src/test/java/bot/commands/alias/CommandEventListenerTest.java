@@ -288,4 +288,7 @@ public class CommandEventListenerTest {
                 ALIAS_COMMAND));
     }
 
+    // need to create some TEST 1 for alias probably has been deletedIf or it already exist
+    // and TEST 2 with alias fails successfully it can not be deleted or smth else
+
 }
