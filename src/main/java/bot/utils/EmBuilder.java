@@ -12,8 +12,9 @@ import java.util.Random;
  */
 public class EmBuilder {
 
-    public static EmbedBuilder createEmbedBuilder(){
+    public static EmbedBuilder createEmbedBuilder( boolean totalTime){
 
+        return null;
     }
 
     Random rand = new Random();
