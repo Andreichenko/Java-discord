@@ -33,7 +33,7 @@ import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsS
 
 //will be run using mockito runner
 @RunWith(MockitoJUnitRunner.class)
-public class CommandEventListenerTest {
+public class AliasCreateCommandTest {
 
     private final Set<String> ALL_CURRENT_COMMAND_NAMES = new HashSet<>();
     private final HashMap<String, Command> commandNameToCommandMap = new HashMap<>();
