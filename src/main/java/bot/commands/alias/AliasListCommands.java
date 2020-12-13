@@ -54,5 +54,49 @@ public class AliasListCommands extends Command{
 
         ArrayList<String> eachAliasDescription = new ArrayList<>();
 
+        int i = 1;
+        for (Alias alias : aliases){
+
+            StringBuilder aliasListString = new StringBuilder();
+            aliasListString.append("`").append(i).append(":` `");
+            aliasListString.append(alias.getAliasName());
+            aliasListString.append("` executes command `");
+            aliasListString.append(alias.getCommand().getName());
+            aliasListString.append("` with arguments `");
+            aliasListString.append(alias.getAliasCommandArgs());
+            aliasListString.append("`");
+            aliasListString.append("\n");
+            i++;
+            eachAliasDescription.add(aliasListString.toString());
+        }
+
+        ArrayList<String> fullMessagesToSend = new ArrayList<>();
+
+        int index = -1;
+
+        for (String aliasDescription : eachAliasDescription){
+
+            if (fullMessagesToSend.isEmpty()){
+
+                fullMessagesToSend.add(aliasDescription);
+                index++;
+            } else {
+
+                String previousMessage = fullMessagesToSend.get(index);
+
+                if (aliasDescription.length() + previousMessage.length() < 2000){
+
+                    fullMessagesToSend.remove(index);
+                    aliasDescription = previousMessage + aliasDescription;
+                    fullMessagesToSend.add(aliasDescription);
+                } else {
+
+                    fullMessagesToSend.add(aliasDescription);
+                    index++;
+                }
+            }
+        }
+// Lambda events
+        fullMessagesToSend.forEach(s -> event.getChannel().sendMessage(s).queue());
     }
 }
