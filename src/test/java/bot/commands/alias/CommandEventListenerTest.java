@@ -295,7 +295,7 @@ public class CommandEventListenerTest {
     public void testAliasIsDeletedIfItAlreadyExists(){
 
         final String ALIAS_NAME = "coldplay";
-        final String ALIAS_COMMAND = "start";
+        final String ALIAS_COMMAND = "pause";
         final String ALIAS_ARGUMENTS = "some song";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
