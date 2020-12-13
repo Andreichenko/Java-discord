@@ -16,6 +16,7 @@ import static bot.utils.ChannelTextResponses.*;
 
 /**
  * @apiNote this class implements the validation of commands that are written in the main class
+ * All Tests are green
  */
 public class AliasCreateCommands extends Command {
 
@@ -62,7 +63,7 @@ public class AliasCreateCommands extends Command {
             return;
         }
 
-        // This is the command that the alias will execute when it is called
+        // This is the command that the alias will execute when it is called (All tests are green)
         Command command = commandNameToCommandMap.get(aliasCommand);
 
         if (command == null)
