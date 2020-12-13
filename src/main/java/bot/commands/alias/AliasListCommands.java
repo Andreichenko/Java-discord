@@ -5,6 +5,10 @@ import bot.listeners.CommandEventListener;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import static bot.utils.ChannelTextResponses.NO_ALIASES_SET;
 
 /**
@@ -28,11 +32,27 @@ public class AliasListCommands extends Command{
     protected void execute(CommandEvent event) {
 
         String guildId = event.getGuild().getId();
+
         GuildAlliasHolders guildAliasHolder = commandEventListener.getGuildAliasHolderForGuildWithId(guildId);
+
         if (guildAliasHolder == null || guildAliasHolder.getAliasEntityList().size() == 0){
+
             event.getChannel().sendMessage(NO_ALIASES_SET).queue();
+
             return;
         }
+
+        HashMap<String, Alias> aliasHashMap = guildAliasHolder.getAliasNameToAliasObject();
+
+        List<Alias> aliases = new ArrayList<>();
+
+        //Lambda function
+        aliasHashMap.keySet().forEach(key -> {
+            Alias alias = aliasHashMap.get(key);
+            aliases.add(alias);
+        });
+
+        ArrayList<String> eachAliasDescription = new ArrayList<>();
 
     }
 }
