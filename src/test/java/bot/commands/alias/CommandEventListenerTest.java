@@ -21,6 +21,7 @@ import org.mockito.junit.MockitoJUnitRunner;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static bot.utils.ChannelTextResponses.*;
 import static junit.framework.TestCase.assertTrue;
@@ -297,6 +298,24 @@ public class CommandEventListenerTest {
         final String ALIAS_ARGUMENTS = "some song";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        ArgumentCaptor<String> guildIdArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        ArgumentCaptor<String> aliasNameArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        //Lambda expression for moving some parameters
+        AtomicBoolean removedAlias = new AtomicBoolean(false);
+        GuildAlliasHolders mockGuildAliasHolder = mock(GuildAlliasHolders.class);
+        when(mockGuildAliasHolder.doesAliasExistForCommand(aliasNameArgumentCaptor.capture())).thenReturn(true);
+        doAnswer(invocation ->
+        {
+            removedAlias.set(true);
+            return null;
+        }).when(mockGuildAliasHolder).removeCommandWithAlias(aliasNameArgumentCaptor.capture());
+
+
     }
     // and TEST 2 with alias fails successfully it can not be deleted or smth else
 
