@@ -341,7 +341,7 @@ public class CommandEventListenerTest {
     public void testFailsSuccessfullyIfAliasCantBeDeleted(){
 
         final String ALIAS_NAME = "coldplay";
-        final String ALIAS_COMMAND = "stop";
+        final String ALIAS_COMMAND = "play";
         final String ALIAS_ARGUMENTS = "some song";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
