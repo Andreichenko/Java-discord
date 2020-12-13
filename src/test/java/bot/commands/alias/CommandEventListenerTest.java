@@ -289,6 +289,15 @@ public class CommandEventListenerTest {
     }
 
     // need to create some TEST 1 for alias probably has been deletedIf or it already exist
+
+    public void testAliasIsDeletedIfItAlreadyExists(){
+
+        final String ALIAS_NAME = "coldplay";
+        final String ALIAS_COMMAND = "stop";
+        final String ALIAS_ARGUMENTS = "some song";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+    }
     // and TEST 2 with alias fails successfully it can not be deleted or smth else
 
 }
