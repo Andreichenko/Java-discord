@@ -5,7 +5,14 @@ import bot.listeners.CommandEventListener;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
-//Splitting a message so that it can display multiple aliases
+import static bot.utils.ChannelTextResponses.NO_ALIASES_SET;
+
+/**
+ * can only send 2000 characters in a single message so put each alias description onto eachAliasDescription and
+ * later combine ones that are less than 2000 characters into their own messages
+ * Splitting a message so that it can display multiple aliases
+ */
+
 public class AliasListCommands extends Command{
 
     private final CommandEventListener commandEventListener;
@@ -22,7 +29,10 @@ public class AliasListCommands extends Command{
 
         String guildId = event.getGuild().getId();
         GuildAlliasHolders guildAliasHolder = commandEventListener.getGuildAliasHolderForGuildWithId(guildId);
-
+        if (guildAliasHolder == null || guildAliasHolder.getAliasEntityList().size() == 0){
+            event.getChannel().sendMessage(NO_ALIASES_SET).queue();
+            return;
+        }
 
     }
 }
