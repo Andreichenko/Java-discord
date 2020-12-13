@@ -318,7 +318,12 @@ public class CommandEventListenerTest {
         CommandEventListener aliasCommandEventListener = mock(CommandEventListener.class);
         when(aliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdArgumentCaptor.capture())).thenReturn(mockGuildAliasHolder);
 
-        
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND + " " + ALIAS_ARGUMENTS);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
     }
     // and TEST 2 with alias fails successfully it can not be deleted or smth else
 
