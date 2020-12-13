@@ -291,6 +291,7 @@ public class CommandEventListenerTest {
 
     // need to create some TEST 1 for alias probably has been deletedIf or it already exist
 
+    @Test
     public void testAliasIsDeletedIfItAlreadyExists(){
 
         final String ALIAS_NAME = "coldplay";
@@ -328,6 +329,12 @@ public class CommandEventListenerTest {
         when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND + " " + ALIAS_ARGUMENTS);
         when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
         when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        aliasCreateCommand.execute(mockCommandEvent);
+
+        assertEquals(String.format(ALIAS_CREATED, ALIAS_NAME, ALIAS_COMMAND, ALIAS_ARGUMENTS),
+                textChannelArgumentCaptor.getValue());
+        assertTrue(removedAlias.get());
 
     }
     // and TEST 2 with alias fails successfully it can not be deleted or smth else
