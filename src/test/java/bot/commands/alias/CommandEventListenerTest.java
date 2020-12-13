@@ -318,6 +318,11 @@ public class CommandEventListenerTest {
         CommandEventListener aliasCommandEventListener = mock(CommandEventListener.class);
         when(aliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdArgumentCaptor.capture())).thenReturn(mockGuildAliasHolder);
 
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                mock(EntityGuildHolderRepository.class));
+        aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
         when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME + " " + ALIAS_COMMAND + " " + ALIAS_ARGUMENTS);
