@@ -54,6 +54,7 @@ public class AliasListCommandTest {
         assertEquals(NO_ALIASES_SET, textChannelArgumentCaptor.getValue());
     }
 
+    @Test
     public void testListReturnsMultipleAliases(){
         final String ALIAS_NAME_1 = "NAME_1";
         final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS 1";
@@ -86,6 +87,22 @@ public class AliasListCommandTest {
         when(mockAlias2.getAliasName()).thenReturn(ALIAS_NAME_2);
         when(mockAlias2.getCommand()).thenReturn(mockCommand2);
 
+        guildAliasHolder.addCommandWithAlias(ALIAS_NAME_1, mockAlias1);
+        guildAliasHolder.addCommandWithAlias(ALIAS_NAME_2, mockAlias2);
+        aliasCommandEventListener.putGuildAliasHolderForGuildWithId(GUILD_ID, guildAliasHolder);
+
+        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        aliasListCommand.execute(mockCommandEvent);
+
+        assertEquals(String.format("`1:` `%s` executes command `%s` with arguments `%s`\n`2:` `%s` executes command `%s` " +
+                        "with arguments `%s`\n", ALIAS_NAME_2, COMMAND_NAME_2, ALIAS_COMMAND_ARGUMENTS_2, ALIAS_NAME_1,
+                COMMAND_NAME_1, ALIAS_COMMAND_ARGUMENTS_1), textChannelArgumentCaptor.getValue());
     }
 
 }
