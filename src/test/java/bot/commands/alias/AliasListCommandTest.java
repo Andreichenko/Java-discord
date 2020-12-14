@@ -56,7 +56,7 @@ public class AliasListCommandTest {
 
     @Test
     public void testListReturnsMultipleAliases(){
-        final String ALIAS_NAME_1 = "NAME_1";
+        final String ALIAS_NAME_1 = "NAME";
         final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS 1";
         final String COMMAND_NAME_1 = "PLAY";
 
