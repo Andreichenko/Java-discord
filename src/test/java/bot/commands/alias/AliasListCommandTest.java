@@ -53,5 +53,14 @@ public class AliasListCommandTest {
         assertEquals(NO_ALIASES_SET, textChannelArgumentCaptor.getValue());
     }
 
+    public void testListReturnsMultipleAliases(){
+        final String ALIAS_NAME_1 = "NAME_1";
+        final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS 1";
+        final String COMMAND_NAME_1 = "PLAY";
+
+        final String ALIAS_NAME_2 = "NAME_1";
+        final String ALIAS_COMMAND_ARGUMENTS_2 = "COMMAND ARGUMENTS 2";
+        final String COMMAND_NAME_2 = "PAUSE";
+    }
 
 }
