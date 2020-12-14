@@ -60,7 +60,7 @@ public class AliasListCommandTest {
         final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS";
         final String COMMAND_NAME_1 = "PLAY";
 
-        final String ALIAS_NAME_2 = "NAME_1";
+        final String ALIAS_NAME_2 = "NAME_";
         final String ALIAS_COMMAND_ARGUMENTS_2 = "COMMAND ARGUMENTS 2";
         final String COMMAND_NAME_2 = "PAUSE";
 
