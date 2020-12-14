@@ -79,7 +79,12 @@ public class AliasListCommandTest {
         when(mockAlias1.getAliasName()).thenReturn(ALIAS_NAME_1);
         when(mockAlias1.getCommand()).thenReturn(mockCommand1);
 
-
+        Command mockCommand2 = mock(Command.class);
+        when(mockCommand2.getName()).thenReturn(COMMAND_NAME_2);
+        Alias mockAlias2 = mock(Alias.class);
+        when(mockAlias2.getAliasCommandArgs()).thenReturn(ALIAS_COMMAND_ARGUMENTS_2);
+        when(mockAlias2.getAliasName()).thenReturn(ALIAS_NAME_2);
+        when(mockAlias2.getCommand()).thenReturn(mockCommand2);
 
     }
 
