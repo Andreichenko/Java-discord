@@ -105,4 +105,5 @@ public class AliasListCommandTest {
                 COMMAND_NAME_1, ALIAS_COMMAND_ARGUMENTS_1), textChannelArgumentCaptor.getValue());
     }
 
+
 }
