@@ -2,6 +2,7 @@ package bot.commands.alias;
 
 import bot.listeners.CommandEventListener;
 
+import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Guild;
@@ -61,6 +62,25 @@ public class AliasListCommandTest {
         final String ALIAS_NAME_2 = "NAME_1";
         final String ALIAS_COMMAND_ARGUMENTS_2 = "COMMAND ARGUMENTS 2";
         final String COMMAND_NAME_2 = "PAUSE";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
+        GuildAlliasHolders guildAliasHolder = new GuildAlliasHolders();
+
+        Command mockCommand1 = mock(Command.class);
+        when(mockCommand1.getName()).thenReturn(COMMAND_NAME_1);
+        Alias mockAlias1 = mock(Alias.class);
+        when(mockAlias1.getAliasCommandArgs()).thenReturn(ALIAS_COMMAND_ARGUMENTS_1);
+        when(mockAlias1.getAliasName()).thenReturn(ALIAS_NAME_1);
+        when(mockAlias1.getCommand()).thenReturn(mockCommand1);
+
+
+
     }
 
 }
