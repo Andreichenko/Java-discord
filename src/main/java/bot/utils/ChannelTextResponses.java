@@ -26,4 +26,10 @@ public class ChannelTextResponses {
     public static final String TRYING_TO_RESUME_PLAYING_SONG = "**The song is not paused.**";
     public static final String ERROR_LOADING_VIDEO = "**There was a problem loading that video.**";
     public static final String NO_ALIASES_SET ="no aliases set";
+    public static final String ALIAS_DELETE_ALIAS_DOES_NOT_EXIST = "**Alias with name `%s` doesn't exist**";
+
+
+    public static final String ALIAS_REMOVED = "**Alias with name `%s` has been removed**";
+    public static final String ALIAS_DELETE_ERROR_OCCURRED = "**Something went wrong whilst removing that alias**";
+    public static final String ALIAS_DELETE_NONE_PROVIDED = "**You need to provide an alias to delete**";
 }
