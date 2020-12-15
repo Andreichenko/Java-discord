@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import static bot.utils.ChannelTextResponses.ALIAS_DELETE_ALIAS_DOES_NOT_EXIST;
 import static bot.utils.ChannelTextResponses.ALIAS_DELETE_ERROR_OCCURRED;
+import static bot.utils.ChannelTextResponses.ALIAS_DELETE_NONE_PROVIDED;
 
 public class AliasDeleteCommands extends Command {
 
@@ -30,6 +31,11 @@ public class AliasDeleteCommands extends Command {
     @Override
     protected void execute(CommandEvent event) {
         String aliasToDelete = event.getArgs();
+
+        if (aliasToDelete.isEmpty()){
+            event.getChannel().sendMessage(ALIAS_DELETE_NONE_PROVIDED).queue();
+            return;
+        }
 
         String guildId = event.getGuild().getId();
         GuildAlliasHolders guildAliasHolder = aliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildId);
