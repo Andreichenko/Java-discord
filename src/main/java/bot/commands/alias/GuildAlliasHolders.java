@@ -15,8 +15,7 @@ public class GuildAlliasHolders extends GuildHolderEntity{
     @Transient
     private final HashMap<String, Alias> aliasNameToAliasObjects = new HashMap<>();
 
-    public GuildAlliasHolders() {
-    }
+    public GuildAlliasHolders() { }
 
     public GuildAlliasHolders(String guildId){
         this(guildId, new ArrayList<>());
