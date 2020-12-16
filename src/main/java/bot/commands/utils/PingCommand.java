@@ -2,6 +2,9 @@ package bot.commands.utils;
 
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import net.dv8tion.jda.api.EmbedBuilder;
+
+import java.awt.*;
 
 public class PingCommand extends Command {
 
@@ -13,6 +16,14 @@ public class PingCommand extends Command {
 
     @Override
     protected void execute(CommandEvent event) {
+
+        long ping = event.getJDA().getGatewayPing();
+
+        EmbedBuilder embedBuilder = new EmbedBuilder();
+        embedBuilder.setDescription(String.format(":hourglass: %dms", ping));
+        embedBuilder.setColor(Color.GREEN);
+        event.getChannel().sendMessage(embedBuilder.build()).queue();
+
 
     }
 }
