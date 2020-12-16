@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discord-bot.iml" filepath="$PROJECT_DIR$/.idea/modules/discord-bot.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discord-bot_main.iml" filepath="$PROJECT_DIR$/.idea/modules/discord-bot_main.iml" group="discord-bot" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/discord-bot_test.iml" filepath="$PROJECT_DIR$/.idea/modules/discord-bot_test.iml" group="discord-bot" />
+      <module fileurl="file://$PROJECT_DIR$/discord-music.iml" filepath="$PROJECT_DIR$/discord-music.iml" />
     </modules>
   </component>
 </project>
