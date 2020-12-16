@@ -32,4 +32,5 @@ public class ChannelTextResponses {
     public static final String ALIAS_REMOVED = "**Alias with name `%s` has been removed**";
     public static final String ALIAS_DELETE_ERROR_OCCURRED = "**Something went wrong whilst removing that alias**";
     public static final String ALIAS_DELETE_NONE_PROVIDED = "**You need to provide an alias to delete**";
+    public static final String NOTHING_CURRENTLY_PLAYING = "";
 }
