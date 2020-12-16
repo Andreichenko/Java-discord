@@ -7,9 +7,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static bot.utils.ChannelTextResponses.ALIAS_DELETE_ALIAS_DOES_NOT_EXIST;
-import static bot.utils.ChannelTextResponses.ALIAS_DELETE_ERROR_OCCURRED;
-import static bot.utils.ChannelTextResponses.ALIAS_DELETE_NONE_PROVIDED;
+import static bot.utils.ChannelTextResponses.*;
 
 public class AliasDeleteCommands extends Command {
 
@@ -57,6 +55,8 @@ public class AliasDeleteCommands extends Command {
         }
 
        entityGuildHolderRepository.save(guildAliasHolder);
+
+        event.getChannel().sendMessage(String.format(ALIAS_REMOVED, aliasToDelete)).queue();
 
     }
 }
