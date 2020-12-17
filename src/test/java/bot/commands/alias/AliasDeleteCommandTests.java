@@ -1,5 +1,6 @@
 package bot.commands.alias;
 
+import bot.listeners.CommandEventListener;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -10,6 +11,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import static bot.utils.ChannelTextResponses.ALIAS_DELETE_ALIAS_DOES_NOT_EXIST;
 import static bot.utils.ChannelTextResponses.ALIAS_DELETE_NONE_PROVIDED;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
@@ -43,4 +45,32 @@ public class AliasDeleteCommandTests {
 
         assertEquals(ALIAS_DELETE_NONE_PROVIDED, textChannelArgumentCaptor.getValue());
     }
+
+    @Test
+    public void testFailsSuccessfullyWhenAliasDoesNotExist()
+    {
+        final String ALIAS_NAME = "name";
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        ArgumentCaptor<String> guildIdCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        GuildAlliasHolders mockGuildAlisHolder = mock(GuildAlliasHolders.class);
+
+        CommandEventListener mockAliasCommandEventListener = mock(CommandEventListener.class);
+        when(mockAliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdCaptor.capture())).thenReturn(mockGuildAlisHolder);
+
+        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener, null);
+        aliasDeleteCommand.execute(mockCommandEvent);
+
+        assertEquals(String.format(ALIAS_DELETE_ALIAS_DOES_NOT_EXIST, ALIAS_NAME), textChannelArgumentCaptor.getValue());
+        assertEquals(GUILD_ID, guildIdCaptor.getValue());
+    }
+
 }
