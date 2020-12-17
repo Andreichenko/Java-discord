@@ -12,6 +12,8 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
 
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static bot.utils.ChannelTextResponses.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -106,5 +108,45 @@ public class AliasDeleteCommandTests {
         aliasRemovalCaptor.getAllValues().forEach(alias -> assertEquals(ALIAS_NAME, alias));
     }
 
+    @Test
+    public void testSuccessfullyDeleteAlias()
+    {
+        final String ALIAS_NAME = "";
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        ArgumentCaptor<String> guildIdCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<String> aliasRemovalCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn(ALIAS_NAME);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        GuildAlliasHolders mockGuildAlisHolder = mock(GuildAlliasHolders.class);
+        doAnswer(invocation -> null).when(mockGuildAlisHolder).removeCommandWithAlias(aliasRemovalCaptor.capture());
+        when(mockGuildAlisHolder.doesAliasExistForCommand(aliasRemovalCaptor.capture())).thenReturn(true);
+
+        CommandEventListener mockAliasCommandEventListener = mock(CommandEventListener.class);
+        when(mockAliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdCaptor.capture())).thenReturn(mockGuildAlisHolder);
+
+        AtomicBoolean entitySaved = new AtomicBoolean(false);
+        EntityGuildHolderRepository mockGuildAliasHolderEntityRepository = mock(EntityGuildHolderRepository.class);
+        doAnswer(invocation ->
+        {
+            entitySaved.set(true);
+            return null;
+        }).when(mockGuildAliasHolderEntityRepository).save(any());
+
+        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener,
+                mockGuildAliasHolderEntityRepository);
+        aliasDeleteCommand.execute(mockCommandEvent);
+
+        assertEquals(String.format(ALIAS_REMOVED, ALIAS_NAME), textChannelArgumentCaptor.getValue());
+        assertEquals(GUILD_ID, guildIdCaptor.getValue());
+        aliasRemovalCaptor.getAllValues().forEach(alias -> assertEquals(ALIAS_NAME, alias));
+        assertTrue(entitySaved.get());
+    }
 
 }
