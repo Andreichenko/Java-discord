@@ -48,7 +48,7 @@ public class AliasDeleteCommandTests {
     @Test
     public void testFailsSuccessfullyWhenAliasDoesNotExist()
     {
-        final String ALIAS_NAME = "name";
+        final String ALIAS_NAME = "";
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
 
