@@ -75,7 +75,7 @@ public class AliasDeleteCommandTests {
     @Test
     public void testFailsSuccessfullyWhenAliasCantBeDeleted()
     {
-        final String ALIAS_NAME = "";
+        final String ALIAS_NAME = "name";
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
 
