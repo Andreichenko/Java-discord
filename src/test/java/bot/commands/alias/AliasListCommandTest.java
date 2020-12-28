@@ -105,5 +105,44 @@ public class AliasListCommandTest {
                 COMMAND_NAME_1, ALIAS_COMMAND_ARGUMENTS_1), textChannelArgumentCaptor.getValue());
     }
 
+    @Test
+    public void testListReturnsSingleAlias()
+    {
+        final String ALIAS_NAME_1 = "NAME";
+        final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS";
+        final String COMMAND_NAME_1 = "PAUSE";
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandClient mockCommandClient = mock(CommandClient.class);
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+        aliasCommandEventListener.setCommandClient(mockCommandClient);
+
+        GuildAlliasHolders guildAliasHolder = new GuildAlliasHolders();
+
+        Command mockCommand = mock(Command.class);
+        when(mockCommand.getName()).thenReturn(COMMAND_NAME_1);
+        Alias mockAlias = mock(Alias.class);
+        when(mockAlias.getAliasCommandArgs()).thenReturn(ALIAS_COMMAND_ARGUMENTS_1);
+        when(mockAlias.getAliasName()).thenReturn(ALIAS_NAME_1);
+        when(mockAlias.getCommand()).thenReturn(mockCommand);
+
+        guildAliasHolder.addCommandWithAlias(ALIAS_NAME_1, mockAlias);
+        aliasCommandEventListener.putGuildAliasHolderForGuildWithId(GUILD_ID, guildAliasHolder);
+
+        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getId()).thenReturn(GUILD_ID);
+
+        aliasListCommand.execute(mockCommandEvent);
+
+        assertEquals(String.format("`1:` `%s` executes command `%s` with arguments `%s`\n", ALIAS_NAME_1, COMMAND_NAME_1,
+                ALIAS_COMMAND_ARGUMENTS_1),
+                textChannelArgumentCaptor.getValue());
+    }
 
 }
