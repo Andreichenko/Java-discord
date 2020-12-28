@@ -110,7 +110,7 @@ public class AliasListCommandTest {
     {
         final String ALIAS_NAME_1 = "NAME";
         final String ALIAS_COMMAND_ARGUMENTS_1 = "COMMAND ARGUMENTS";
-        final String COMMAND_NAME_1 = "STOP[]";
+        final String COMMAND_NAME_1 = "";
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
