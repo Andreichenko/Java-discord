@@ -26,12 +26,13 @@ public class SkipSongCommand extends Command {
 
         }
 
-        // disable looping
-        audioPlayerSendHandler.getTrackScheduler().setLoopTrack(null);
+        if (audioPlayerSendHandler != null) {
+            // disable looping
+            audioPlayerSendHandler.getTrackScheduler().setLoopTrack(null);
 
-        audioPlayerSendHandler.getAudioPlayer().stopTrack();
-        event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
-
+            audioPlayerSendHandler.getAudioPlayer().stopTrack();
+            event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
+        }
     }
 
 
