@@ -1,5 +1,12 @@
 package bot.commands.audio;
 
+import org.junit.Before;
+import org.junit.runner.RunWith;
+import org.mockito.MockitoAnnotations;
+import org.mockito.junit.MockitoJUnitRunner;
+
+
+@RunWith(MockitoJUnitRunner.class)
 public class PlayCommandTest {
 
     public static final String MOCK_VOICE_CHANNEL_ID = "mockVoiceChannelId";
@@ -8,5 +15,9 @@ public class PlayCommandTest {
     public static final String MOCK_TEXT_CHANNEL_ID = "mockTextChannelId";
     public static final String EMPTY_ARGUMENT = "";
 
-
+    @Before
+    public void init()
+    {
+        MockitoAnnotations.initMocks(this);
+    }
 }
