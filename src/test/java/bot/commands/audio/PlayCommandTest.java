@@ -1,8 +1,10 @@
 package bot.commands.audio;
 
+import net.dv8tion.jda.api.entities.VoiceChannel;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
@@ -23,6 +25,11 @@ public class PlayCommandTest {
 
     @Test
     public void testExecuteWhereAudioChannelNeedsToBeJoined(){
+
+        final String COMMAND_ARGUMENT = "shrek";
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<VoiceChannel> voiceChannelArgumentCaptor = ArgumentCaptor.forClass(VoiceChannel.class);
 
     }
 
