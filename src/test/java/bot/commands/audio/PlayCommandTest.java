@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
@@ -16,8 +17,13 @@ public class PlayCommandTest {
     public static final String EMPTY_ARGUMENT = "";
 
     @Before
-    public void init()
-    {
+    public void init() {
         MockitoAnnotations.initMocks(this);
     }
+
+    @Test
+    public void testExecuteWhereAudioChannelNeedsToBeJoined(){
+
+    }
+
 }
