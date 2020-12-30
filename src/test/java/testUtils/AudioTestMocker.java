@@ -197,4 +197,48 @@ public class AudioTestMocker {
 
         return mockCommandEvent;
     }
+
+
+    public static CommandEvent createMockCommandEventForPlayCommandWhereMemberNotInVoiceChannel(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                                                String textChannelId,
+                                                                                                String memberId,
+                                                                                                String guildId,
+                                                                                                String commandArgument){
+
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        Member mockMember = mock(Member.class);
+
+        GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+        when(mockGuildVoiceState.inVoiceChannel()).thenReturn(false);
+
+        when(mockMember.getId()).thenReturn(memberId);
+        when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(false);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getTextChannelById(anyString())).thenReturn(mockTextChannel);
+        when(mockGuild.getMemberById(anyString())).thenReturn(mockMember);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
+        return mockCommandEvent;
+    }
 }

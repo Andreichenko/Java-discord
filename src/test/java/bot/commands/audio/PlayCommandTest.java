@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
+import bot.utils.ChannelTextResponses;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import bot.commands.audio.utils.TrackSchedulers;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -16,10 +17,9 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
-import static testUtils.AudioTestMocker.createMockCommandEventForPlayCommandWhereAudioGetsPlayed;
 
 import static org.mockito.Mockito.mock;
-import static testUtils.AudioTestMocker.createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed;
+import static testUtils.AudioTestMocker.*;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -63,5 +63,26 @@ public class PlayCommandTest {
         assertEquals(MOCK_VOICE_CHANNEL_ID, voiceChannelArgumentCaptor.getValue().getId());
 
     }
+
+    @Test
+    public void testExecuteWhereAudioChannelNeedsToBeJoinedButCantBecauseMemberVoiceStateIsNull() {
+        final String COMMAND_ARGUMENT = "shrek";
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereMemberNotInVoiceChannel(stringArgumentCaptor,
+                        MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, MOCK_GUILD_ID, COMMAND_ARGUMENT
+                );
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
+
+        assertEquals(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE, stringArgumentCaptor.getValue());
+        assertEquals(1, stringArgumentCaptor.getAllValues().size());
+    }
+
 
 }
