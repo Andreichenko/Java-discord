@@ -5,6 +5,8 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import bot.commands.audio.utils.TrackSchedulers;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
+import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,6 +19,7 @@ import static org.junit.Assert.assertTrue;
 import static testUtils.AudioTestMocker.createMockCommandEventForPlayCommandWhereAudioGetsPlayed;
 
 import static org.mockito.Mockito.mock;
+import static testUtils.AudioTestMocker.createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -45,8 +48,7 @@ public class PlayCommandTest {
         AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
                 new TrackSchedulers());
 
-        CommandEvent mockCommandEvent =
-                createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(stringArgumentCaptor,
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(stringArgumentCaptor,
                         MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, MOCK_GUILD_ID, MOCK_VOICE_CHANNEL_ID, COMMAND_ARGUMENT,
                         audioPlayerSendHandler,
                         voiceChannelArgumentCaptor);
