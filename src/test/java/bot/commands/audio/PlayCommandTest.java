@@ -90,6 +90,14 @@ public class PlayCommandTest {
         final String COMMAND_ARGUMENT = "shrek";
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
+                new TrackSchedulers());
+
+        CommandEvent mockCommandEvent =
+                createMockCommandEventForPlayCommandWhereBotLacksPermissionToJoinVoiceChannel(stringArgumentCaptor,
+                        MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, MOCK_GUILD_ID, MOCK_VOICE_CHANNEL_ID, COMMAND_ARGUMENT,
+                        audioPlayerSendHandler);
     }
 
 
