@@ -27,6 +27,7 @@ import static org.mockito.Mockito.when;
 
 public class AudioTestMocker {
 
+
     public static CommandEvent createMockCommandEventForPlayCommandWhereItErrorsOut(String textChannelId,
                                                                                     String memberId,
                                                                                     String guildId,
@@ -84,6 +85,104 @@ public class AudioTestMocker {
         return mockCommandEvent;
     }
 
+    public static CommandEvent createMockCommandEventForPlayCommandWhereMemberCantBeFound(String textChannelId,
+                                                                                          String memberId,
+                                                                                          String guildId,
+                                                                                          String commandArgument){
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        Member mockMember = mock(Member.class);
+        when(mockMember.getId()).thenReturn(memberId);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getTextChannelById(any())).thenReturn(mockTextChannel);
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getMemberById(any())).thenReturn(null);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
+        return mockCommandEvent;
+
+    }
+
+    public static CommandEvent createMockCommandEventForPlayCommandWhereItErrorsOut(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                                    String textChannelId,
+                                                                                    String memberId,
+                                                                                    String guildId,
+                                                                                    String commandArgument,
+                                                                                    Answer<Void> messageQueuedAnswer){
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
+                textChannelId, memberId, guildId, commandArgument);
+
+        TextChannel mockTextChannel = (TextChannel) mockCommandEvent.getChannel();
+
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(messageQueuedAnswer).when(mockMessageAction).queue();
+
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        return mockCommandEvent;
+    }
+
+    public static CommandEvent createMockCommandEventForPlayCommandWhereBotLacksPermissionToJoinVoiceChannel(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                                                             String textChannelId,
+                                                                                                             String memberId,
+                                                                                                             String guildId,
+                                                                                                             String mockVoiceChannelId,
+                                                                                                             String commandArgument,
+                                                                                                             AudioSendHandler audioPlayerSendHandler){
+
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        Member mockMember = mock(Member.class);
+        Guild mockGuild = mock(Guild.class);
+
+        GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+        when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
+
+        when(mockMember.getId()).thenReturn(memberId);
+        when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(false);
+        doAnswer(invocation ->
+        {
+            throw new InsufficientPermissionException(mockGuild, Permission.ADMINISTRATOR);
+        }).when(mockAudioManager).openAudioConnection(any());
+
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getTextChannelById(anyString())).thenReturn(mockTextChannel);
+        when(mockGuild.getMemberById(anyString())).thenReturn(mockMember);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
+        return mockCommandEvent;
+    }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
                                                                                                                    String textChannelId,
