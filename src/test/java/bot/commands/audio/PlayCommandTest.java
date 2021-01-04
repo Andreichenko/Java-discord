@@ -15,6 +15,10 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
+
+import java.util.concurrent.atomic.AtomicBoolean;
+
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -110,6 +114,15 @@ public class PlayCommandTest {
 
     @Test
     public void testExecuteWithNoArgument(){
+
+        AtomicBoolean messageQueued = new AtomicBoolean(false);
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        Answer<Void> messageQueuedAnswer = invocation ->
+        {
+            messageQueued.set(true);
+            return null;
+        };
+
 
     }
 
