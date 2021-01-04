@@ -35,4 +35,9 @@ public class SeekCommandTestMocker {
         return mockCommandEvent;
     }
 
+    public static CommandEvent createMockCommandEventWithTime(ArgumentCaptor<String> stringArgumentCaptor,
+                                                              ArgumentCaptor<Long> longArgumentCaptor,
+                                                              String timeArgument){
+
+    }
 }
