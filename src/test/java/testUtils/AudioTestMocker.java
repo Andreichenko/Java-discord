@@ -213,6 +213,10 @@ public class AudioTestMocker {
         when(mockGuild.getMemberById(anyString())).thenReturn(mockMember);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
 
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
     }
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
                                                                                                                    String textChannelId,
