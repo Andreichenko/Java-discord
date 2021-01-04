@@ -136,4 +136,9 @@ public class PlayCommandTest {
         assertEquals(ChannelTextResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND, stringArgumentCaptor.getValue());
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testExecuteWithNullGuildId() throws IllegalArgumentException{
+
+    }
+
 }
