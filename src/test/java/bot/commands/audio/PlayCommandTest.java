@@ -87,6 +87,9 @@ public class PlayCommandTest {
     @Test
     public void testExecuteWhereAudioChannelNeedsToBeJoinedButCantDueToInsufficientPermissions(){
 
+        final String COMMAND_ARGUMENT = "shrek";
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
     }
 
 
