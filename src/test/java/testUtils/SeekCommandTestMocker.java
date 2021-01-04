@@ -49,5 +49,15 @@ public class SeekCommandTestMocker {
         doAnswer(invocation -> null).when(mockAudioTrack).setPosition(longArgumentCaptor.capture());
         when(mockAudioTrack.getDuration()).thenReturn(Long.valueOf(999999999));
         when(mockAudioTrack.isSeekable()).thenReturn(true);
+
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
+
+        AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
+        when(mockAudioPlayerSendHandler.getAudioPlayer()).thenReturn(mockAudioPlayer);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(true);
+        when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
     }
 }
