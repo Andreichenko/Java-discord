@@ -27,6 +27,7 @@ import static org.mockito.Mockito.when;
 
 public class AudioTestMocker {
 
+
     public static CommandEvent createMockCommandEventForPlayCommandWhereItErrorsOut(String textChannelId,
                                                                                     String memberId,
                                                                                     String guildId,
@@ -84,6 +85,19 @@ public class AudioTestMocker {
         return mockCommandEvent;
     }
 
+    public static CommandEvent createMockCommandEventForPlayCommandWhereMemberCantBeFound(String textChannelId,
+                                                                                          String memberId,
+                                                                                          String guildId,
+                                                                                          String commandArgument){
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        Member mockMember = mock(Member.class);
+        when(mockMember.getId()).thenReturn(memberId);
+
+        return mockCommandEvent;
+
+    }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
                                                                                                                    String textChannelId,
