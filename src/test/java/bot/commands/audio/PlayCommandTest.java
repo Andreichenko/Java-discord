@@ -123,7 +123,17 @@ public class PlayCommandTest {
             return null;
         };
 
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(stringArgumentCaptor,
+                MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, MOCK_GUILD_ID, EMPTY_ARGUMENT, messageQueuedAnswer);
 
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
+
+        assertTrue(messageQueued.get());
+        assertEquals(ChannelTextResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND, stringArgumentCaptor.getValue());
     }
 
 }
