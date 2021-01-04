@@ -152,6 +152,36 @@ public class AudioTestMocker {
 
         Member mockMember = mock(Member.class);
         Guild mockGuild = mock(Guild.class);
+
+        GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+        when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
+
+        when(mockMember.getId()).thenReturn(memberId);
+        when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(false);
+        doAnswer(invocation ->
+        {
+            throw new InsufficientPermissionException(mockGuild, Permission.ADMINISTRATOR);
+        }).when(mockAudioManager).openAudioConnection(any());
+
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getTextChannelById(anyString())).thenReturn(mockTextChannel);
+        when(mockGuild.getMemberById(anyString())).thenReturn(mockMember);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
+        return mockCommandEvent;
     }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
