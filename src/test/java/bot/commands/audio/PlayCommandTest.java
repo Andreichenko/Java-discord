@@ -142,6 +142,11 @@ public class PlayCommandTest {
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
                 MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, null, EMPTY_ARGUMENT);
 
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
     }
 
 }
