@@ -70,4 +70,9 @@ public class SeekCommandTestMocker {
 
         return mockCommandEvent;
     }
+
+    public static CommandEvent createMockCommandEventThatFailsWithTime(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                       String timeArgument){
+
+    }
 }
