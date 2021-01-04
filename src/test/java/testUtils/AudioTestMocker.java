@@ -207,6 +207,12 @@ public class AudioTestMocker {
         AudioManager mockAudioManager = mock(AudioManager.class);
         when(mockAudioManager.isConnected()).thenReturn(false);
 
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getTextChannelById(anyString())).thenReturn(mockTextChannel);
+        when(mockGuild.getMemberById(anyString())).thenReturn(mockMember);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
     }
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
                                                                                                                    String textChannelId,
