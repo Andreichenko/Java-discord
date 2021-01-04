@@ -59,5 +59,15 @@ public class SeekCommandTestMocker {
         AudioManager mockAudioManager = mock(AudioManager.class);
         when(mockAudioManager.isConnected()).thenReturn(true);
         when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(timeArgument);
+
+        return mockCommandEvent;
     }
 }
