@@ -139,6 +139,9 @@ public class PlayCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testExecuteWithNullGuildId() throws IllegalArgumentException{
 
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
+                MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, null, EMPTY_ARGUMENT);
+
     }
 
 }
