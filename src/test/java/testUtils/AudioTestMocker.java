@@ -134,6 +134,18 @@ public class AudioTestMocker {
         return mockCommandEvent;
     }
 
+    public static CommandEvent createMockCommandEventForPlayCommandWhereBotLacksPermissionToJoinVoiceChannel(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                                                             String textChannelId,
+                                                                                                             String memberId,
+                                                                                                             String guildId,
+                                                                                                             String mockVoiceChannelId,
+                                                                                                             String commandArgument,
+                                                                                                             AudioSendHandler audioPlayerSendHandler){
+
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+    }
+
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
                                                                                                                    String textChannelId,
                                                                                                                    String memberId,
