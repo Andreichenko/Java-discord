@@ -39,5 +39,15 @@ public class SeekCommandTestMocker {
                                                               ArgumentCaptor<Long> longArgumentCaptor,
                                                               String timeArgument){
 
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+
+        AudioTrack mockAudioTrack = mock(AudioTrack.class);
+        doAnswer(invocation -> null).when(mockAudioTrack).setPosition(longArgumentCaptor.capture());
+        when(mockAudioTrack.getDuration()).thenReturn(Long.valueOf(999999999));
+        when(mockAudioTrack.isSeekable()).thenReturn(true);
     }
 }
