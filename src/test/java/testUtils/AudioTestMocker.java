@@ -95,6 +95,21 @@ public class AudioTestMocker {
         Member mockMember = mock(Member.class);
         when(mockMember.getId()).thenReturn(memberId);
 
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getTextChannelById(any())).thenReturn(mockTextChannel);
+        when(mockGuild.getId()).thenReturn(guildId);
+        when(mockGuild.getMemberById(any())).thenReturn(null);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
         return mockCommandEvent;
 
     }
