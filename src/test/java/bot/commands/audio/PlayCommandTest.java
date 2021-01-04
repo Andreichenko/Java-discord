@@ -84,5 +84,10 @@ public class PlayCommandTest {
         assertEquals(1, stringArgumentCaptor.getAllValues().size());
     }
 
+    @Test
+    public void testExecuteWhereAudioChannelNeedsToBeJoinedButCantDueToInsufficientPermissions(){
+
+    }
+
 
 }
