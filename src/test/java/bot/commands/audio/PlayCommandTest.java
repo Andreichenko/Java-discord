@@ -98,6 +98,14 @@ public class PlayCommandTest {
                 createMockCommandEventForPlayCommandWhereBotLacksPermissionToJoinVoiceChannel(stringArgumentCaptor,
                         MOCK_TEXT_CHANNEL_ID, MOCK_MEMBER_ID, MOCK_GUILD_ID, MOCK_VOICE_CHANNEL_ID, COMMAND_ARGUMENT,
                         audioPlayerSendHandler);
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
+
+        assertEquals(ChannelTextResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL, stringArgumentCaptor.getValue());
+        assertEquals(1, stringArgumentCaptor.getAllValues().size());
     }
 
 
