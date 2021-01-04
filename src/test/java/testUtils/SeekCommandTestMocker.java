@@ -1,5 +1,6 @@
 package testUtils;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -116,6 +117,26 @@ public class SeekCommandTestMocker {
         AudioTrack mockAudioTrack = mock(AudioTrack.class);
         when(mockAudioTrack.getDuration()).thenReturn(Long.valueOf(0));
         when(mockAudioTrack.isSeekable()).thenReturn(true);
+
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
+
+        AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
+        when(mockAudioPlayerSendHandler.getAudioPlayer()).thenReturn(mockAudioPlayer);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(true);
+        when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn(timeArgument);
+
+        return mockCommandEvent;
 
     }
 }
