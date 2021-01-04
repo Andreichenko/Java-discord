@@ -149,4 +149,18 @@ public class PlayCommandTest {
         playCommand.execute(mockCommandEvent);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testExecuteWithEmptyGuildId() throws IllegalArgumentException
+    {
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
+                "mockTextChannelId", "mockMemberId", "", "");
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
+    }
+
+
 }
