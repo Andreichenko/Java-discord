@@ -144,6 +144,14 @@ public class AudioTestMocker {
 
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
+
+        Member mockMember = mock(Member.class);
+        Guild mockGuild = mock(Guild.class);
     }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereVoiceChannelNeedsToBeJoinedAudioGetsPlayed(ArgumentCaptor<String> stringArgumentCaptor,
