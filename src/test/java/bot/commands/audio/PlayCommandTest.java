@@ -204,6 +204,11 @@ public class PlayCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testPlayFailsWithExceptionWhenGuildWithIdCantBeFound() throws IllegalArgumentException{
 
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereGuildCantBeFound(
+                "textChannelId", "memberId", "guildId", "");
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
     }
 
 }
