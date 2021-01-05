@@ -193,6 +193,12 @@ public class PlayCommandTest {
 
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
                 "textChannelId", "", "mockGuildId", "");
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
     }
 
 }
