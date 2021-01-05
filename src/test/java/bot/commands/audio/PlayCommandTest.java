@@ -230,6 +230,8 @@ public class PlayCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testPlayFailsWithExceptionWhenMemberWithIdCantBeFound() throws IllegalArgumentException{
 
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereMemberCantBeFound(
+                "textChannelId", "memberId", "guildId", "");
     }
 
 }
