@@ -217,7 +217,7 @@ public class PlayCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testPlayFailsWithExceptionWhenChannelWithIdCantBeFound() throws IllegalArgumentException{
 
-        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereGuildCantBeFound(
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereChannelCantBeFound(
                 "textChannelId", "memberId", "guildId", "");
 
         AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
