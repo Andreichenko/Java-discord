@@ -29,6 +29,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 import static testUtils.AudioTestMocker.*;
 
 
@@ -254,6 +255,11 @@ public class PlayCommandTest {
 
         AudioTrack mockAudioTrack = new YoutubeAudioTrack(new AudioTrackInfo("1", "", 999999999, "", true, ""),
                 new YoutubeAudioSourceManager());
+
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
+        AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
+                new TrackSchedulers());
     }
 
 }
