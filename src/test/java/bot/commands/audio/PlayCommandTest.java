@@ -23,8 +23,11 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 import org.mockito.stubbing.Answer;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicBoolean;
 
+import static java.util.concurrent.TimeUnit.SECONDS;
+import static org.awaitility.Awaitility.await;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
@@ -271,6 +274,11 @@ public class PlayCommandTest {
         PlayCommand playCommand = new PlayCommand(playerManager);
         playCommand.execute(mockCommandEvent);
 
+        await().atMost(10, SECONDS).until(() -> audioPlayerSendHandler.getTrackScheduler().getQueue().size() > 0);
+        List<AudioTrack> queue = audioPlayerSendHandler.getTrackScheduler().getQueue();
+        assertEquals(1, queue.size());
+        assertTrue(queue.get(0) instanceof YoutubeAudioTrack);
+        assertTrue(stringArgumentCaptor.getAllValues().get(1).startsWith("Fallen Kingdom"));
     }
 
 }
