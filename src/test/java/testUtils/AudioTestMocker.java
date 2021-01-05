@@ -75,6 +75,15 @@ public class AudioTestMocker {
 
         JDA mockJDA = mock(JDA.class);
         when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getJDA()).thenReturn(mockJDA);
+        when(mockCommandEvent.getArgs()).thenReturn(commandArgument);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getMember()).thenReturn(mockMember);
+
+        return mockCommandEvent;
     }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereGuildCantBeFound(String textChannelId,
