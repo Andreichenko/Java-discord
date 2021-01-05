@@ -58,6 +58,13 @@ public class AudioTestMocker {
 
     }
 
+    public static CommandEvent createMockCommandEventForPlayCommandWhereChannelCantBeFound(String textChannelId,
+                                                                                           String memberId,
+                                                                                           String guildId,
+                                                                                           String commandArgument){
+
+    }
+
     public static CommandEvent createMockCommandEventForPlayCommandWhereGuildCantBeFound(String textChannelId,
                                                                                          String memberId,
                                                                                          String guildId,
