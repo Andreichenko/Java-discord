@@ -279,6 +279,7 @@ public class PlayCommandTest {
         assertEquals(1, queue.size());
         assertTrue(queue.get(0) instanceof YoutubeAudioTrack);
         assertTrue(stringArgumentCaptor.getAllValues().get(1).startsWith("Fallen Kingdom"));
+
     }
 
 }
