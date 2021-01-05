@@ -235,6 +235,9 @@ public class PlayCommandTest {
 
         AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
     }
 
 }
