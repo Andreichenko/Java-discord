@@ -264,6 +264,9 @@ public class PlayCommandTest {
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereAudioGetsPlayed(stringArgumentCaptor,
                 "textChannelId", "mockMemberId", "mockGuildId", "Fallen Kingdom", true,
                 audioPlayerSendHandler, messageEmbedArgumentCaptor);
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
     }
 
 }
