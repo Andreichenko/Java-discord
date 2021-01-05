@@ -219,6 +219,12 @@ public class PlayCommandTest {
 
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereChannelCantBeFound(
                 "textChannelId", "memberId", "guildId", "");
+
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayCommand playCommand = new PlayCommand(playerManager);
+        playCommand.execute(mockCommandEvent);
     }
 
 }
