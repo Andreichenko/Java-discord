@@ -260,6 +260,10 @@ public class PlayCommandTest {
         when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
         AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
                 new TrackSchedulers());
+
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereAudioGetsPlayed(stringArgumentCaptor,
+                "textChannelId", "mockMemberId", "mockGuildId", "Fallen Kingdom", true,
+                audioPlayerSendHandler, messageEmbedArgumentCaptor);
     }
 
 }
