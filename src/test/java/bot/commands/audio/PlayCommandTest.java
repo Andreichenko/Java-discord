@@ -117,8 +117,7 @@ public class PlayCommandTest {
 
         AtomicBoolean messageQueued = new AtomicBoolean(false);
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        Answer<Void> messageQueuedAnswer = invocation ->
-        {
+        Answer<Void> messageQueuedAnswer = invocation -> {
             messageQueued.set(true);
             return null;
         };
@@ -150,8 +149,8 @@ public class PlayCommandTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testExecuteWithEmptyGuildId() throws IllegalArgumentException
-    {
+    public void testExecuteWithEmptyGuildId() throws IllegalArgumentException {
+
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
                 "mockTextChannelId", "mockMemberId", "", "");
 
@@ -163,8 +162,8 @@ public class PlayCommandTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testExecuteWithNullTextChannelId() throws IllegalArgumentException
-    {
+    public void testExecuteWithNullTextChannelId() throws IllegalArgumentException {
+
         CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(null,
                 "mockMemberId", "mockGuildId", "");
 
@@ -178,6 +177,8 @@ public class PlayCommandTest {
     @Test(expected = IllegalArgumentException.class)
     public void testExecuteWithNullMemberId() throws IllegalArgumentException{
 
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereItErrorsOut(
+                "textChannelId", null, "mockGuildId", "");
     }
 
 }
