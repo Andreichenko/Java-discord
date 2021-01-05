@@ -10,6 +10,7 @@ import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.entities.VoiceChannel;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
@@ -238,6 +239,11 @@ public class PlayCommandTest {
 
         PlayCommand playCommand = new PlayCommand(playerManager);
         playCommand.execute(mockCommandEvent);
+    }
+
+    @Test
+    public void testExecuteWithArgument(){
+
     }
 
 }
