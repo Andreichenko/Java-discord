@@ -251,6 +251,7 @@ public class PlayCommandTest {
     }
 
     @Test
+    @Ignore
     public void testExecuteWithArgument(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
@@ -281,5 +282,4 @@ public class PlayCommandTest {
         assertTrue(stringArgumentCaptor.getAllValues().get(1).startsWith("Fallen Kingdom"));
 
     }
-
 }
