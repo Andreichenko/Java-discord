@@ -201,4 +201,9 @@ public class PlayCommandTest {
         playCommand.execute(mockCommandEvent);
     }
 
+    @Test(expected = IllegalArgumentException.class)
+    public void testPlayFailsWithExceptionWhenGuildWithIdCantBeFound() throws IllegalArgumentException{
+
+    }
+
 }
