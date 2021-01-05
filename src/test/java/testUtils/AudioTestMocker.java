@@ -63,6 +63,8 @@ public class AudioTestMocker {
                                                                                            String guildId,
                                                                                            String commandArgument){
 
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.getId()).thenReturn(textChannelId);
     }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereGuildCantBeFound(String textChannelId,
