@@ -72,6 +72,9 @@ public class AudioTestMocker {
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getId()).thenReturn(guildId);
         when(mockGuild.getTextChannelById(any())).thenReturn(null);
+
+        JDA mockJDA = mock(JDA.class);
+        when(mockJDA.getGuildById(anyString())).thenReturn(mockGuild);
     }
 
     public static CommandEvent createMockCommandEventForPlayCommandWhereGuildCantBeFound(String textChannelId,
