@@ -37,4 +37,12 @@ public class PlayTopCommandTest {
     public void init(){
         MockitoAnnotations.initMocks(this);
     }
+
+    public void testExecute(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<MessageEmbed> messageEmbedArgumentCaptor = ArgumentCaptor.forClass(MessageEmbed.class);
+
+        AudioTrack mockAudioTrack = new YoutubeAudioTrack(new AudioTrackInfo("1", "", 999999999, "", true, ""),
+                new YoutubeAudioSourceManager());
+    }
 }
