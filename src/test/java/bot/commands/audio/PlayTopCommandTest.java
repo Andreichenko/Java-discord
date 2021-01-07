@@ -35,6 +35,6 @@ public class PlayTopCommandTest {
 
     @Before
     public void init(){
-
+        MockitoAnnotations.initMocks(this);
     }
 }
