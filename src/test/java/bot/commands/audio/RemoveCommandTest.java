@@ -25,6 +25,11 @@ import static org.mockito.Mockito.doThrow;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
-
+@RunWith(MockitoJUnitRunner.class)
 public class RemoveCommandTest {
+
+    @Before
+    public void init(){
+
+    }
 }
