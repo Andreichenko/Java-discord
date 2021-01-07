@@ -14,4 +14,8 @@ public class RemoveCommand {
 
     private final Logger LOGGER = LogManager.getLogger(RemoveCommand.class);
 
+
+    public RemoveCommand(){
+
+    }
 }
