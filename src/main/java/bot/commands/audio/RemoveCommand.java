@@ -1,5 +1,6 @@
 package bot.commands.audio;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -43,5 +44,7 @@ public class RemoveCommand extends Command {
 
         AudioManager audioManager = event.getGuild().getAudioManager();
 
+
+        AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
     }
 }
