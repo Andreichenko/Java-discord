@@ -62,5 +62,12 @@ public class PlayTopCommandTest {
 
         PlayTopCommand playTopCommand = new PlayTopCommand(playerManager);
         playTopCommand.execute(mockCommandEvent);
+
+        await().atMost(10, SECONDS).until(() -> audioPlayerSendHandler.getTrackScheduler().getQueue().size() > 0);
+        List<AudioTrack> queue = audioPlayerSendHandler.getTrackScheduler().getQueue();
+        assertTrue(queue.size() > 0);
+        assertTrue(queue.get(0) instanceof YoutubeAudioTrack);
+        assertEquals("Fallen Kingdom", stringArgumentCaptor.getAllValues().get(1));
+        AudioTrack firstTopTrack = queue.get(0);
     }
 }
