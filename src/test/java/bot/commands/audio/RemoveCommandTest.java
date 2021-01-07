@@ -59,5 +59,8 @@ public class RemoveCommandTest {
         when(mockCommandEvent.getMessage()).thenReturn(mock(Message.class));
         when(mockCommandEvent.getMessage().addReaction(emoteArgumentCaptor.capture())).thenReturn(mockRestAction);
 
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
+
     }
 }
