@@ -33,11 +33,12 @@ public class RemoveCommand extends Command {
 
         int trackToRemove;
 
-        trackToRemove = Integer.parseInt(argument);
-
-        event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NOT_A_NUMBER, argument)).queue();
-        return;
-
+        try {
+            trackToRemove = Integer.parseInt(argument);
+        } catch(NumberFormatException e) {
+            event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NOT_A_NUMBER, argument)).queue();
+            return;
+        }
         LOGGER.info("Removing track {} from the queue", trackToRemove);
 
         AudioManager audioManager = event.getGuild().getAudioManager();
