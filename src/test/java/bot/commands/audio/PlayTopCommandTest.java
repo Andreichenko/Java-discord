@@ -42,6 +42,7 @@ public class PlayTopCommandTest {
     }
 
     @Test
+    @Ignore
     public void testExecute(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<MessageEmbed> messageEmbedArgumentCaptor = ArgumentCaptor.forClass(MessageEmbed.class);
