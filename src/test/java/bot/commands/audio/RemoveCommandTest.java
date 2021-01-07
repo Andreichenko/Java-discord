@@ -55,5 +55,9 @@ public class RemoveCommandTest {
         when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
         when(mockCommandEvent.getGuild().getAudioManager()).thenReturn(mock(AudioManager.class));
         when(mockCommandEvent.getGuild().getAudioManager().getSendingHandler()).thenReturn(audioPlayerSendHandler);
+
+        when(mockCommandEvent.getMessage()).thenReturn(mock(Message.class));
+        when(mockCommandEvent.getMessage().addReaction(emoteArgumentCaptor.capture())).thenReturn(mockRestAction);
+
     }
 }
