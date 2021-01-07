@@ -57,8 +57,13 @@ public class RemoveCommand extends Command {
 
         TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
 
-        trackScheduler.remove(trackToRemove - 1);
-
+        try {
+            trackScheduler.remove(trackToRemove - 1);
+        }catch(IndexOutOfBoundsException e){
+            LOGGER.info("Track {} is not a track on the queue", trackToRemove);
+            event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, trackToRemove)).queue();
+            return;
+        }
         event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
 
     }
