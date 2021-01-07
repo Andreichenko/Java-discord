@@ -57,6 +57,7 @@ public class PlayTopCommandTest {
                 "textChannelId", "mockMemberId", "mockGuildId", "Fallen Kingdom", true,
                 audioPlayerSendHandler, messageEmbedArgumentCaptor);
 
-
+        AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
+        AudioSourceManagers.registerRemoteSources(playerManager);
     }
 }
