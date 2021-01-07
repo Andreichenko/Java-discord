@@ -30,5 +30,13 @@ public class RemoveCommand extends Command {
             event.getChannel().sendMessage(REMOVE_COMMAND_NO_ARGUMENT).queue();
             return;
         }
+
+        int trackToRemove;
+
+        trackToRemove = Integer.parseInt(argument);
+
+        event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NOT_A_NUMBER, argument)).queue();
+        return;
+
     }
 }
