@@ -30,6 +30,16 @@ public class RemoveCommandTest {
 
     @Before
     public void init(){
+        MockitoAnnotations.initMocks(this);
+    }
 
+    public void testRemovesTracksSuccessfully(){
+
+        ArgumentCaptor<String> emoteArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        ArgumentCaptor<Integer> intArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+
+        RestAction mockRestAction = mock(RestAction.class);
+        doAnswer(invocation -> null).when(mockRestAction).queue();
     }
 }
