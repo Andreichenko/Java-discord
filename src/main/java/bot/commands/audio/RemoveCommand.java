@@ -25,6 +25,8 @@ public class RemoveCommand extends Command {
 
         String argument = event.getArgs();
 
+        if (argument.isEmpty()){
 
+        }
     }
 }
