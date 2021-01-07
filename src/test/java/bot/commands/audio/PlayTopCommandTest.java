@@ -41,6 +41,7 @@ public class PlayTopCommandTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void testExecute(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<MessageEmbed> messageEmbedArgumentCaptor = ArgumentCaptor.forClass(MessageEmbed.class);
