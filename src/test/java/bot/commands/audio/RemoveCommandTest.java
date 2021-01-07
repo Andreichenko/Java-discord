@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.TrackSchedulers;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -46,6 +47,9 @@ public class RemoveCommandTest {
         TrackSchedulers mockTrackScheduler = mock(TrackSchedulers.class);
         doAnswer(invocation -> null).when(mockTrackScheduler).remove(intArgumentCaptor.capture());
 
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer, mockTrackScheduler);
 
+        
     }
 }
