@@ -3,6 +3,7 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.TrackSchedulers;
+import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import net.dv8tion.jda.api.entities.Guild;
@@ -35,6 +36,7 @@ public class RemoveCommandTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void testRemovesTracksSuccessfully(){
 
         ArgumentCaptor<String> emoteArgumentCaptor = ArgumentCaptor.forClass(String.class);
@@ -61,6 +63,9 @@ public class RemoveCommandTest {
 
         RemoveCommand removeCommand = new RemoveCommand();
         removeCommand.execute(mockCommandEvent);
+
+        assertEquals(Integer.valueOf(2), intArgumentCaptor.getValue());
+        assertEquals(UnicodeMotion.THUMBS_UP, emoteArgumentCaptor.getValue());
 
     }
 }
