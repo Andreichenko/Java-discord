@@ -69,5 +69,8 @@ public class PlayTopCommandTest {
         assertTrue(queue.get(0) instanceof YoutubeAudioTrack);
         assertEquals("Fallen Kingdom", stringArgumentCaptor.getAllValues().get(1));
         AudioTrack firstTopTrack = queue.get(0);
+
+        when(mockCommandEvent.getArgs()).thenReturn("A song 2");
+        playTopCommand.execute(mockCommandEvent);
     }
 }
