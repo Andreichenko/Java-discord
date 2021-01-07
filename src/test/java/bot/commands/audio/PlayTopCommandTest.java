@@ -72,5 +72,12 @@ public class PlayTopCommandTest {
 
         when(mockCommandEvent.getArgs()).thenReturn("A song 2");
         playTopCommand.execute(mockCommandEvent);
+
+        await().atMost(10, SECONDS).until(() -> audioPlayerSendHandler.getTrackScheduler().getQueue().size() > 1);
+        queue = audioPlayerSendHandler.getTrackScheduler().getQueue();
+        assertTrue(queue.size() > 1);
+        assertTrue(queue.get(0) instanceof YoutubeAudioTrack);
+        assertNotEquals(firstTopTrack, queue.get(0));
+        assertEquals("A song 2", stringArgumentCaptor.getAllValues().get(4));
     }
 }
