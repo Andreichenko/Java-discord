@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 
+import bot.commands.audio.utils.TrackSchedulers;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import net.dv8tion.jda.api.entities.Guild;
@@ -41,5 +42,10 @@ public class RemoveCommandTest {
 
         RestAction mockRestAction = mock(RestAction.class);
         doAnswer(invocation -> null).when(mockRestAction).queue();
+
+        TrackSchedulers mockTrackScheduler = mock(TrackSchedulers.class);
+        doAnswer(invocation -> null).when(mockTrackScheduler).remove(intArgumentCaptor.capture());
+
+
     }
 }
