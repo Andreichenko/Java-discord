@@ -1,6 +1,8 @@
 package bot.commands.audio;
 
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
+import bot.commands.audio.utils.TrackSchedulers;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -44,5 +46,10 @@ public class PlayTopCommandTest {
 
         AudioTrack mockAudioTrack = new YoutubeAudioTrack(new AudioTrackInfo("1", "", 999999999, "", true, ""),
                 new YoutubeAudioSourceManager());
+
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
+        AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
+                new TrackSchedulers());
     }
 }
