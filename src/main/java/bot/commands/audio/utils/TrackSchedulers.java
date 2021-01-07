@@ -123,6 +123,11 @@ public class TrackSchedulers extends AudioEventAdapter{
         return queue;
     }
 
+    public void remove(int trackToRemove){
+
+        queue.remove(trackToRemove);
+    }
+
 
     public void setLoopTrack(AudioTrack loopTrack){
 
