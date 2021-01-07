@@ -59,5 +59,8 @@ public class PlayTopCommandTest {
 
         AudioPlayerManager playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
+
+        PlayTopCommand playTopCommand = new PlayTopCommand(playerManager);
+        playTopCommand.execute(mockCommandEvent);
     }
 }
