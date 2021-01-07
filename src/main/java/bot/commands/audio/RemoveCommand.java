@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
+import bot.commands.audio.utils.TrackSchedulers;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
@@ -52,5 +53,10 @@ public class RemoveCommand extends Command {
             event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, trackToRemove)).queue();
             return;
         }
+
+        TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
+
+
+
     }
 }
