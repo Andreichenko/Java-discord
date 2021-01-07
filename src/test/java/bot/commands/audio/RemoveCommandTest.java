@@ -50,6 +50,10 @@ public class RemoveCommandTest {
         AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
         AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer, mockTrackScheduler);
 
-        
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn("3");
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getAudioManager()).thenReturn(mock(AudioManager.class));
+        when(mockCommandEvent.getGuild().getAudioManager().getSendingHandler()).thenReturn(audioPlayerSendHandler);
     }
 }
