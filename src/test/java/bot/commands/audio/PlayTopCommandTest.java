@@ -30,6 +30,7 @@ import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static testUtils.AudioTestMocker.createMockCommandEventForPlayCommandWhereAudioGetsPlayed;
 
 
 @RunWith(MockitoJUnitRunner.class)
@@ -51,5 +52,11 @@ public class PlayTopCommandTest {
         when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
         AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer,
                 new TrackSchedulers());
+
+        CommandEvent mockCommandEvent = createMockCommandEventForPlayCommandWhereAudioGetsPlayed(stringArgumentCaptor,
+                "textChannelId", "mockMemberId", "mockGuildId", "Fallen Kingdom", true,
+                audioPlayerSendHandler, messageEmbedArgumentCaptor);
+
+
     }
 }
