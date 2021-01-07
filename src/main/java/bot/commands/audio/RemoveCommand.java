@@ -46,5 +46,11 @@ public class RemoveCommand extends Command {
 
 
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
+
+        if (audioPlayerSendHandler == null){
+
+            event.getChannel().sendMessage(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, trackToRemove)).queue();
+            return;
+        }
     }
 }
