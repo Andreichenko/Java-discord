@@ -27,6 +27,8 @@ public class RemoveCommand extends Command {
 
         if (argument.isEmpty()){
 
+            event.getChannel().sendMessage(REMOVE_COMMAND_NO_ARGUMENT).queue();
+            return;
         }
     }
 }
