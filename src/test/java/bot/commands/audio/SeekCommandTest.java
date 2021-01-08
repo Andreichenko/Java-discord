@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
+import testUtils.SeekCommandTestMocker;
 
 public class SeekCommandTest {
 
@@ -17,5 +18,8 @@ public class SeekCommandTest {
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+
+        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
+                longArgumentCaptor, "3:04:04");
     }
 }
