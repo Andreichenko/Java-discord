@@ -22,4 +22,10 @@ public class TestEchoTextCommand {
     public void init(){
         MockitoAnnotations.initMocks(this);
     }
+
+    public void testFailsWhenNoArgsAreSent(){
+
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+    }
 }
