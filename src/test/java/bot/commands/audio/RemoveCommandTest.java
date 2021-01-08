@@ -129,6 +129,8 @@ public class RemoveCommandTest {
 
     public void testSendsMessageWhenNoArgumentIsSent(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
 
     }
 }
