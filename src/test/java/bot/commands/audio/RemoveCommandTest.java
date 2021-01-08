@@ -101,4 +101,10 @@ public class RemoveCommandTest {
         assertEquals(Integer.valueOf(-1), intArgumentCaptor.getValue());
         assertEquals(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, 0), stringArgumentCaptor.getValue());
     }
+
+    public void testSendsMessageWhenAudioSendHandlerIsNull(){
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+    }
 }
