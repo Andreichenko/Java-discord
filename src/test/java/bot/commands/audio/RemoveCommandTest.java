@@ -72,5 +72,9 @@ public class RemoveCommandTest {
 
     public void testSendsMessageWhenIndexOutOfBoundsIsThrown(){
 
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        ArgumentCaptor<Integer> intArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
+
     }
 }
