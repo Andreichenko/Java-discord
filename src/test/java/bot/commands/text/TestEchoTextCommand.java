@@ -15,5 +15,11 @@ import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
 
+@RunWith(MockitoJUnitRunner.class)
 public class TestEchoTextCommand {
+
+    @Before
+    public void init(){
+        MockitoAnnotations.initMocks(this);
+    }
 }
