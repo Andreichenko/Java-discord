@@ -131,6 +131,9 @@ public class RemoveCommandTest {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
 
+        assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
     }
 }
