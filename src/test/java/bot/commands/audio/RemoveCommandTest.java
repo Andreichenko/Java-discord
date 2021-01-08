@@ -76,5 +76,11 @@ public class RemoveCommandTest {
 
         ArgumentCaptor<Integer> intArgumentCaptor = ArgumentCaptor.forClass(Integer.class);
 
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+        TrackSchedulers mockTrackScheduler = mock(TrackSchedulers.class);
+        doThrow(new IndexOutOfBoundsException()).when(mockTrackScheduler).remove(intArgumentCaptor.capture());
+
     }
 }
