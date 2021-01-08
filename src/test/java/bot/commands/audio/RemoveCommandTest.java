@@ -173,7 +173,7 @@ public class RemoveCommandTest {
 
         RemoveCommand removeCommand = new RemoveCommand();
         removeCommand.execute(mockCommandEvent);
-
+        assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
         assertEquals(String.format(REMOVE_COMMAND_NOT_A_NUMBER, "doo doo"), stringArgumentCaptor.getValue());
     }
 }
