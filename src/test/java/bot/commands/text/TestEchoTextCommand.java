@@ -23,6 +23,7 @@ public class TestEchoTextCommand {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void testFailsWhenNoArgsAreSent(){
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
@@ -32,5 +33,9 @@ public class TestEchoTextCommand {
         when(mockCommandEvent.getArgs()).thenReturn("");
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
+        TextCommand echoTextCommand = new TextCommand();
+        echoTextCommand.execute(mockCommandEvent);
+
+        assertEquals(ECHO_COMMAND_NO_ARGS, textChannelArgumentCaptor.getValue());
     }
 }
