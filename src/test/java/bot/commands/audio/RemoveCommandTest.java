@@ -151,5 +151,10 @@ public class RemoveCommandTest {
     public void testSendsMessageWhenArgumentThatIsNotANumberIsSent(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
     }
 }
