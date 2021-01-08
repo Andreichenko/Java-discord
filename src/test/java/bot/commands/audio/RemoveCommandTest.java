@@ -127,16 +127,24 @@ public class RemoveCommandTest {
         assertEquals(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, 4), stringArgumentCaptor.getValue());
     }
 
+    @Test
     public void testSendsMessageWhenNoArgumentIsSent(){
+
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
-        RemoveCommand removeCommand = new RemoveCommand();
-        removeCommand.execute(mockCommandEvent);
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
         when(mockCommandEvent.getArgs()).thenReturn("");
 
         when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
+
         assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
     }
 }
