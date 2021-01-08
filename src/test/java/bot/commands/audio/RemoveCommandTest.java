@@ -95,5 +95,10 @@ public class RemoveCommandTest {
 
         when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
 
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
+
+        assertEquals(Integer.valueOf(-1), intArgumentCaptor.getValue());
+        assertEquals(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, 0), stringArgumentCaptor.getValue());
     }
 }
