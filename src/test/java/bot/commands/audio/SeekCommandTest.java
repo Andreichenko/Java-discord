@@ -1,11 +1,14 @@
 package bot.commands.audio;
 
+import bot.utils.ChannelTextResponses;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import testUtils.SeekCommandTestMocker;
+
+import static org.junit.Assert.assertEquals;
 
 public class SeekCommandTest {
 
@@ -21,5 +24,7 @@ public class SeekCommandTest {
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
                 longArgumentCaptor, "3:04:04");
+        //need specific class
+
     }
 }
