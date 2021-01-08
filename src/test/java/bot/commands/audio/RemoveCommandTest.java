@@ -68,4 +68,9 @@ public class RemoveCommandTest {
         assertEquals(UnicodeMotion.THUMBS_UP, emoteArgumentCaptor.getValue());
 
     }
+
+
+    public void testSendsMessageWhenIndexOutOfBoundsIsThrown(){
+
+    }
 }
