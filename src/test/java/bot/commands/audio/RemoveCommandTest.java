@@ -165,6 +165,14 @@ public class RemoveCommandTest {
 
         RemoveCommand removeCommand = new RemoveCommand();
         removeCommand.execute(mockCommandEvent);
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn("");
+
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
 
         assertEquals(String.format(REMOVE_COMMAND_NOT_A_NUMBER, "doo doo"), stringArgumentCaptor.getValue());
     }
