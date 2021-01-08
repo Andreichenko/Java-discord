@@ -12,4 +12,10 @@ public class SeekCommandTest {
     public void init(){
         MockitoAnnotations.initMocks(this);
     }
+
+    public void seekWithHoursMinutesSeconds(){
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+    }
 }
