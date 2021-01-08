@@ -26,5 +26,7 @@ public class SeekCommandTest {
                 longArgumentCaptor, "3:04:04");
         //need specific class
 
+        //TODO need to create a class for seekcommands, it's necessary class for notice in the chat
+
     }
 }
