@@ -147,4 +147,9 @@ public class RemoveCommandTest {
 
         assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
     }
+
+    public void testSendsMessageWhenArgumentThatIsNotANumberIsSent(){
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+    }
 }
