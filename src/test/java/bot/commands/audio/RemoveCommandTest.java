@@ -81,6 +81,8 @@ public class RemoveCommandTest {
 
         TrackSchedulers mockTrackScheduler = mock(TrackSchedulers.class);
         doThrow(new IndexOutOfBoundsException()).when(mockTrackScheduler).remove(intArgumentCaptor.capture());
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        AudioPlayerSendHandler audioPlayerSendHandler = new AudioPlayerSendHandler(mockAudioPlayer, mockTrackScheduler);
 
     }
 }
