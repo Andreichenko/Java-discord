@@ -128,6 +128,7 @@ public class RemoveCommandTest {
     }
 
     public void testSendsMessageWhenNoArgumentIsSent(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
     }
 }
