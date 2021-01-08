@@ -148,6 +148,7 @@ public class RemoveCommandTest {
         assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
     }
 
+    @Test
     public void testSendsMessageWhenArgumentThatIsNotANumberIsSent(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
@@ -159,21 +160,13 @@ public class RemoveCommandTest {
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
-        when(mockCommandEvent.getArgs()).thenReturn("");
+        when(mockCommandEvent.getArgs()).thenReturn("doo doo");
 
         when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
 
         RemoveCommand removeCommand = new RemoveCommand();
         removeCommand.execute(mockCommandEvent);
-        CommandEvent mockCommandEvent = mock(CommandEvent.class);
-        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
-        when(mockCommandEvent.getArgs()).thenReturn("");
 
-        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
-
-        RemoveCommand removeCommand = new RemoveCommand();
-        removeCommand.execute(mockCommandEvent);
-        assertEquals(REMOVE_COMMAND_NO_ARGUMENT, stringArgumentCaptor.getValue());
         assertEquals(String.format(REMOVE_COMMAND_NOT_A_NUMBER, "doo doo"), stringArgumentCaptor.getValue());
     }
 }
