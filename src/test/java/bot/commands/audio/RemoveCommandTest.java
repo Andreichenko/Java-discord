@@ -127,5 +127,7 @@ public class RemoveCommandTest {
         assertEquals(String.format(REMOVE_COMMAND_NO_TRACK_TO_REMOVE, 4), stringArgumentCaptor.getValue());
     }
 
+    public void testSendsMessageWhenNoArgumentIsSent(){
 
+    }
 }
