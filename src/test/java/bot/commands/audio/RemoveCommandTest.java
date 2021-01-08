@@ -118,5 +118,9 @@ public class RemoveCommandTest {
         when(mockCommandEvent.getGuild().getAudioManager()).thenReturn(mock(AudioManager.class));
         when(mockCommandEvent.getGuild().getAudioManager().getSendingHandler()).thenReturn(null);
 
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+
+        RemoveCommand removeCommand = new RemoveCommand();
+        removeCommand.execute(mockCommandEvent);
     }
 }
