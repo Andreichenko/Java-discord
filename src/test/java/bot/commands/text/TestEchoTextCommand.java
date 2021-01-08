@@ -27,5 +27,10 @@ public class TestEchoTextCommand {
 
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn("");
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+
     }
 }
