@@ -111,5 +111,12 @@ public class RemoveCommandTest {
 
         TextChannel mockTextChannel = mock(TextChannel.class);
 
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        when(mockCommandEvent.getArgs()).thenReturn("4");
+        when(mockCommandEvent.getGuild()).thenReturn(mock(Guild.class));
+        when(mockCommandEvent.getGuild().getAudioManager()).thenReturn(mock(AudioManager.class));
+        when(mockCommandEvent.getGuild().getAudioManager().getSendingHandler()).thenReturn(null);
+
     }
 }
