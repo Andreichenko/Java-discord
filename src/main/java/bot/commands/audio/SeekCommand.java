@@ -46,6 +46,8 @@ public class SeekCommand extends Command {
         }
         event.getChannel().sendMessage(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION,
                 TimeLineStamp.timeString(seekTime))).queue();
+        audioTrack.setPosition(seekTime * 1000);
+
     }
 
     private int getSeekTime(String seekPoint) {
