@@ -33,7 +33,5 @@ public class SeekCommandTest {
         assertEquals(10922000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(10922)),
                 stringArgumentCaptor.getValue());
-
-
     }
 }
