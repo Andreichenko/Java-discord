@@ -62,6 +62,10 @@ public class SeekCommand extends Command {
                 seekTime = Integer.parseInt(parts[0]) * 60 * 60;
                 seekTime += Integer.parseInt(parts[1]) * 60;
                 seekTime += Integer.parseInt(parts[2]);
+            } else if (parts.length == 2){
+                //parts[0] is mins and parts[1] is seconds
+                seekTime = Integer.parseInt(parts[0]) * 60;
+                seekTime += Integer.parseInt(parts[1]);
             }
         }
 //        return seekTime;
