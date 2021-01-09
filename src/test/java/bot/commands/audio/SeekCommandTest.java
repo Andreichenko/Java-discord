@@ -25,7 +25,7 @@ public class SeekCommandTest {
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
-                longArgumentCaptor, "3:04:04");
+                longArgumentCaptor, "3:02:02");
         //need specific class
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
