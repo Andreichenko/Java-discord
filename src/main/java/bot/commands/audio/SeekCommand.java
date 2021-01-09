@@ -19,6 +19,7 @@ public class SeekCommand extends Command {
             return;
         }
 
+        String seekPoint = event.getArgs();
         int seekTime;
     }
 
