@@ -69,9 +69,10 @@ public class SeekCommand extends Command {
             }else{
                 throw new IllegalArgumentException("Too many : in seek command " + seekPoint);
             }
+        } else {
+            seekTime = Integer.parseInt(seekPoint);
         }
-//        return seekTime;
+        return seekTime;
 
-        return 0;
     }
 }
