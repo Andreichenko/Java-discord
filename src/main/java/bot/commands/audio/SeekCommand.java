@@ -32,12 +32,14 @@ public class SeekCommand extends Command {
         String seekPoint = event.getArgs();
         int seekTime;
 
-
+        seekTime = getSeekTime(seekPoint);
     }
 
-//    private int getSeekTime(String seekPoint) {
+    private int getSeekTime(String seekPoint) {
 //
 //        int seekTime;
 //        return seekTime;
-//    }
+
+        return 0;
+    }
 }
