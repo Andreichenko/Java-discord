@@ -41,5 +41,9 @@ public class TestEchoTextCommand {
 
     public void testExecutesSuccessfully(){
 
+        final String ARGS = "this is a message";
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
     }
 }
