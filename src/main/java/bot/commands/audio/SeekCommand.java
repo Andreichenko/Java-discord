@@ -2,6 +2,7 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.utils.ChannelTextResponses;
+import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
@@ -43,6 +44,8 @@ public class SeekCommand extends Command {
             event.getChannel().sendMessage(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG).queue();
             return;
         }
+        event.getChannel().sendMessage(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION,
+                TimeLineStamp.timeString(seekTime))).queue();
     }
 
     private int getSeekTime(String seekPoint) {
