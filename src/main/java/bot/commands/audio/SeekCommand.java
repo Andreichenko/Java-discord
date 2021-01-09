@@ -58,7 +58,10 @@ public class SeekCommand extends Command {
             //it is in the format mins:seconds
             String[] parts = seekPoint.split(":");
             if (parts.length == 3){
-                //>>>>????
+                // it is in hours minutes and seconds
+                seekTime = Integer.parseInt(parts[0]) * 60 * 60;
+                seekTime += Integer.parseInt(parts[1]) * 60;
+                seekTime += Integer.parseInt(parts[2]);
             }
         }
 //        return seekTime;
