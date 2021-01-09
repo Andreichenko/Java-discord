@@ -32,7 +32,12 @@ public class SeekCommand extends Command {
         String seekPoint = event.getArgs();
         int seekTime;
 
-        seekTime = getSeekTime(seekPoint);
+        try {
+            seekTime = getSeekTime(seekPoint);
+        } catch(IllegalArgumentException e){
+            event.getChannel().sendMessage(ChannelTextResponses.SEEK_COMMAND_FORMAT).queue();
+            return;
+        }
 
         if (seekTime * 1000 > audioTrack.getDuration() || !audioTrack.isSeekable()){
             event.getChannel().sendMessage(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG).queue();
