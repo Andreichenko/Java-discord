@@ -57,7 +57,9 @@ public class SeekCommand extends Command {
         if (seekPoint.contains(":")){
             //it is in the format mins:seconds
             String[] parts = seekPoint.split(":");
-
+            if (parts.length == 3){
+                //>>>>????
+            }
         }
 //        return seekTime;
 
