@@ -27,6 +27,7 @@ public class SeekCommand extends Command {
             event.getChannel().sendMessage(ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
             return;
         }
+
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
         AudioTrack audioTrack = audioPlayerSendHandler.getAudioPlayer().getPlayingTrack();
 
@@ -51,8 +52,13 @@ public class SeekCommand extends Command {
     }
 
     private int getSeekTime(String seekPoint) {
-//
-//        int seekTime;
+
+        int seekTime;
+        if (seekPoint.contains(":")){
+            //it is in the format mins:seconds
+            String[] parts = seekPoint.split(":");
+
+        }
 //        return seekTime;
 
         return 0;
