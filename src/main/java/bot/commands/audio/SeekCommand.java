@@ -14,6 +14,8 @@ public class SeekCommand extends Command {
     }
 
     private int getSeekTime(String seekPoint) {
-        
+
+        int seekTime;
+        return seekTime;
     }
 }
