@@ -12,4 +12,8 @@ public class SeekCommand extends Command {
 
         AudioManager audioManager = event.getGuild().getAudioManager();
     }
+
+    private int getSeekTime(String seekPoint) {
+        
+    }
 }
