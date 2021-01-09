@@ -19,6 +19,10 @@ public class ChannelTextResponses {
 
     public static final String BOT_NOT_CONNECTED_TO_VOICE = "**Not currently connected to the voice channel**";
 
+    public static final String SEEK_POINT_LONGER_THAN_SONG = "**Cannot seek to a position longer than the song**";
+    public static final String SEEK_COMMAND_FORMAT = "**Invalid format**, example formats: \n `0:01`, `1:45`, '2:23:55'";
+    public static final String SEEKING_TO_INFORMATION = "**Seeking to** `%s`";
+
     public static final String TRYING_TO_RESUME_PLAYING_SONG = "**The song is not paused.**";
     public static final String TRYING_TO_PAUSE_PAUSED_SONG = "**Song is already paused.**";
 
