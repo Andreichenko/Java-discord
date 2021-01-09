@@ -38,4 +38,8 @@ public class TestEchoTextCommand {
 
         assertEquals(ECHO_COMMAND_NO_ARGS, textChannelArgumentCaptor.getValue());
     }
+
+    public void testExecutesSuccessfully(){
+
+    }
 }
