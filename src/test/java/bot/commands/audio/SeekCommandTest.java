@@ -1,6 +1,7 @@
 package bot.commands.audio;
 
 import bot.utils.ChannelTextResponses;
+import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.junit.Before;
 import org.junit.Test;
@@ -17,16 +18,20 @@ public class SeekCommandTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void seekWithHoursMinutesSeconds(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
-                longArgumentCaptor, "3:04:04");
-        //need specific class
+                longArgumentCaptor, "3:02:02");
 
-        //TODO need to create a class for seekcommands, it's necessary class for notice in the chat
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
 
+        assertEquals(10922000, longArgumentCaptor.getValue().longValue());
+        assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(10922)),
+                stringArgumentCaptor.getValue());
     }
 }
