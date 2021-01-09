@@ -66,6 +66,8 @@ public class SeekCommand extends Command {
                 //parts[0] is mins and parts[1] is seconds
                 seekTime = Integer.parseInt(parts[0]) * 60;
                 seekTime += Integer.parseInt(parts[1]);
+            }else{
+                throw new IllegalArgumentException("Too many : in seek command " + seekPoint);
             }
         }
 //        return seekTime;
