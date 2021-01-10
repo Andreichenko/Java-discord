@@ -37,7 +37,10 @@ public class SeekCommandTest {
 
     public void seekWithMinutesSeconds(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        SeekCommand seekCommand = new SeekCommand();
-        seekCommand.execute(mockCommandEvent);
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+
+        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
+                longArgumentCaptor, "04:05");
+
     }
 }
