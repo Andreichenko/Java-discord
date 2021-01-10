@@ -45,5 +45,7 @@ public class SeekCommandTest {
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
 
+        assertEquals(122000, longArgumentCaptor.getValue().longValue());
+
     }
 }
