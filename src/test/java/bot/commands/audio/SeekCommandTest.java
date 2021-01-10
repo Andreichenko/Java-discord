@@ -35,6 +35,7 @@ public class SeekCommandTest {
                 stringArgumentCaptor.getValue());
     }
 
+    @Test
     public void seekWithMinutesSeconds(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
@@ -48,7 +49,6 @@ public class SeekCommandTest {
         assertEquals(122000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(122)),
                 stringArgumentCaptor.getValue());
-    }
 
     }
 }
