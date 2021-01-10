@@ -50,5 +50,10 @@ public class SeekCommandTest {
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(2)),
                 stringArgumentCaptor.getValue());
 
+
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
+    }
+
     }
 }
