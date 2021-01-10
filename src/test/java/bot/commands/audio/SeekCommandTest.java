@@ -34,4 +34,8 @@ public class SeekCommandTest {
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(10922)),
                 stringArgumentCaptor.getValue());
     }
+
+    public void seekWithMinutesSeconds(){
+
+    }
 }
