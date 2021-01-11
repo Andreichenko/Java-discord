@@ -51,4 +51,8 @@ public class SeekCommandTest {
                 stringArgumentCaptor.getValue());
 
     }
+
+    public void seekWithSeconds(){
+
+    }
 }
