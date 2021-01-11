@@ -59,7 +59,7 @@ public class SeekCommandTest {
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
                 "1289");
 
-        SeekCommand seekCommand = new SeekCommand();
+
         seekCommand.execute(mockCommandEvent);
         assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
