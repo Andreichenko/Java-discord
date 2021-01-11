@@ -59,6 +59,9 @@ public class SeekCommandTest {
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
                 longArgumentCaptor, "01");
 
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+
 
     }
 }
