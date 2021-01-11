@@ -60,7 +60,5 @@ public class SeekCommandTest {
                 "1289");
 
 
-        seekCommand.execute(mockCommandEvent);
-        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 }
