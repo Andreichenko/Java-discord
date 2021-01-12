@@ -75,8 +75,6 @@ public class SeekCommandTest {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
-        when(mockCommandEvent.getArgs()).thenReturn(ARGS);
-        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
         TextCommand echoTextCommand = new TextCommand();
 
