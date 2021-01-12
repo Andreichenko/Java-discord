@@ -69,6 +69,6 @@ public class SeekCommandTest {
     }
 
     public void seekWithInvalidFormatFails(){
-
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
     }
 }
