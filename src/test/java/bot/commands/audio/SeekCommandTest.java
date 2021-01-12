@@ -1,5 +1,6 @@
 package bot.commands.audio;
 
+import bot.commands.text.TextCommand;
 import bot.utils.ChannelTextResponses;
 import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -10,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import testUtils.SeekCommandTestMocker;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SeekCommandTest {
 
@@ -37,6 +40,7 @@ public class SeekCommandTest {
 
     @Test
     public void seekWithMinutesSeconds(){
+
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
@@ -54,6 +58,7 @@ public class SeekCommandTest {
 
     @Test
     public void seekWithSeconds(){
+
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
@@ -66,7 +71,17 @@ public class SeekCommandTest {
         assertEquals(2000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(2)),
                 stringArgumentCaptor.getValue());
+    }
 
+    @Test
+    public void seekWithInvalidFormatFails(){
 
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
+                "3:4:5:6");
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 }
