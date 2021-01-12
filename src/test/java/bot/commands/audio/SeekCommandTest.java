@@ -66,7 +66,9 @@ public class SeekCommandTest {
         assertEquals(2000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(2)),
                 stringArgumentCaptor.getValue());
+    }
 
+    public void seekWithInvalidFormatFails(){
 
     }
 }
