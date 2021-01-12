@@ -79,9 +79,6 @@ public class SeekCommandTest {
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
         TextCommand echoTextCommand = new TextCommand();
-        echoTextCommand.execute(mockCommandEvent);
-
-        assertEquals(ARGS, textChannelArgumentCaptor.getValue());
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
                 "3:4:5:6");
