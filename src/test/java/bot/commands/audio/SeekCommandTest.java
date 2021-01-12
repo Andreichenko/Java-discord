@@ -1,5 +1,6 @@
 package bot.commands.audio;
 
+import bot.commands.text.TextCommand;
 import bot.utils.ChannelTextResponses;
 import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -10,6 +11,8 @@ import org.mockito.MockitoAnnotations;
 import testUtils.SeekCommandTestMocker;
 
 import static org.junit.Assert.assertEquals;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 public class SeekCommandTest {
 
@@ -70,6 +73,15 @@ public class SeekCommandTest {
 
     public void seekWithInvalidFormatFails(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn(ARGS);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+
+        TextCommand echoTextCommand = new TextCommand();
+        echoTextCommand.execute(mockCommandEvent);
+
+        assertEquals(ARGS, textChannelArgumentCaptor.getValue());
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
                 "3:4:5:6");
