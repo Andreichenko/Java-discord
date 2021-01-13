@@ -84,4 +84,8 @@ public class SeekCommandTest {
         seekCommand.execute(mockCommandEvent);
         assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
+
+    public void seekWithStringFails(){
+
+    }
 }
