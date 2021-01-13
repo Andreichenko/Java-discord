@@ -87,5 +87,7 @@ public class SeekCommandTest {
 
     public void seekWithStringFails(){
 
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
     }
 }
