@@ -93,15 +93,6 @@ public class SeekCommandTest {
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
                 "string");
 
-        SeekCommand seekCommand = new SeekCommand();
-        seekCommand.execute(mockCommandEvent);
-        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
-
-        final String ARGS = "this is a message";
-        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
-
-        CommandEvent mockCommandEvent = mock(CommandEvent.class);
 
         assertEquals(ARGS, textChannelArgumentCaptor.getValue());
 
