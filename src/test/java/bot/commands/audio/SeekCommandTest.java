@@ -4,6 +4,7 @@ import bot.commands.text.TextCommand;
 import bot.utils.ChannelTextResponses;
 import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
+import net.dv8tion.jda.api.entities.TextChannel;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -13,6 +14,7 @@ import testUtils.SeekCommandTestMocker;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
 
 public class SeekCommandTest {
 
@@ -90,5 +92,23 @@ public class SeekCommandTest {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
                 "string");
+
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
+
+        final String ARGS = "this is a message";
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getArgs()).thenReturn(ARGS);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+
+        TextCommand echoTextCommand = new TextCommand();
+        echoTextCommand.execute(mockCommandEvent);
+
+        assertEquals(ARGS, textChannelArgumentCaptor.getValue());
+
     }
 }
