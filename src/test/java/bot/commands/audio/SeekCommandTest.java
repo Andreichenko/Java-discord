@@ -105,9 +105,6 @@ public class SeekCommandTest {
         when(mockCommandEvent.getArgs()).thenReturn(ARGS);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
-        TextCommand echoTextCommand = new TextCommand();
-        echoTextCommand.execute(mockCommandEvent);
-
         assertEquals(ARGS, textChannelArgumentCaptor.getValue());
 
     }
