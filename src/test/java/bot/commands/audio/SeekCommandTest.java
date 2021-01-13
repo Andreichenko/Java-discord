@@ -88,6 +88,7 @@ public class SeekCommandTest {
     public void seekWithStringFails(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-
+        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
+                "string");
     }
 }
