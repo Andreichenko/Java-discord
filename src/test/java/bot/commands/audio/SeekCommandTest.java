@@ -102,8 +102,6 @@ public class SeekCommandTest {
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
-        when(mockCommandEvent.getArgs()).thenReturn(ARGS);
-        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
         assertEquals(ARGS, textChannelArgumentCaptor.getValue());
 
