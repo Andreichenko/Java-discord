@@ -112,5 +112,9 @@ public class SeekCommandTest {
 
     }
 
+    public void seekFailsWhereSongNotSeekable(){
+
+    }
+
 
 }
