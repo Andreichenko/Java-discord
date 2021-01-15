@@ -114,6 +114,8 @@ public class SeekCommandTest {
 
     public void seekFailsWhereSongNotSeekable(){
 
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
     }
 
 
