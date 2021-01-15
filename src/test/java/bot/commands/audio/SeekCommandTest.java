@@ -123,6 +123,8 @@ public class SeekCommandTest {
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
 
+        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
+
     }
 
 
