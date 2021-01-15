@@ -116,6 +116,10 @@ public class SeekCommandTest {
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
+        CommandEvent mockCommandEvent =
+                SeekCommandTestMocker.createMockCommandEventThatFailsSongNotSeekable(stringArgumentCaptor,
+                        "33:22");
+
     }
 
 
