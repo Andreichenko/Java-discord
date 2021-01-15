@@ -99,4 +99,9 @@ public class SeekCommandTest {
     }
 
 
+    public void seekFailsWhereSeekPointLongerThanSong(){
+
+    }
+
+
 }
