@@ -120,6 +120,9 @@ public class SeekCommandTest {
                 SeekCommandTestMocker.createMockCommandEventThatFailsSongNotSeekable(stringArgumentCaptor,
                         "33:22");
 
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+
     }
 
 
