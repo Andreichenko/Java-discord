@@ -101,6 +101,8 @@ public class SeekCommandTest {
 
     public void seekFailsWhereSeekPointLongerThanSong(){
 
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
     }
 
 
