@@ -98,5 +98,35 @@ public class SeekCommandTest {
         assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 
+    @Test
+    public void seekFailsWhereSeekPointLongerThanSong(){
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent =
+                SeekCommandTestMocker.createMockCommandEventThatFailsSongTooLong(stringArgumentCaptor,
+                        "32:45");
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
+
+    }
+
+    @Test
+    public void seekFailsWhereSongNotSeekable(){
+
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        CommandEvent mockCommandEvent =
+                SeekCommandTestMocker.createMockCommandEventThatFailsSongNotSeekable(stringArgumentCaptor,
+                        "33:22");
+
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+
+        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
+
+    }
+
 
 }
