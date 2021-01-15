@@ -98,7 +98,7 @@ public class SeekCommandTest {
         assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 
-
+    @Test
     public void seekFailsWhereSeekPointLongerThanSong(){
 
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
