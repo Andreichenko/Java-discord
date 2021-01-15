@@ -106,6 +106,9 @@ public class SeekCommandTest {
         CommandEvent mockCommandEvent =
                 SeekCommandTestMocker.createMockCommandEventThatFailsSongTooLong(stringArgumentCaptor,
                         "30:40");
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
 
     }
 
