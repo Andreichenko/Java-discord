@@ -137,7 +137,8 @@ public class SeekCommandTest {
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
 
-        //?? new test around classes
+        //?? new test around classes ?? Let's see
+        assertEquals(stringArgumentCaptor.getValue(), ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE);
     }
 
 }
