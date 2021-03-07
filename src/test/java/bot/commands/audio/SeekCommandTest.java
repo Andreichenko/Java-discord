@@ -128,5 +128,8 @@ public class SeekCommandTest {
 
     }
 
+    public void failsWhenNotConnectedToVoice(){
+
+    }
 
 }
