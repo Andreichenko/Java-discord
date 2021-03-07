@@ -129,6 +129,7 @@ public class SeekCommandTest {
     }
 
     public void failsWhenNotConnectedToVoice(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
     }
 
