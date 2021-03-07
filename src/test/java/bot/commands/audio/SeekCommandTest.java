@@ -131,6 +131,13 @@ public class SeekCommandTest {
     public void failsWhenNotConnectedToVoice(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
+        CommandEvent mockCommandEvent =
+                SeekCommandTestMocker.createMockCommandEventWhereBotNotConnected(stringArgumentCaptor);
+
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+
+        //?? new test around classes
     }
 
 }
