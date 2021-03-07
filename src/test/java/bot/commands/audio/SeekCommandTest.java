@@ -127,6 +127,18 @@ public class SeekCommandTest {
         assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
 
     }
+    @Test
+    public void failsWhenNotConnectedToVoice(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
+        CommandEvent mockCommandEvent =
+                SeekCommandTestMocker.createMockCommandEventWhereBotNotConnected(stringArgumentCaptor);
+
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+
+
+        assertEquals(stringArgumentCaptor.getValue(), ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE);
+    }
 
 }
