@@ -1,0 +1,15 @@
+version: '2'
+services:
+  mongo-discord:
+    image: mongo:latest
+    hostname: mongo-discord
+    container_name: mongo-discord
+  db-discord:
+    container_name: db-discord
+    ports:
+    - 27017:27017
+    networks:
+      - discord
+networks:
+  discord:
+    driver: bridge
