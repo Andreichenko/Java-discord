@@ -7,7 +7,7 @@ services:
   db-discord:
     container_name: db-discord
     ports:
-    - 27017:27017
+    - 27017:27018
     networks:
       - discord
 networks:
