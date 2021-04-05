@@ -8,48 +8,75 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *  Save and load some information to mongo database
  */
 
-@Document(collection = "alias")
+@Entity
 public class AliasEntity {
 
-    @Field
-    public String commandName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Field
-    public String aliasName;
+    private String serverId;
 
-    @Field
-    public String aliasCommandArgs;
+    private String name;
+
+    private String command;
+
+    private String args;
 
     public AliasEntity() {
     }
 
-    public AliasEntity(String commandName, String aliasName, String aliasCommandArgs) {
-        this.commandName = commandName;
-        this.aliasName = aliasName;
-        this.aliasCommandArgs = aliasCommandArgs;
+    public Long getId()
+    {
+        return id;
     }
 
-    public String getCommandName() {
-        return commandName;
+    public void setId(Long id)
+    {
+        this.id = id;
     }
 
-    public void setCommandName(String commandName) {
-        this.commandName = commandName;
+    public String getServerId()
+    {
+        return serverId;
     }
 
-    public String getAliasName() {
-        return aliasName;
+    public AliasEntity setServerId(String serverId)
+    {
+        this.serverId = serverId;
+        return this;
     }
 
-    public void setAliasName(String aliasName) {
-        this.aliasName = aliasName;
+    public String getName()
+    {
+        return name;
     }
 
-    public String getAliasCommandArgs() {
-        return aliasCommandArgs;
+    public AliasEntity setName(String name)
+    {
+        this.name = name;
+        return this;
     }
 
-    public void setAliasCommandArgs(String aliasCommandArgs) {
-        this.aliasCommandArgs = aliasCommandArgs;
+    public String getCommand()
+    {
+        return command;
+    }
+
+    public AliasEntity setCommand(String command)
+    {
+        this.command = command;
+        return this;
+    }
+
+    public String getArgs()
+    {
+        return args;
+    }
+
+    public AliasEntity setArgs(String args)
+    {
+        this.args = args;
+        return this;
     }
 }

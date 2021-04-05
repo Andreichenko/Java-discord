@@ -2,4 +2,4 @@ spring:
    application:
       name: discordbot
 server:
-   port: 9081
+   port: 19081
