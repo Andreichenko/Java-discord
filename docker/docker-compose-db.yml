@@ -1,0 +1,11 @@
+version: '2'
+services:
+  db-discord:
+    container_name: discord-bot-db
+    image: postgres:9.6-alpine
+    ports:
+      - "5432:5432"
+    environment:
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - /opt/discord-bot/postgresData:/var/lib/postgresql
