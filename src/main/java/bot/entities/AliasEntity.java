@@ -1,6 +1,7 @@
 package bot.entities;
 
 
+import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 
@@ -8,11 +9,10 @@ import org.springframework.data.mongodb.core.mapping.Field;
  *  Save and load some information to mongo database
  */
 
-@Entity
+@Document
 public class AliasEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     private String serverId;
