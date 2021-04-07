@@ -27,3 +27,5 @@ WebSession - allows replacing the Spring WebFlux’s WebSession in an applicatio
 The main variables
 
 DISCORD_BOT_KEY	== The discord API key
+BOT_USER_ID == The User ID account 
+POSTGRES_LOCATION == The URL of postgres 
