@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+    <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+        <data-source source="LOCAL" name="postgres@localhost" uuid="6c4090ab-d92b-4ec2-941a-c17e2052d0a1">
+            <driver-ref>postgresql</driver-ref>
+            <synchronize>true</synchronize>
+            <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+            <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+        </data-source>
+        <data-source source="LOCAL" name="mongo" uuid="e70bca03-7e39-4fff-86e3-afa8428fe0d2">
+            <driver-ref>mongo</driver-ref>
+            <synchronize>true</synchronize>
+            <jdbc-driver>com.dbschema.MongoJdbcDriver</jdbc-driver>
+            <jdbc-url>mongodb://localhost:27017</jdbc-url>
+        </data-source>
+        <data-source source="LOCAL" name="remote" uuid="88bc8091-442a-425a-a4a2-b5617f9e120e">
+            <driver-ref>postgresql</driver-ref>
+            <synchronize>true</synchronize>
+            <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+            <jdbc-url>jdbc:postgresql://charlie.to:5432/discord</jdbc-url>
+        </data-source>
+    </component>
+</project>
