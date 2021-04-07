@@ -1,5 +1,5 @@
 spring:
    application:
-      name: discordbot
+      name: discord-bot
 server:
    port: 19081

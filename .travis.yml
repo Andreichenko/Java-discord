@@ -17,7 +17,7 @@ before_install:
 # some additional steps, after tests we are migrate this project to gitlab
 after_success:
   - "./docker-build.sh"
-
+#before_deploy
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
