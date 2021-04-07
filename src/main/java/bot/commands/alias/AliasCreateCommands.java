@@ -18,11 +18,14 @@ import static bot.utils.ChannelTextResponses.*;
  * @apiNote this class implements the validation of commands that are written in the main class
  * All Tests are green
  */
+@Component
 public class AliasCreateCommands extends Command {
 
     private final Logger LOGGER = LogManager.getLogger(AliasCreateCommands.class);
 
     private Set<String> allCurrentCommandNames;
+
+    private Map<String, Command> commandNameToCommandMap;
 
     private final CommandEventListener commandEventListener;
 
@@ -30,6 +33,7 @@ public class AliasCreateCommands extends Command {
 
     private HashMap<String, Command> commandNameToCommandMap;
 
+    @Autowired
     public AliasCreateCommands(CommandEventListener commandEventListener, EntityGuildHolderRepository entityGuildHolderRepository) {
         this.name = "aliascreate";
         this.aliases = new String[]{"alias", "ac"};
