@@ -15,4 +15,5 @@ public class AliasCommandHandler {
     private BotService botService;
 
     private final AliasEntityRepository aliasEntityRepository;
+    
 }

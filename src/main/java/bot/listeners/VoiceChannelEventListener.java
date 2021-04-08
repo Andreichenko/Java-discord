@@ -23,8 +23,7 @@ public class VoiceChannelEventListener extends ListenerAdapter {
     @SystemEnvironment("BOT_USER_ID")
     private String BOT_USER_ID;
 
-    public VoiceChannelEventListener()
-    {
+    public VoiceChannelEventListener() {
         super();
 
         Injectors.injectionFieldEnvValue(this);  // add the environment value
