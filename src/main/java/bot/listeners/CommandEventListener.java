@@ -1,7 +1,7 @@
 package bot.listeners;
 
 import bot.commands.alias.GuildAlliasHolders;
-import bot.services.implement.DiscordBotImplement;
+import bot.services.implement.BotImplement;
 import com.jagrosh.jdautilities.command.CommandClient;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.hooks.ListenerAdapter;
@@ -36,8 +36,8 @@ public class CommandEventListener extends ListenerAdapter{
 
         String rawContent = event.getMessage().getContentRaw();
 
-        if (rawContent.startsWith(DiscordBotImplement.COMMAND_PREFIX)) {
-            rawContent = rawContent.replace(DiscordBotImplement.COMMAND_PREFIX, "");
+        if (rawContent.startsWith(BotImplement.COMMAND_PREFIX)) {
+            rawContent = rawContent.replace(BotImplement.COMMAND_PREFIX, "");
 
             if (guildAlliasHolders.doesAliasExistForCommand(rawContent)) {
                 guildAlliasHolders.executeAlias(rawContent, event, commandClient);

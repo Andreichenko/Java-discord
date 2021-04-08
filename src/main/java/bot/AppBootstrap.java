@@ -1,8 +1,7 @@
 package bot;
 
 
-import bot.repository.EntityGuildHolderRepository;
-import bot.services.DiscordBotService;
+import bot.services.BotService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -10,28 +9,25 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 /**
  * This bot is deployed in a separate container and connected to your platform ID
- * Based on Java Springboot Framework 2.3.1
+ * Based on Java Springboot Framework 2.3.4
  */
 
 @SpringBootApplication
 @EnableConfigurationProperties
-public class AppBootstrap implements CommandLineRunner{
+public class ApplicationBootstrap implements CommandLineRunner{
 
+    private final BotService botService;
 
-    private final DiscordBotService discordBotService;
-
-    public AppBootstrap(DiscordBotService discordBotService, EntityGuildHolderRepository entityGuildHolderRepository){
-        this.discordBotService = discordBotService;
-
+    public ApplicationBootstrap(BotService botService) {
+        this.botService = botService;
     }
 
     public static void main(String[] args) {
-
-        SpringApplication.run(AppBootstrap.class, args);
+        SpringApplication.run(ApplicationBootstrap.class, args);
     }
 
     @Override
     public void run(String... args) throws Exception {
-
+        this.botService.startBot();
     }
 }

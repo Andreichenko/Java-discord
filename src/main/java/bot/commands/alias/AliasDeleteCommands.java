@@ -1,7 +1,7 @@
 package bot.commands.alias;
 
 import bot.listeners.CommandEventListener;
-import bot.repository.EntityGuildHolderRepository;
+import bot.repository.AliasEntityRepository;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
@@ -15,11 +15,11 @@ public class AliasDeleteCommands extends Command {
 
     private final CommandEventListener aliasCommandEventListener;
 
-    private final EntityGuildHolderRepository entityGuildHolderRepository;
+    private final AliasEntityRepository aliasEntityRepository;
 
-    public AliasDeleteCommands(CommandEventListener aliasCommandEventListener, EntityGuildHolderRepository entityGuildHolderRepository) {
+    public AliasDeleteCommands(CommandEventListener aliasCommandEventListener, AliasEntityRepository aliasEntityRepository) {
         this.aliasCommandEventListener = aliasCommandEventListener;
-        this.entityGuildHolderRepository = entityGuildHolderRepository;
+        this.aliasEntityRepository = aliasEntityRepository;
 
         this.name = "aliasdelete";
         this.help = "Delete an alias with a specific name";
@@ -54,7 +54,7 @@ public class AliasDeleteCommands extends Command {
 
         }
 
-       entityGuildHolderRepository.save(guildAliasHolder);
+
 
         event.getChannel().sendMessage(String.format(ALIAS_REMOVED, aliasToDelete)).queue();
 

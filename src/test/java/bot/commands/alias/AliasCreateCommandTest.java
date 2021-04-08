@@ -2,7 +2,7 @@ package bot.commands.alias;
 
 
 import bot.listeners.CommandEventListener;
-import bot.repository.EntityGuildHolderRepository;
+import bot.repository.AliasEntityRepository;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -71,7 +71,7 @@ public class AliasCreateCommandTest {
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -105,7 +105,7 @@ public class AliasCreateCommandTest {
         CommandEventListener aliasCommandEventListener = new CommandEventListener();
         aliasCommandEventListener.setCommandClient(mockCommandClient);
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -146,7 +146,7 @@ public class AliasCreateCommandTest {
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -217,7 +217,7 @@ public class AliasCreateCommandTest {
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -246,7 +246,7 @@ public class AliasCreateCommandTest {
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -273,7 +273,7 @@ public class AliasCreateCommandTest {
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -318,7 +318,7 @@ public class AliasCreateCommandTest {
         when(aliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdArgumentCaptor.capture())).thenReturn(mockGuildAliasHolder);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 
@@ -357,7 +357,7 @@ public class AliasCreateCommandTest {
         when(aliasCommandEventListener.getGuildAliasHolderForGuildWithId(any())).thenReturn(mockGuildAliasHolder);
 
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
-                mock(EntityGuildHolderRepository.class));
+                mock(AliasEntityRepository.class));
         aliasCreateCommand.setAllCurrentCommandNames(ALL_CURRENT_COMMAND_NAMES);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
 

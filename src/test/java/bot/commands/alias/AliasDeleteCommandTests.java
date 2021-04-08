@@ -1,7 +1,7 @@
 package bot.commands.alias;
 
 import bot.listeners.CommandEventListener;
-import bot.repository.EntityGuildHolderRepository;
+import bot.repository.AliasEntityRepository;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -97,7 +97,7 @@ public class AliasDeleteCommandTests {
         CommandEventListener mockAliasCommandEventListener = mock(CommandEventListener.class);
         when(mockAliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdCaptor.capture())).thenReturn(mockGuildAlisHolder);
 
-        EntityGuildHolderRepository mockGuildAliasHolderEntityRepository = mock(EntityGuildHolderRepository.class);
+        AliasEntityRepository mockGuildAliasHolderEntityRepository = mock(AliasEntityRepository.class);
 
         AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener,
                 mockGuildAliasHolderEntityRepository);
@@ -132,7 +132,7 @@ public class AliasDeleteCommandTests {
         when(mockAliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdCaptor.capture())).thenReturn(mockGuildAlisHolder);
 
         AtomicBoolean entitySaved = new AtomicBoolean(false);
-        EntityGuildHolderRepository mockGuildAliasHolderEntityRepository = mock(EntityGuildHolderRepository.class);
+        AliasEntityRepository mockGuildAliasHolderEntityRepository = mock(AliasEntityRepository.class);
         doAnswer(invocation ->
         {
             entitySaved.set(true);

@@ -2,7 +2,7 @@ package bot.commands.alias;
 
 import bot.entities.GuildHolderEntity;
 import bot.listeners.CommandEventListener;
-import bot.repository.EntityGuildHolderRepository;
+import bot.repository.AliasEntityRepository;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
@@ -29,17 +29,17 @@ public class AliasCreateCommands extends Command {
 
     private final CommandEventListener commandEventListener;
 
-    private final EntityGuildHolderRepository entityGuildHolderRepository;
+    private final AliasEntityRepository aliasEntityRepository;
 
     private HashMap<String, Command> commandNameToCommandMap;
 
     @Autowired
-    public AliasCreateCommands(CommandEventListener commandEventListener, EntityGuildHolderRepository entityGuildHolderRepository) {
+    public AliasCreateCommands(CommandEventListener commandEventListener, AliasEntityRepository aliasEntityRepository) {
         this.name = "aliascreate";
         this.aliases = new String[]{"alias", "ac"};
         this.help = "Create a new alias for a command. Created using " + HOW_TO_MAKE_ALIAS;
         this.commandEventListener = commandEventListener;
-        this.entityGuildHolderRepository = entityGuildHolderRepository;
+        this.aliasEntityRepository = aliasEntityRepository;
     }
 
     @Override
@@ -110,7 +110,7 @@ public class AliasCreateCommands extends Command {
         }
 
         guildAliasHolder.addCommandWithAlias(aliasName, alias);
-        entityGuildHolderRepository.save((GuildHolderEntity) guildAliasHolder);
+        aliasEntityRepository.save((GuildHolderEntity) guildAliasHolder);
 
         event.getChannel().sendMessage(String.format(ALIAS_CREATED, aliasName, aliasCommand, aliasCommandArguments)).queue();
 

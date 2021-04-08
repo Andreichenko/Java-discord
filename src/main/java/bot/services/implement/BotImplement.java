@@ -2,8 +2,8 @@ package bot.services.implement;
 
 import bot.commands.audio.PlayCommand;
 import bot.listeners.CommandEventListener;
-import bot.repository.EntityGuildHolderRepository;
-import bot.services.DiscordBotService;
+import bot.repository.AliasEntityRepository;
+import bot.services.BotService;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.LoginException;
 
-public class DiscordBotImplement implements DiscordBotService{
+public class BotImplement implements BotService {
 
     @Value("${DISCORD_BOT_KEY}")
     private String DISCORD_BOT_KEY;
@@ -25,7 +25,7 @@ public class DiscordBotImplement implements DiscordBotService{
     private AudioPlayerManager playerManager;
     public static final String COMMAND_PREFIX = "-";
     @Override
-    public void startLoad(EntityGuildHolderRepository entityGuildHolderRepository) throws LoginException {
+    public void startLoad(AliasEntityRepository aliasEntityRepository) throws LoginException {
 
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
