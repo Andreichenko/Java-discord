@@ -54,6 +54,5 @@ public class HistoryCommand extends Command{
 
             event.getChannel().sendMessage(CANT_DISPLAY_QUEUE_PAGE).queue();
         }
-
     }
 }
