@@ -1,0 +1,13 @@
+version: '2'
+  services:
+    discord-bot:
+      image: Andreichenko/centos7:latest
+      hostname: bot-server
+    mongo-discord:
+      image: mongo:latest
+      hostname: mongo-discord
+      container_name: mongo-discord
+      ports:
+        - 27017:27017
+      volumes:
+        - /opt/discord-bot/mongodata:/data/db
