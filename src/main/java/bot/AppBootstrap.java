@@ -14,16 +14,16 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-public class ApplicationBootstrap implements CommandLineRunner{
+public class AppBootstrap implements CommandLineRunner{
 
     private final BotService botService;
 
-    public ApplicationBootstrap(BotService botService) {
+    public AppBootstrap(BotService botService) {
         this.botService = botService;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(ApplicationBootstrap.class, args);
+        SpringApplication.run(AppBootstrap.class, args);
     }
 
     @Override

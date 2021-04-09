@@ -41,8 +41,7 @@ public class AliasEntity {
         return serverId;
     }
 
-    public AliasEntity setServerId(String serverId)
-    {
+    public AliasEntity setServerId(String serverId) {
         this.serverId = serverId;
         return this;
     }
@@ -52,8 +51,7 @@ public class AliasEntity {
         return name;
     }
 
-    public AliasEntity setName(String name)
-    {
+    public AliasEntity setName(String name) {
         this.name = name;
         return this;
     }
@@ -63,8 +61,7 @@ public class AliasEntity {
         return command;
     }
 
-    public AliasEntity setCommand(String command)
-    {
+    public AliasEntity setCommand(String command) {
         this.command = command;
         return this;
     }
@@ -74,8 +71,7 @@ public class AliasEntity {
         return args;
     }
 
-    public AliasEntity setArgs(String args)
-    {
+    public AliasEntity setArgs(String args) {
         this.args = args;
         return this;
     }

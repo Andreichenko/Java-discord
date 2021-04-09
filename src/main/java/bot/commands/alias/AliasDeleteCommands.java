@@ -7,7 +7,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import static bot.utils.ChannelTextResponses.*;
+import static bot.utils.TextChannelResponse.*;
 
 public class AliasDeleteCommands extends Command {
 

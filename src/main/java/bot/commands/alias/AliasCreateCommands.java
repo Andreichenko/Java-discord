@@ -12,7 +12,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Set;
 
-import static bot.utils.ChannelTextResponses.*;
+import static bot.utils.TextChannelResponse.*;
 
 /**
  * @apiNote this class implements the validation of commands that are written in the main class

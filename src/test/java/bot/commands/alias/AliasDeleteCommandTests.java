@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static bot.utils.ChannelTextResponses.*;
+import static bot.utils.TextChannelResponse.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;

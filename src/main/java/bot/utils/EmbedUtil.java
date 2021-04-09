@@ -15,7 +15,7 @@ import java.util.concurrent.atomic.AtomicInteger;
  * get a random colour for the embed
  * Java 'Color' class takes 3 floats, from 0 to 1.
  */
-public class EmBuilder {
+public class EmbedUtil {
 
     public static EmbedBuilder createEmbedBuilder(CommandEvent event, TrackSchedulers trackSchedulers,
                                                   List<AudioTrack> queue, boolean totalTime) throws NumberFormatException{

@@ -4,20 +4,34 @@ package bot.services;
 import bot.commands.alias.AliasCreateCommands;
 import bot.commands.alias.AliasDeleteCommands;
 import bot.commands.alias.AliasListCommands;
+import bot.commands.audio.*;
+import bot.commands.utils.PingCommand;
 import bot.listeners.messageListeners.AliasCommandHandler;
 import bot.listeners.messageListeners.MessageReceivedEventListener;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
+import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-
 import javax.security.auth.login.LoginException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
+import static net.dv8tion.jda.api.requests.GatewayIntent.DIRECT_MESSAGES;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_EMOJIS;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_MEMBERS;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_MESSAGES;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_MESSAGE_REACTIONS;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_PRESENCES;
+import static net.dv8tion.jda.api.requests.GatewayIntent.GUILD_VOICE_STATES;
 
 @Service
 public interface BotService {
@@ -60,6 +74,16 @@ public interface BotService {
     public void startBot() throws LoginException{
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
+        CommandClientBuilder builder = new CommandClientBuilder();
+        builder.setPrefix(COMMAND_PREFIX);
+        builder.setActivity(null);
+        builder.setOwnerId(OWNER_ID);
+        builder.addCommands(new JoinCommand(playerManager), new PlayCommand(playerManager),
+                new PlayTopCommand(playerManager), new QueueCommand(), new LeaveCommand(), new NowPlayingCommand(),
+                new SkipSongCommand(), new ClearQueueCommand(), new RemoveCommand(), new SeekCommand(),
+                new PingCommand(), new ShuffleCommand(), new SkipToCommand(), new RedditSearchCommand(),
+                new PauseCommand(), new ResumeCommand(), new LoopCommand(), aliasCreateCommand, aliasListCommand,
+                aliasDeleteCommand, new EchoTextCommand(), new WhisperTextCommand());
     }
 
     public void shutdownBot(){

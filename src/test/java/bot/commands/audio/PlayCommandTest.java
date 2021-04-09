@@ -1,7 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.utils.ChannelTextResponses;
+import bot.utils.TextChannelResponse;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import bot.commands.audio.utils.TrackSchedulers;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
@@ -94,7 +94,7 @@ public class PlayCommandTest {
         PlayCommand playCommand = new PlayCommand(playerManager);
         playCommand.execute(mockCommandEvent);
 
-        assertEquals(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.NOT_CONNECTED_TO_VOICE_MESSAGE, stringArgumentCaptor.getValue());
         assertEquals(1, stringArgumentCaptor.getAllValues().size());
     }
 
@@ -118,7 +118,7 @@ public class PlayCommandTest {
         PlayCommand playCommand = new PlayCommand(playerManager);
         playCommand.execute(mockCommandEvent);
 
-        assertEquals(ChannelTextResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL, stringArgumentCaptor.getValue());
         assertEquals(1, stringArgumentCaptor.getAllValues().size());
     }
 
@@ -142,7 +142,7 @@ public class PlayCommandTest {
         playCommand.execute(mockCommandEvent);
 
         assertTrue(messageQueued.get());
-        assertEquals(ChannelTextResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND, stringArgumentCaptor.getValue());
     }
 
     @Test(expected = IllegalArgumentException.class)

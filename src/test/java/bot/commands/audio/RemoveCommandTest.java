@@ -19,9 +19,9 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static bot.utils.ChannelTextResponses.REMOVE_COMMAND_NOT_A_NUMBER;
-import static bot.utils.ChannelTextResponses.REMOVE_COMMAND_NO_ARGUMENT;
-import static bot.utils.ChannelTextResponses.REMOVE_COMMAND_NO_TRACK_TO_REMOVE;
+import static bot.utils.TextChannelResponse.REMOVE_COMMAND_NOT_A_NUMBER;
+import static bot.utils.TextChannelResponse.REMOVE_COMMAND_NO_ARGUMENT;
+import static bot.utils.TextChannelResponse.REMOVE_COMMAND_NO_TRACK_TO_REMOVE;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.doThrow;

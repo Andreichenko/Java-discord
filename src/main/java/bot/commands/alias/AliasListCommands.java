@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import static bot.utils.ChannelTextResponses.NO_ALIASES_SET;
+import static bot.utils.TextChannelResponse.NO_ALIASES_SET;
 
 /**
  * can only send 2000 characters in a single message so put each alias description onto eachAliasDescription and

@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import java.awt.*;
 
-import static bot.utils.ChannelTextResponses.ERROR_LOADING_VIDEO;
+import static bot.utils.TextChannelResponse.ERROR_LOADING_VIDEO;
 
 public class AudioSearchResultHandler implements AudioLoadResultHandler {
 

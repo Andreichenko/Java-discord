@@ -1,10 +1,8 @@
 package bot.commands.audio;
 
-import bot.commands.text.TextCommand;
-import bot.utils.ChannelTextResponses;
+import bot.utils.TextChannelResponse;
 import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
-import net.dv8tion.jda.api.entities.TextChannel;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.ArgumentCaptor;
@@ -13,8 +11,6 @@ import testUtils.SeekCommandTestMocker;
 
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
-import static testUtils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
 
 public class SeekCommandTest {
 
@@ -36,7 +32,7 @@ public class SeekCommandTest {
         seekCommand.execute(mockCommandEvent);
 
         assertEquals(10922000, longArgumentCaptor.getValue().longValue());
-        assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(10922)),
+        assertEquals(String.format(TextChannelResponse.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(10922)),
                 stringArgumentCaptor.getValue());
     }
 
@@ -53,7 +49,7 @@ public class SeekCommandTest {
         seekCommand.execute(mockCommandEvent);
 
         assertEquals(122000, longArgumentCaptor.getValue().longValue());
-        assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(122)),
+        assertEquals(String.format(TextChannelResponse.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(122)),
                 stringArgumentCaptor.getValue());
 
     }
@@ -71,7 +67,7 @@ public class SeekCommandTest {
         seekCommand.execute(mockCommandEvent);
 
         assertEquals(2000, longArgumentCaptor.getValue().longValue());
-        assertEquals(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(2)),
+        assertEquals(String.format(TextChannelResponse.SEEKING_TO_INFORMATION, TimeLineStamp.timeString(2)),
                 stringArgumentCaptor.getValue());
     }
 
@@ -84,7 +80,7 @@ public class SeekCommandTest {
                 "3:4:5:6");
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
-        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 
     @Test
@@ -95,7 +91,7 @@ public class SeekCommandTest {
                 "string");
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
-        assertEquals(ChannelTextResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 
     @Test
@@ -108,7 +104,7 @@ public class SeekCommandTest {
                         "32:45");
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
-        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
 
     }
 
@@ -124,7 +120,7 @@ public class SeekCommandTest {
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
 
-        assertEquals(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
+        assertEquals(TextChannelResponse.SEEK_POINT_LONGER_THAN_SONG, stringArgumentCaptor.getValue());
 
     }
     @Test
@@ -138,7 +134,7 @@ public class SeekCommandTest {
         seekCommand.execute(mockCommandEvent);
 
 
-        assertEquals(stringArgumentCaptor.getValue(), ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE);
+        assertEquals(stringArgumentCaptor.getValue(), TextChannelResponse.BOT_NOT_CONNECTED_TO_VOICE);
     }
 
 }

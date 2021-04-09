@@ -1,7 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.VoiceChannel;
-import bot.utils.ChannelTextResponses;
+import bot.utils.TextChannelResponse;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -28,11 +28,11 @@ public class JoinCommand extends Command{
 
         } catch(IllegalArgumentException e) {
 
-            event.getChannel().sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            event.getChannel().sendMessage(TextChannelResponse.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
 
         } catch(InsufficientPermissionException e) {
 
-            event.getChannel().sendMessage(ChannelTextResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
+            event.getChannel().sendMessage(TextChannelResponse.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
         }
     }
 
