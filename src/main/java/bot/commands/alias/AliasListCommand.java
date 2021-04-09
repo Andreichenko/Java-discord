@@ -17,11 +17,11 @@ import static bot.utils.TextChannelResponse.NO_ALIASES_SET;
  * Splitting a message so that it can display multiple aliases
  */
 
-public class AliasListCommands extends Command{
+public class AliasListCommand extends Command{
 
     private final CommandEventListener commandEventListener;
 
-    public AliasListCommands(CommandEventListener commandEventListener){
+    public AliasListCommand(CommandEventListener commandEventListener){
         this.name = "aliaslist";
         this.aliases = new String[]{"al"};
         this.help = "List all the aliases for this server";

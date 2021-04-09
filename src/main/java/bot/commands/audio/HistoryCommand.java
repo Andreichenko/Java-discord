@@ -39,6 +39,7 @@ public class HistoryCommand extends Command{
         }
 
         EvictingQueue<AudioTrack> history = audioPlayerSendHandler.getTrackScheduler().getHistory();
+
         if (history.size() == 0) {
             event.getChannel().sendMessage(NO_HISTORY_TO_SHOW).queue();
             return;

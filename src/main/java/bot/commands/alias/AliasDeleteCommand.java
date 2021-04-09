@@ -9,15 +9,15 @@ import org.apache.logging.log4j.Logger;
 
 import static bot.utils.TextChannelResponse.*;
 
-public class AliasDeleteCommands extends Command {
+public class AliasDeleteCommand extends Command {
 
-    private final Logger LOGGER = LogManager.getLogger(AliasDeleteCommands.class);
+    private final Logger LOGGER = LogManager.getLogger(AliasDeleteCommand.class);
 
     private final CommandEventListener aliasCommandEventListener;
 
     private final AliasEntityRepository aliasEntityRepository;
 
-    public AliasDeleteCommands(CommandEventListener aliasCommandEventListener, AliasEntityRepository aliasEntityRepository) {
+    public AliasDeleteCommand(CommandEventListener aliasCommandEventListener, AliasEntityRepository aliasEntityRepository) {
         this.aliasCommandEventListener = aliasCommandEventListener;
         this.aliasEntityRepository = aliasEntityRepository;
 

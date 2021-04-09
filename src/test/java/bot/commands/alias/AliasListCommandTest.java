@@ -42,7 +42,7 @@ public class AliasListCommandTest {
         CommandEventListener aliasCommandEventListener = new CommandEventListener();
         aliasCommandEventListener.setCommandClient(mockCommandClient);
 
-        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+        AliasListCommand aliasListCommand = new AliasListCommand(aliasCommandEventListener);
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
@@ -91,7 +91,7 @@ public class AliasListCommandTest {
         guildAliasHolder.addCommandWithAlias(ALIAS_NAME_2, mockAlias2);
         aliasCommandEventListener.putGuildAliasHolderForGuildWithId(GUILD_ID, guildAliasHolder);
 
-        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+        AliasListCommand aliasListCommand = new AliasListCommand(aliasCommandEventListener);
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
@@ -131,7 +131,7 @@ public class AliasListCommandTest {
         guildAliasHolder.addCommandWithAlias(ALIAS_NAME_1, mockAlias);
         aliasCommandEventListener.putGuildAliasHolderForGuildWithId(GUILD_ID, guildAliasHolder);
 
-        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+        AliasListCommand aliasListCommand = new AliasListCommand(aliasCommandEventListener);
 
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
