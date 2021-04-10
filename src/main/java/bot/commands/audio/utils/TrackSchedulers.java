@@ -134,6 +134,7 @@ public class TrackSchedulers extends AudioEventAdapter{
         this.loopTrack = loopTrack;
     }
 
+    //get history from DB
     public EvictingQueue<AudioTrack> getHistory(){
         return historyQueue;
     }
