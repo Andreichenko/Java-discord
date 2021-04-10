@@ -5,6 +5,7 @@ import bot.commands.audio.*;
 import bot.commands.utils.PingCommand;
 import bot.entities.GuildHolderEntity;
 import bot.listeners.CommandEventListener;
+import bot.listeners.VoiceChannelEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
 import com.jagrosh.jdautilities.command.Command;
@@ -14,10 +15,13 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.LoginException;
 import java.util.*;
+
+import static net.dv8tion.jda.api.requests.GatewayIntent.*;
 
 public class DiscordBotImplement implements DiscordBotService{
 
@@ -88,6 +92,10 @@ public class DiscordBotImplement implements DiscordBotService{
             });
             aliasCommandEventListener.putGuildAliasHolderForGuildWithId(guildId, guildAliasHolder);
         });
+        this.jda = JDABuilder.create(DISCORD_BOT_KEY,
+                GUILD_MEMBERS, GUILD_VOICE_STATES, GUILD_MESSAGES,
+                GUILD_MESSAGE_REACTIONS, GUILD_PRESENCES, GUILD_EMOJIS).addEventListeners(client,
+                new VoiceChannelEventListener(), aliasCommandEventListener).build();
     }
 
     @Override
