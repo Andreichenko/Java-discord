@@ -1,9 +1,14 @@
 package bot.services.implement;
 
-import bot.commands.audio.PlayCommand;
+import bot.commands.alias.AliasCreateCommands;
+import bot.commands.alias.AliasDeleteCommands;
+import bot.commands.alias.AliasListCommands;
+import bot.commands.audio.*;
+import bot.commands.utils.PingCommand;
 import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
+import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
@@ -30,15 +35,30 @@ public class DiscordBotImplement implements DiscordBotService{
         playerManager = new DefaultAudioPlayerManager();
         AudioSourceManagers.registerRemoteSources(playerManager);
 
+        CommandEventListener aliasCommandEventListener = new CommandEventListener();
+
         CommandEventListener commandEventListener = new CommandEventListener();
+
+        AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
+                entityGuildHolderRepository);
+
+        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(aliasCommandEventListener,
+                entityGuildHolderRepository);
+
+        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
         //??? need to add all commands listeners and discord listeners
 
         CommandClientBuilder builder = new CommandClientBuilder();
         builder.setPrefix(COMMAND_PREFIX);
         builder.setActivity(null);
         builder.setOwnerId(OWNER_ID);
-        builder.addCommands(new PlayCommand(playerManager));
+        builder.addCommands(new PlayCommand(playerManager), new JoinCommand(playerManager),new PlayTopCommand(playerManager),
+                new SkipSongCommand(), new ClearQueueCommand(), new RemoveCommand(), new SeekCommand(),
+                new PingCommand(), new SkipToCommand(), new PauseCommand(), new ResumeCommand(),
+                new LoopCommand(), new HistoryCommand());
 
+        CommandClient client = builder.build();
+        aliasCommandEventListener.setCommandClient(client);
         // need to implement more commands and alias
     }
 

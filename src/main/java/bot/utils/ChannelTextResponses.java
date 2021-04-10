@@ -46,4 +46,6 @@ public class ChannelTextResponses {
 
     public static final String NO_HISTORY_TO_SHOW = "**There is no history to show.**";
     public static final String CANT_DISPLAY_QUEUE_PAGE = "**Cannot display that page**";
+
+    public static final String CANT_DISPLAY_ALL_PAGE = "**You need to make sure that the pages is exist";
 }
