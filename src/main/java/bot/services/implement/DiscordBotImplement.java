@@ -1,22 +1,27 @@
 package bot.services.implement;
 
-import bot.commands.alias.AliasCreateCommands;
-import bot.commands.alias.AliasDeleteCommands;
-import bot.commands.alias.AliasListCommands;
+import bot.commands.alias.*;
 import bot.commands.audio.*;
 import bot.commands.utils.PingCommand;
+import bot.entities.GuildHolderEntity;
 import bot.listeners.CommandEventListener;
+import bot.listeners.VoiceChannelEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
+import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
+import net.dv8tion.jda.api.JDABuilder;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.LoginException;
+import java.util.*;
+
+import static net.dv8tion.jda.api.requests.GatewayIntent.*;
 
 public class DiscordBotImplement implements DiscordBotService{
 
@@ -53,13 +58,44 @@ public class DiscordBotImplement implements DiscordBotService{
         builder.setActivity(null);
         builder.setOwnerId(OWNER_ID);
         builder.addCommands(new PlayCommand(playerManager), new JoinCommand(playerManager),new PlayTopCommand(playerManager),
-                new SkipSongCommand(), new ClearQueueCommand(), new RemoveCommand(), new SeekCommand(),
+                new SkipSongCommand(), new ClearQueueCommand(),new QueueCommand(), new RemoveCommand(), new SeekCommand(),
                 new PingCommand(), new SkipToCommand(), new PauseCommand(), new ResumeCommand(),
                 new LoopCommand(), new HistoryCommand());
 
         CommandClient client = builder.build();
         aliasCommandEventListener.setCommandClient(client);
-        // need to implement more commands and alias
+
+        HashMap<String, Command> commandNameToCommandMap = new HashMap<>();
+        // todo need to create more commands
+
+        Set<String> commandNameSet = new HashSet<>();
+        client.getCommands().forEach(command ->
+        {
+            commandNameToCommandMap.put(command.getName(), command);
+            for (String commandAlias : command.getAliases()){
+                commandNameToCommandMap.put(commandAlias, command);
+
+            }
+            commandNameSet.add(command.getName());
+            Collections.addAll(commandNameSet, command.getAliases());
+        });
+
+        aliasCreateCommand.setAllCurrentCommandNames(commandNameSet);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+        List<GuildHolderEntity> allGuildAliasEntities = entityGuildHolderRepository.findAll();
+        allGuildAliasEntities.forEach(guildAliasHolderEntity -> {
+            String guildId = guildAliasHolderEntity.getGuildId();
+            GuildAlliasHolders guildAliasHolder = new GuildAlliasHolders(guildId);
+            guildAliasHolderEntity.aliasEntityList.forEach(aliasEntity -> {
+                Command command = commandNameToCommandMap.get(aliasEntity.getCommandName());
+                guildAliasHolder.addCommandWithAlias(aliasEntity.getAliasName(), new Alias(aliasEntity, command));
+            });
+            aliasCommandEventListener.putGuildAliasHolderForGuildWithId(guildId, guildAliasHolder);
+        });
+        this.jda = JDABuilder.create(DISCORD_BOT_KEY,
+                GUILD_MEMBERS, GUILD_VOICE_STATES, GUILD_MESSAGES,
+                GUILD_MESSAGE_REACTIONS, GUILD_PRESENCES, GUILD_EMOJIS).addEventListeners(client,
+                new VoiceChannelEventListener(), aliasCommandEventListener).build();
     }
 
     @Override
