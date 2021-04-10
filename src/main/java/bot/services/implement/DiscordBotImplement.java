@@ -8,6 +8,7 @@ import bot.commands.utils.PingCommand;
 import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
+import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -17,6 +18,10 @@ import net.dv8tion.jda.api.JDA;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.LoginException;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Set;
 
 public class DiscordBotImplement implements DiscordBotService{
 
@@ -59,7 +64,25 @@ public class DiscordBotImplement implements DiscordBotService{
 
         CommandClient client = builder.build();
         aliasCommandEventListener.setCommandClient(client);
-        // need to implement more commands and alias
+
+        HashMap<String, Command> commandNameToCommandMap = new HashMap<>();
+        // todo need to create more commands
+
+        Set<String> commandNameSet = new HashSet<>();
+        client.getCommands().forEach(command ->
+        {
+            commandNameToCommandMap.put(command.getName(), command);
+            for (String commandAlias : command.getAliases()){
+                commandNameToCommandMap.put(commandAlias, command);
+
+            }
+            commandNameSet.add(command.getName());
+            Collections.addAll(commandNameSet, command.getAliases());
+        });
+
+        aliasCreateCommand.setAllCurrentCommandNames(commandNameSet);
+        aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
+
     }
 
     @Override
