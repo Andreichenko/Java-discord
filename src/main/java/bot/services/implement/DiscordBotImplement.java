@@ -1,10 +1,9 @@
 package bot.services.implement;
 
-import bot.commands.alias.AliasCreateCommands;
-import bot.commands.alias.AliasDeleteCommands;
-import bot.commands.alias.AliasListCommands;
+import bot.commands.alias.*;
 import bot.commands.audio.*;
 import bot.commands.utils.PingCommand;
+import bot.entities.GuildHolderEntity;
 import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
 import bot.services.DiscordBotService;
@@ -18,10 +17,7 @@ import net.dv8tion.jda.api.JDA;
 import org.springframework.beans.factory.annotation.Value;
 
 import javax.security.auth.login.LoginException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class DiscordBotImplement implements DiscordBotService{
 
@@ -82,7 +78,16 @@ public class DiscordBotImplement implements DiscordBotService{
 
         aliasCreateCommand.setAllCurrentCommandNames(commandNameSet);
         aliasCreateCommand.setCommandNameToCommandMap(commandNameToCommandMap);
-
+        List<GuildHolderEntity> allGuildAliasEntities = entityGuildHolderRepository.findAll();
+        allGuildAliasEntities.forEach(guildAliasHolderEntity -> {
+            String guildId = guildAliasHolderEntity.getGuildId();
+            GuildAlliasHolders guildAliasHolder = new GuildAlliasHolders(guildId);
+            guildAliasHolderEntity.aliasEntityList.forEach(aliasEntity -> {
+                Command command = commandNameToCommandMap.get(aliasEntity.getCommandName());
+                guildAliasHolder.addCommandWithAlias(aliasEntity.getAliasName(), new Alias(aliasEntity, command));
+            });
+            aliasCommandEventListener.putGuildAliasHolderForGuildWithId(guildId, guildAliasHolder);
+        });
     }
 
     @Override
