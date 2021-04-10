@@ -1,5 +1,6 @@
 package bot.services.implement;
 
+import bot.commands.audio.JoinCommand;
 import bot.commands.audio.PlayCommand;
 import bot.listeners.CommandEventListener;
 import bot.repository.EntityGuildHolderRepository;
@@ -37,7 +38,7 @@ public class DiscordBotImplement implements DiscordBotService{
         builder.setPrefix(COMMAND_PREFIX);
         builder.setActivity(null);
         builder.setOwnerId(OWNER_ID);
-        builder.addCommands(new PlayCommand(playerManager));
+        builder.addCommands(new PlayCommand(playerManager), new JoinCommand(playerManager));
 
         // need to implement more commands and alias
     }
