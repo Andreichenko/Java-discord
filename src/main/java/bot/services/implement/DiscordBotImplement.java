@@ -58,7 +58,7 @@ public class DiscordBotImplement implements DiscordBotService{
         builder.setActivity(null);
         builder.setOwnerId(OWNER_ID);
         builder.addCommands(new PlayCommand(playerManager), new JoinCommand(playerManager),new PlayTopCommand(playerManager),
-                new SkipSongCommand(), new ClearQueueCommand(), new RemoveCommand(), new SeekCommand(),
+                new SkipSongCommand(), new ClearQueueCommand(),new QueueCommand(), new RemoveCommand(), new SeekCommand(),
                 new PingCommand(), new SkipToCommand(), new PauseCommand(), new ResumeCommand(),
                 new LoopCommand(), new HistoryCommand());
 
