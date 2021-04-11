@@ -1,0 +1,70 @@
+# -*- mode: ruby -*-
+# vi: set ft=ruby :
+
+# All Vagrant configuration is done below. The "2" in Vagrant.configure
+# configures the configuration version (we support older styles for
+# backwards compatibility). Please don't change it unless you know what
+# you're doing.
+Vagrant.configure("2") do |config|
+
+  config.landrush.enabled = true
+  config.landrush.host 'salt', '192.168.168.2'
+  config.landrush.host 'bastion', '192.168.168.2'
+
+  config.vm.define "saltmaster" do |master|
+    master.vm.network "private_network", ip: "192.168.168.2"
+    master.vm.box = "centos/7"
+    master.vm.hostname = "salt.vagrant.test"
+    master.vm.box_check_update = true
+    master.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = 1024
+    end
+
+    master.vm.synced_folder ENV['VAGRANT_SALTSTACK_DIR'], "/srv/saltstack/", type: "virtualbox"
+    #    master.vm.synced_folder ENV['VAGRANT_SYNCP_RPMS_DIR'], "/usr/share/nginx/html/", type: "virtualbox", owner: "root", group: "root"
+
+    ## restart network
+    #master.vm.provision "restart", type: "shell", inline: 'systemctl restart network; yum clean all; yum -y update; yum -y install createrepo; createrepo /usr/share/nginx/html/repo'
+    master.vm.provision "restart", type: "shell", inline: 'systemctl restart network; yum clean all; yum -y update'
+
+    # Salt provisioner settings
+    master.vm.provision :salt do |salt|
+      salt.install_master = true
+      salt.master_config = "salt-master-config"
+      salt.run_highstate = false
+      salt.install_type = "stable"
+      salt.no_minion = false
+      salt.grains_config = "salt-master-grains"
+    end
+
+    master.vm.provision "setup",
+                        type: "shell",
+                        path: "install_salt_master.sh"
+  end
+
+
+  config.vm.define "centos7", autostart: false do |centos7|
+    centos7.vm.network "private_network", ip: "192.168.168.3"
+    centos7.vm.box = "centos/7"
+    centos7.vm.hostname = "minion1.vagrant.test"
+    centos7.vm.box_check_update = true
+    centos7.vm.provider "virtualbox" do |vb|
+      vb.gui = false
+      vb.memory = 1024
+    end
+
+    ## restart network
+    #centos7.vm.provision "restart", type: "shell", inline: "systemctl restart network; yum clean all; echo -e \"[syncp]\ngpgcheck=0\nenabled=1\n\nbaseurl=http://bastion/repo/\nname=Syncplicity applications\" > /etc/yum.repos.d/syncp.repo; yum -y update"
+    centos7.vm.provision "restart", type: "shell", inline: "systemctl restart network"
+
+    # Salt provisioner settings
+    centos7.vm.provision :salt do |salt|
+      salt.install_master = false
+      salt.run_highstate = false
+      salt.install_type = "stable"
+      salt.no_minion = false
+      salt.grains_config = "salt-minion-grains"
+    end
+  end
+end
