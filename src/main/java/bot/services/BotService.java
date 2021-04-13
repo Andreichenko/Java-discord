@@ -38,4 +38,8 @@ public class BotService {
         AudioSourceManagers.registerRemoteSources(playerManager);
 
     }
+
+    public JDA getJda() {
+        return jda;
+    }
 }
