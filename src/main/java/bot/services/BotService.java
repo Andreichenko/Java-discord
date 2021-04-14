@@ -1,9 +1,7 @@
 package bot.services;
 
 
-import bot.commands.alias.AliasCreateCommands;
-import bot.commands.alias.AliasDeleteCommands;
-import bot.commands.alias.AliasListCommands;
+import bot.commands.alias.AliasCreateCommand;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -30,7 +28,13 @@ public class BotService {
 
     private CommandClient client;
 
+    private final AliasCreateCommand aliasCreateCommand;
+
     private Map<String, Command> commandNameToCommandMap;
+
+    public BotService(AliasCreateCommand aliasCreateCommand) {
+        this.aliasCreateCommand = aliasCreateCommand;
+    }
 
     public void startBot() throws LoginException {
 
