@@ -2,12 +2,15 @@ package bot.services;
 
 
 import bot.commands.alias.AliasCreateCommand;
+import bot.commands.alias.AliasCreateCommands;
+import bot.listeners.messages.AliasCommandHandler;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.security.auth.login.LoginException;
@@ -28,12 +31,14 @@ public class BotService {
 
     private CommandClient client;
 
-    private final AliasCreateCommand aliasCreateCommand;
+   //reworking........
 
     private Map<String, Command> commandNameToCommandMap;
 
-    public BotService(AliasCreateCommand aliasCreateCommand) {
-        this.aliasCreateCommand = aliasCreateCommand;
+    @Autowired
+    public BotService( AliasCommandHandler aliasCommandHandler) {
+
+        aliasCommandHandler.setBotService(this);
     }
 
     public void startBot() throws LoginException {
@@ -50,5 +55,17 @@ public class BotService {
     public Command getCommandFromName(String commandName){
 
         return commandNameToCommandMap.get(commandName);
+    }
+
+    public void shutdownBot(){
+
+    }
+
+    public CommandClient getClient() {
+        return client;
+    }
+
+    public AudioPlayerManager getPlayerManager() {
+        return playerManager;
     }
 }
