@@ -42,4 +42,9 @@ public class BotService {
     public JDA getJda() {
         return jda;
     }
+
+    public Command getCommandFromName(String commandName){
+
+        return commandNameToCommandMap.get(commandName);
+    }
 }

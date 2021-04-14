@@ -20,6 +20,26 @@ public class AliasEntity {
     @Field
     public String aliasCommandArgs;
 
+    public void setArgs(String args) {
+        this.args = args;
+    }
+
+    public String getArgs() {
+        return args;
+    }
+
+    private String args;
+
+    private String command;
+
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
     public AliasEntity() {
     }
 
