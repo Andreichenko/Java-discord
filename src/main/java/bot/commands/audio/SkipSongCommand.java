@@ -1,8 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.commands.audio.utils.VoiceChannel;
-import bot.listeners.VoiceChannelEventListener;
+import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -19,7 +18,7 @@ public class SkipSongCommand extends Command {
 
         AudioPlayerSendHandler audioPlayerSendHandler;
         try{
-            audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
+            audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
         }catch(IllegalArgumentException e){
             event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
             return;

@@ -2,7 +2,7 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.TrackSchedulers;
-import bot.commands.audio.utils.VoiceChannel;
+import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.utils.TextChannelResponses;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -25,7 +25,7 @@ public class LoopCommand extends Command {
 
         AudioPlayerSendHandler audioPlayerSendHandler;
         try {
-            audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
+            audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
 
         }catch (IllegalArgumentException e){
             event.getChannel().sendMessage(TextChannelResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();

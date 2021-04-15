@@ -1,6 +1,6 @@
 package bot.commands.audio;
 
-import bot.commands.audio.utils.VoiceChannel;
+import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.utils.TextChannelResponses;
 import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
@@ -23,7 +23,7 @@ public class ResumeCommand extends Command{
     protected void execute(CommandEvent event){
         try
         {
-            VoiceChannel.setPauseStatusOnAudioPlayer(event.getGuild(), event.getChannel(), event.getMember(),
+            VoiceChannelUtils.setPauseStatusOnAudioPlayer(event.getGuild(), event.getChannel(), event.getMember(),
                     false);
         }
         catch(IllegalArgumentException e)

@@ -15,9 +15,9 @@ import org.apache.logging.log4j.Logger;
 
 import java.net.URL;
 
-public class VoiceChannel {
+public class VoiceChannelUtils {
 
-    private static final Logger LOGGER = LogManager.getLogger(VoiceChannel.class);
+    private static final Logger LOGGER = LogManager.getLogger(VoiceChannelUtils.class);
 
     /**
      *
@@ -89,7 +89,7 @@ public class VoiceChannel {
         if (!audioManager.isConnected()){
 
             try {
-                VoiceChannel.joinVoiceChannel(member, guild, playerManager);
+                VoiceChannelUtils.joinVoiceChannel(member, guild, playerManager);
 
             }catch (InsufficientPermissionException e){
                 channel.sendMessage(TextChannelResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
