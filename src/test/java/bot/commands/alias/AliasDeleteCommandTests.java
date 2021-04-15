@@ -14,7 +14,7 @@ import net.dv8tion.jda.api.entities.TextChannel;
 
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static bot.utils.ChannelTextResponses.*;
+import static bot.utils.TextChannelResponses.*;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.mockito.Mockito.*;
@@ -41,7 +41,7 @@ public class AliasDeleteCommandTests {
         when(mockCommandEvent.getArgs()).thenReturn("");
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
-        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(null, null);
+        AliasDeleteCommand aliasDeleteCommand = new AliasDeleteCommand(null, null);
         aliasDeleteCommand.execute(mockCommandEvent);
 
         assertEquals(ALIAS_DELETE_NONE_PROVIDED, textChannelArgumentCaptor.getValue());
@@ -67,7 +67,7 @@ public class AliasDeleteCommandTests {
         CommandEventListener mockAliasCommandEventListener = mock(CommandEventListener.class);
         when(mockAliasCommandEventListener.getGuildAliasHolderForGuildWithId(guildIdCaptor.capture())).thenReturn(mockGuildAlisHolder);
 
-        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener, null);
+        AliasDeleteCommand aliasDeleteCommand = new AliasDeleteCommand(mockAliasCommandEventListener, null);
         aliasDeleteCommand.execute(mockCommandEvent);
 
         assertEquals(String.format(ALIAS_DELETE_ALIAS_DOES_NOT_EXIST, ALIAS_NAME), textChannelArgumentCaptor.getValue());
@@ -99,7 +99,7 @@ public class AliasDeleteCommandTests {
 
         EntityGuildHolderRepository mockGuildAliasHolderEntityRepository = mock(EntityGuildHolderRepository.class);
 
-        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener,
+        AliasDeleteCommand aliasDeleteCommand = new AliasDeleteCommand(mockAliasCommandEventListener,
                 mockGuildAliasHolderEntityRepository);
         aliasDeleteCommand.execute(mockCommandEvent);
 
@@ -139,7 +139,7 @@ public class AliasDeleteCommandTests {
             return null;
         }).when(mockGuildAliasHolderEntityRepository).save(any());
 
-        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(mockAliasCommandEventListener,
+        AliasDeleteCommand aliasDeleteCommand = new AliasDeleteCommand(mockAliasCommandEventListener,
                 mockGuildAliasHolderEntityRepository);
         aliasDeleteCommand.execute(mockCommandEvent);
 

@@ -3,7 +3,7 @@ package bot.commands.text;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 
-import static bot.utils.ChannelTextResponses.ECHO_COMMAND_NO_ARGS;
+import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
 
 public class TextCommand extends Command{
 

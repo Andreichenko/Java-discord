@@ -47,10 +47,10 @@ public class DiscordBotImplement implements DiscordBotService{
         AliasCreateCommands aliasCreateCommand = new AliasCreateCommands(aliasCommandEventListener,
                 entityGuildHolderRepository);
 
-        AliasDeleteCommands aliasDeleteCommand = new AliasDeleteCommands(aliasCommandEventListener,
+        AliasDeleteCommand aliasDeleteCommand = new AliasDeleteCommand(aliasCommandEventListener,
                 entityGuildHolderRepository);
 
-        AliasListCommands aliasListCommand = new AliasListCommands(aliasCommandEventListener);
+        AliasListCommand aliasListCommand = new AliasListCommand(aliasCommandEventListener);
         //??? need to add all commands listeners and discord listeners
 
         CommandClientBuilder builder = new CommandClientBuilder();

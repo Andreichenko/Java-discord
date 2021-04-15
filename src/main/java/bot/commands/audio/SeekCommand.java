@@ -1,7 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.utils.ChannelTextResponses;
+import bot.utils.TextChannelResponses;
 import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -24,7 +24,7 @@ public class SeekCommand extends Command {
 
         if (!audioManager.isConnected()){
 
-            event.getChannel().sendMessage(ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
+            event.getChannel().sendMessage(TextChannelResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
             return;
         }
 
@@ -37,15 +37,15 @@ public class SeekCommand extends Command {
         try {
             seekTime = getSeekTime(seekPoint);
         } catch(IllegalArgumentException e){
-            event.getChannel().sendMessage(ChannelTextResponses.SEEK_COMMAND_FORMAT).queue();
+            event.getChannel().sendMessage(TextChannelResponses.SEEK_COMMAND_FORMAT).queue();
             return;
         }
 
         if (seekTime * 1000 > audioTrack.getDuration() || !audioTrack.isSeekable()){
-            event.getChannel().sendMessage(ChannelTextResponses.SEEK_POINT_LONGER_THAN_SONG).queue();
+            event.getChannel().sendMessage(TextChannelResponses.SEEK_POINT_LONGER_THAN_SONG).queue();
             return;
         }
-        event.getChannel().sendMessage(String.format(ChannelTextResponses.SEEKING_TO_INFORMATION,
+        event.getChannel().sendMessage(String.format(TextChannelResponses.SEEKING_TO_INFORMATION,
                 TimeLineStamp.timeString(seekTime))).queue();
         audioTrack.setPosition(seekTime * 1000);
     }

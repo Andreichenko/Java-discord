@@ -1,6 +1,6 @@
 package bot.commands.audio.utils;
 
-import bot.utils.ChannelTextResponses;
+import bot.utils.TextChannelResponses;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import net.dv8tion.jda.api.JDA;
@@ -81,7 +81,7 @@ public class VoiceChannel {
             throw new IllegalArgumentException("Member is NULL is the ID correct?");
         }
         if (argument.isEmpty()){
-            channel.sendMessage(ChannelTextResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND).queue();
+            channel.sendMessage(TextChannelResponses.NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND).queue();
             return;
         }
 
@@ -92,16 +92,16 @@ public class VoiceChannel {
                 VoiceChannel.joinVoiceChannel(member, guild, playerManager);
 
             }catch (InsufficientPermissionException e){
-                channel.sendMessage(ChannelTextResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
+                channel.sendMessage(TextChannelResponses.DONT_HAVE_PERMISSION_TO_JOIN_VOICE_CHANNEL).queue();
                 return;
             }catch (IllegalArgumentException e){
-                channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+                channel.sendMessage(TextChannelResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
                 return;
             }
         }
 
         if (audioManager.getConnectedChannel() != null && !audioManager.getConnectedChannel().getMembers().contains(member)){
-            channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            channel.sendMessage(TextChannelResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
             return;
         }
 
@@ -135,12 +135,12 @@ public class VoiceChannel {
         AudioManager audioManager = guild.getAudioManager();
 
         if (!audioManager.isConnected()){
-            channel.sendMessage(ChannelTextResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
+            channel.sendMessage(TextChannelResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
             throw new IllegalAccessException("Bot not connected to the voice channel");
         }
 
         if (audioManager.getConnectedChannel() != null && !audioManager.getConnectedChannel().getMembers().contains(member)){
-            channel.sendMessage(ChannelTextResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
+            channel.sendMessage(TextChannelResponses.NOT_CONNECTED_TO_VOICE_MESSAGE).queue();
             throw new IllegalAccessException("Member not in the voice channel");
         }
         AudioPlayerSendHandler audioPlayerSendHandler = (AudioPlayerSendHandler) audioManager.getSendingHandler();
