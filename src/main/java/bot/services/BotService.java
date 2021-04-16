@@ -24,7 +24,7 @@ import bot.commands.text.WhisperTextCommand;
 import bot.commands.utils.PingCommand;
 import bot.listeners.VoiceChannelEventListener;
 import bot.listeners.messages.AliasCommandHandler;
-import bot.listeners.MessageReceivedEventListener;
+import bot.listeners.messages.MessageReceivedEventListener;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.jagrosh.jdautilities.command.CommandClientBuilder;
