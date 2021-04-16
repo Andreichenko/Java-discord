@@ -26,11 +26,11 @@ public class AudioController {
     @PostMapping("/play")
     public ResponseEntity<String> addNewSong(@RequestParam boolean top, @RequestParam String argument,
                                              @RequestParam String guildId, @RequestParam String textChannelId,
-                                             @RequestParam String memberId){
+                                             @RequestParam String memberId) {
         try {
             VoiceChannelUtils.SearchAndPlaySong(botService.getJda(), argument, guildId, textChannelId, memberId, top,
                     botService.getAudioPlayerManager());
-        }catch(IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             LOGGER.error("Error performing play command", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
@@ -38,18 +38,19 @@ public class AudioController {
     }
 
     @PostMapping("/skip")
-    public ResponseEntity<String> addNewSong(@RequestParam String guildId){
+    public ResponseEntity<String> addNewSong(@RequestParam String guildId) {
         AudioPlayerSendHandler audioPlayerSendHandler;
 
-        try{
+        try {
             audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(botService.getJda(), guildId);
-        }catch (IllegalArgumentException e){
+        } catch (IllegalArgumentException e) {
             LOGGER.error("Error performing skip command", e);
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }
-        if (audioPlayerSendHandler != null){
+        if (audioPlayerSendHandler != null) {
             audioPlayerSendHandler.getAudioPlayer().stopTrack();
             return new ResponseEntity<>(HttpStatus.OK);
         }
         return new ResponseEntity<>(HttpStatus.BAD_GATEWAY);
     }
+}

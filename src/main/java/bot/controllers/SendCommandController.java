@@ -22,6 +22,48 @@ public class SendCommandController {
 
     private final BotService botService;
 
+    @Autowired
+    public SendCommandController(BotService botService){
+        this.botService = botService;
+    }
 
+    @PostMapping()
+    public ResponseEntity<String> sendCommand(@RequestParam String commandName, @RequestParam String commandArgs,
+                                              @RequestParam String guildId, @RequestParam String textChannelId,
+                                              @RequestParam String userId) {
+
+        Command command = botService.getCommandFromName(commandName);
+
+        return new ResponseEntity<>(HttpStatus.OK);
+
+    }
+
+    class EndpointMessage extends AbstractMessage{
+        public EndpointMessage(String content, String nonce, boolean isTTS, MessageChannel messageChannel, Member author){
+            super(content, nonce, isTTS);
+        }
+
+        @NotNull
+        @Override
+        public MessageChannel getChannel(){
+            return super.getChannel();
+        }
+
+        @Override
+        protected void unsupported(){
+
+        }
+
+        @Nullable
+        @Override
+        public MessageActivity getActivity(){
+            return null;
+        }
+
+        @Override
+        public long getIdLong(){
+            return 0;
+        }
+    }
 
 }
