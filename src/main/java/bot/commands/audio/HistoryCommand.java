@@ -13,7 +13,7 @@ import java.util.ArrayList;
 
 import static bot.utils.TextChannelResponses.CANT_DISPLAY_QUEUE_PAGE;
 import static bot.utils.TextChannelResponses.NO_HISTORY_TO_SHOW;
-import static bot.utils.EmBuilder.createEmbedBuilder;
+import static bot.utils.EmbedUtils.createEmbedBuilder;
 
 /**
  * Add history command
