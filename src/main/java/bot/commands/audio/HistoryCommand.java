@@ -2,7 +2,6 @@ package bot.commands.audio;
 
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.utils.EmBuilder;
 import com.google.common.collect.EvictingQueue;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -12,9 +11,9 @@ import net.dv8tion.jda.api.managers.AudioManager;
 
 import java.util.ArrayList;
 
-import static bot.utils.ChannelTextResponses.CANT_DISPLAY_QUEUE_PAGE;
-import static bot.utils.ChannelTextResponses.NO_HISTORY_TO_SHOW;
-import static bot.utils.EmBuilder.createEmbedBuilder;
+import static bot.utils.TextChannelResponses.CANT_DISPLAY_QUEUE_PAGE;
+import static bot.utils.TextChannelResponses.NO_HISTORY_TO_SHOW;
+import static bot.utils.EmbedUtils.createEmbedBuilder;
 
 /**
  * Add history command

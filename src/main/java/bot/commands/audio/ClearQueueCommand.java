@@ -1,7 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.commands.audio.utils.VoiceChannel;
+import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
@@ -21,7 +21,7 @@ public class ClearQueueCommand extends Command {
 
             try {
 
-             audioPlayerSendHandler = VoiceChannel.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
+             audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
 
             } catch (IllegalArgumentException ex) {
 

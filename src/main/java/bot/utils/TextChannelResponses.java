@@ -1,6 +1,6 @@
 package bot.utils;
 
-public class ChannelTextResponses {
+public class TextChannelResponses {
 
     public static final String NOT_CONNECTED_TO_VOICE_MESSAGE = "**You need to be in a voice channel.**";
     public static final String NO_ARGUMENT_PROVIDED_TO_PLAY_COMMAND = "**Need to provide something to play**";

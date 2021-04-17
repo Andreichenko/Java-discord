@@ -1,55 +1,69 @@
 package bot.entities;
 
 
-import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.data.mongodb.core.mapping.Field;
-
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 /**
- *  Save and load some information to mongo database
+ *  Save and load some information to postgreesql database
  */
 
-@Document(collection = "alias")
-public class AliasEntity {
+@Entity
+public class AliasEntity{
 
-    @Field
-    public String commandName;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-    @Field
-    public String aliasName;
+    private String serverId;
 
-    @Field
-    public String aliasCommandArgs;
+    private String name;
+
+    private String command;
+
+    private String args;
 
     public AliasEntity() {
     }
 
-    public AliasEntity(String commandName, String aliasName, String aliasCommandArgs) {
-        this.commandName = commandName;
-        this.aliasName = aliasName;
-        this.aliasCommandArgs = aliasCommandArgs;
+    public Long getId() {
+        return id;
     }
 
-    public String getCommandName() {
-        return commandName;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setCommandName(String commandName) {
-        this.commandName = commandName;
+    public String getServerId() {
+        return serverId;
     }
 
-    public String getAliasName() {
-        return aliasName;
+    public void setServerId(String serverId) {
+        this.serverId = serverId;
     }
 
-    public void setAliasName(String aliasName) {
-        this.aliasName = aliasName;
+    public String getName() {
+        return name;
     }
 
-    public String getAliasCommandArgs() {
-        return aliasCommandArgs;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setAliasCommandArgs(String aliasCommandArgs) {
-        this.aliasCommandArgs = aliasCommandArgs;
+    public String getCommand() {
+        return command;
+    }
+
+    public void setCommand(String command) {
+        this.command = command;
+    }
+
+    public String getArgs() {
+        return args;
+    }
+
+    public void setArgs(String args) {
+        this.args = args;
     }
 }
