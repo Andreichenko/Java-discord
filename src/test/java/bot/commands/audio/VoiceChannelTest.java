@@ -6,6 +6,8 @@ import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
+
+import bot.commands.audio.utils.VoiceChannelUtils;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.event.AudioEventListener;
@@ -35,5 +37,7 @@ public class VoiceChannelTest {
         GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
         when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
         when(mockGuildVoiceState.getChannel()).thenReturn(mockVoiceChannel);
+
+        VoiceChannelUtils.joinVoiceChannel();
     }
 }
