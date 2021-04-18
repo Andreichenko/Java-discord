@@ -38,18 +38,18 @@ public class VoiceChannelTest {
         when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
         when(mockGuildVoiceState.getChannel()).thenReturn(mockVoiceChannel);
 
-
-        AudioPlayerManager mockAudioPlayerManager = mock(AudioPlayerManager.class);
         AudioManager mockAudioManager = mock(AudioManager.class);
+
         ArgumentCaptor<AudioSendHandler> audioSendHandlerArgumentCaptor = ArgumentCaptor.forClass(AudioSendHandler.class);
         doAnswer(invocation -> null).when(mockAudioManager).setSendingHandler(audioSendHandlerArgumentCaptor.capture());
 
+        ArgumentCaptor<VoiceChannel> voiceChannelArgumentCaptor = ArgumentCaptor.forClass(VoiceChannel.class);
+        doAnswer(invocation -> null).when(mockAudioManager).openAudioConnection(voiceChannelArgumentCaptor.capture());
+
         Member mockMember = mock(Member.class);
         when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
-        when(mockAudioPlayerManager.createPlayer()).thenReturn();
-
-        VoiceChannelUtils.joinVoiceChannel();
     }
 }
