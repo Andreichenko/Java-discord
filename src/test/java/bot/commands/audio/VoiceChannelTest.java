@@ -46,7 +46,8 @@ public class VoiceChannelTest {
 
         Member mockMember = mock(Member.class);
         when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
-
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
         when(mockAudioPlayerManager.createPlayer()).thenReturn();
 
         VoiceChannelUtils.joinVoiceChannel();
