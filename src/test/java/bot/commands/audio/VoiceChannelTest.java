@@ -44,6 +44,9 @@ public class VoiceChannelTest {
         ArgumentCaptor<AudioSendHandler> audioSendHandlerArgumentCaptor = ArgumentCaptor.forClass(AudioSendHandler.class);
         doAnswer(invocation -> null).when(mockAudioManager).setSendingHandler(audioSendHandlerArgumentCaptor.capture());
 
+        Member mockMember = mock(Member.class);
+        when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+
         when(mockAudioPlayerManager.createPlayer()).thenReturn();
 
         VoiceChannelUtils.joinVoiceChannel();
