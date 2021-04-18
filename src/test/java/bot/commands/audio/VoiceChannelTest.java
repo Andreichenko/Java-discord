@@ -55,6 +55,11 @@ public class VoiceChannelTest {
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
 
+        ArgumentCaptor<AudioEventListener> audioEventListenerArgumentCaptor =
+                ArgumentCaptor.forClass(AudioEventListener.class);
+        AudioPlayer mockPlayer = mock(AudioPlayer.class);
+        doAnswer(invocation -> null).when(mockPlayer).addListener(audioEventListenerArgumentCaptor.capture());
+
         assertTrue(audioSendHandlerArgumentCaptor.getValue() instanceof AudioPlayerSendHandler);
         assertTrue(audioSendHandlerArgumentCaptor.getValue() instanceof TrackSchedulers);
         assertEquals(mockVoiceChannel, voiceChannelArgumentCaptor.getValue());
