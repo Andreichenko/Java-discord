@@ -27,4 +27,13 @@ public class VoiceChannelTest {
     public void init(){
         MockitoAnnotations.initMocks(this);
     }
+
+    public void canJoinVoiceChannelSuccessfully(){
+
+        VoiceChannel mockVoiceChannel = mock(VoiceChannel.class);
+
+        GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+        when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
+        when(mockGuildVoiceState.getChannel()).thenReturn(mockVoiceChannel);
+    }
 }
