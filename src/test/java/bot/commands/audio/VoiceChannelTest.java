@@ -7,6 +7,8 @@ import static org.mockito.Mockito.doAnswer;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
+import bot.commands.audio.utils.AudioPlayerSendHandler;
+import bot.commands.audio.utils.TrackSchedulers;
 import bot.commands.audio.utils.VoiceChannelUtils;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
@@ -51,5 +53,9 @@ public class VoiceChannelTest {
 
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        assertTrue(audioSendHandlerArgumentCaptor.getValue() instanceof AudioPlayerSendHandler);
+        assertTrue(audioSendHandlerArgumentCaptor.getValue() instanceof TrackSchedulers);
+        assertEquals(mockVoiceChannel, voiceChannelArgumentCaptor.getValue());
     }
 }
