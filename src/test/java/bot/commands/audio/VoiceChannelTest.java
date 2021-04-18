@@ -38,6 +38,10 @@ public class VoiceChannelTest {
         when(mockGuildVoiceState.inVoiceChannel()).thenReturn(true);
         when(mockGuildVoiceState.getChannel()).thenReturn(mockVoiceChannel);
 
+
+        AudioPlayerManager mockAudioPlayerManager = mock(AudioPlayerManager.class);
+        when(mockAudioPlayerManager.createPlayer()).thenReturn();
+
         VoiceChannelUtils.joinVoiceChannel();
     }
 }
