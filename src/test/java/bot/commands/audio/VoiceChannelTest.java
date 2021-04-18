@@ -32,6 +32,7 @@ public class VoiceChannelTest {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void canJoinVoiceChannelSuccessfully(){
 
         VoiceChannel mockVoiceChannel = mock(VoiceChannel.class);
