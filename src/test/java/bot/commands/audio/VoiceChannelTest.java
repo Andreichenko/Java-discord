@@ -68,4 +68,9 @@ public class VoiceChannelTest {
         assertTrue(audioEventListenerArgumentCaptor.getValue() instanceof TrackSchedulers);
         assertEquals(mockVoiceChannel, voiceChannelArgumentCaptor.getValue());
     }
+
+    public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNull(){
+        Member mockMember = mock(Member.class);
+
+    }
 }
