@@ -69,9 +69,12 @@ public class VoiceChannelTest {
         assertEquals(mockVoiceChannel, voiceChannelArgumentCaptor.getValue());
     }
 
+    @Test
     public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNull(){
         Member mockMember = mock(Member.class);
+        when(mockMember.getVoiceState()).thenReturn(null);
 
+        VoiceChannelUtils.joinVoiceChannel(mockMember, null, null);
     }
 
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenEmptyGuildIdIsPassed(){
