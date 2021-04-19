@@ -77,7 +77,7 @@ public class VoiceChannelTest {
         VoiceChannelUtils.joinVoiceChannel(mockMember, null, null);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenEmptyGuildIdIsPassed(){
         JDA mockJda = mock(JDA.class);
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.setPauseStatusOnAudioPlayer();
