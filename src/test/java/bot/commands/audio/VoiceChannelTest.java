@@ -69,7 +69,7 @@ public class VoiceChannelTest {
         assertEquals(mockVoiceChannel, voiceChannelArgumentCaptor.getValue());
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test(expected = NullPointerException.class)
     public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNull(){
         Member mockMember = mock(Member.class);
         when(mockMember.getVoiceState()).thenReturn(null);
