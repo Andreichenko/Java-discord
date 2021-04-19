@@ -75,4 +75,10 @@ public class VoiceChannelTest {
         when(mockMember.getVoiceState()).thenReturn(null);
         VoiceChannelUtils.joinVoiceChannel(mockMember, null, null);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenEmptyGuildIdIsPassed() {
+        JDA mockJda = mock(JDA.class);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, "");
+    }
 }
