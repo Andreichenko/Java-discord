@@ -73,4 +73,8 @@ public class VoiceChannelTest {
         Member mockMember = mock(Member.class);
 
     }
+
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenEmptyGuildIdIsPassed(){
+
+    }
 }
