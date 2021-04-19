@@ -78,6 +78,7 @@ public class VoiceChannelTest {
     }
 
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenEmptyGuildIdIsPassed(){
-
+        JDA mockJda = mock(JDA.class);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.setPauseStatusOnAudioPlayer();
     }
 }
