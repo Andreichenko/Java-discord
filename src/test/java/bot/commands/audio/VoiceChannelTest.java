@@ -82,6 +82,7 @@ public class VoiceChannelTest {
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, "");
     }
 
+    @Test
     public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNotConnected(){
         GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
         when(mockGuildVoiceState.inVoiceChannel()).thenReturn(false);
@@ -99,5 +100,8 @@ public class VoiceChannelTest {
         AudioManager mockAudioManager = mock(AudioManager.class);
         when(mockAudioManager.isConnected()).thenReturn(true);
         when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
     }
 }
