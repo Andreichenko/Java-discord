@@ -110,5 +110,6 @@ public class VoiceChannelTest {
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
                 GUILD_ID);
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
+        assertEquals(mockAudioPlayerSendHandler, returnedAudioPlayerSendHandler);
     }
 }
