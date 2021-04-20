@@ -92,6 +92,7 @@ public class VoiceChannelTest {
         VoiceChannelUtils.joinVoiceChannel(mockMember, null, null);
     }
 
+    @Test
     public void canGetAudioPlayerSendHandlerSuccessfully(){
         final String GUILD_ID = "mockGuildId";
         AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
@@ -103,5 +104,9 @@ public class VoiceChannelTest {
 
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJda = mock(JDA.class);
+        when(mockJda.getGuildById(stringArgumentCaptor.capture())).thenReturn(mockGuild);
+        assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
 }
