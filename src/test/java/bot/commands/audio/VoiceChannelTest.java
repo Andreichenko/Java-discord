@@ -92,6 +92,6 @@ public class VoiceChannelTest {
     }
 
     public void canGetAudioPlayerSendHandlerSuccessfully(){
-
+        final String GUILD_ID = "mockGuildId";
     }
 }
