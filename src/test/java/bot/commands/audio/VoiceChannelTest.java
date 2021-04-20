@@ -81,4 +81,35 @@ public class VoiceChannelTest {
         JDA mockJda = mock(JDA.class);
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, "");
     }
+
+    @Test(expected = NullPointerException.class)
+    public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNotConnected(){
+        GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+        when(mockGuildVoiceState.inVoiceChannel()).thenReturn(false);
+
+        Member mockMember = mock(Member.class);
+        when(mockMember.getVoiceState()).thenReturn(mockGuildVoiceState);
+        VoiceChannelUtils.joinVoiceChannel(mockMember, null, null);
+    }
+
+    @Test
+    public void canGetAudioPlayerSendHandlerSuccessfully(){
+        final String GUILD_ID = "mockGuildId";
+        AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(true);
+        when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJda = mock(JDA.class);
+        when(mockJda.getGuildById(stringArgumentCaptor.capture())).thenReturn(mockGuild);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
+        assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
+        assertEquals(mockAudioPlayerSendHandler, returnedAudioPlayerSendHandler);
+    }
 }
