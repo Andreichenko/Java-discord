@@ -107,6 +107,8 @@ public class VoiceChannelTest {
 
         JDA mockJda = mock(JDA.class);
         when(mockJda.getGuildById(stringArgumentCaptor.capture())).thenReturn(mockGuild);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
 }
