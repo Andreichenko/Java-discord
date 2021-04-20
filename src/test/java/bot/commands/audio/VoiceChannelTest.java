@@ -84,5 +84,10 @@ public class VoiceChannelTest {
 
     public void canJoinVoiceChannelFailsGracefullyWhenVoiceStateIsNotConnected(){
         GuildVoiceState mockGuildVoiceState = mock(GuildVoiceState.class);
+
+    }
+
+    public void canGetAudioPlayerSendHandlerSuccessfully(){
+
     }
 }
