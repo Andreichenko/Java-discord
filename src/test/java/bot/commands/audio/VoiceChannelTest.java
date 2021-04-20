@@ -95,5 +95,9 @@ public class VoiceChannelTest {
         final String GUILD_ID = "mockGuildId";
         AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(true);
+        when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
     }
 }
