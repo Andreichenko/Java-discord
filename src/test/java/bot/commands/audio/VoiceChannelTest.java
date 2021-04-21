@@ -117,6 +117,10 @@ public class VoiceChannelTest {
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyIfBotIsNotConnectedToVoiceChannel(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         final String GUILD_ID = "mockGuildId";
+        Guild mockGuild = mock(Guild.class);
+        JDA mockJda = mock(JDA.class);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
 }
