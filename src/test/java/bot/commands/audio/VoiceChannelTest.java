@@ -112,4 +112,24 @@ public class VoiceChannelTest {
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
         assertEquals(mockAudioPlayerSendHandler, returnedAudioPlayerSendHandler);
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyIfBotIsNotConnectedToVoiceChannel(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        final String GUILD_ID = "mockGuildId";
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(false);
+
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
+        JDA mockJda = mock(JDA.class);
+        when(mockJda.getGuildById(stringArgumentCaptor.capture())).thenReturn(mockGuild);
+
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
+
+        assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
+    }
 }
