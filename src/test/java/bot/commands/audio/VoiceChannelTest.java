@@ -115,5 +115,6 @@ public class VoiceChannelTest {
 
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyIfBotIsNotConnectedToVoiceChannel(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        final String GUILD_ID = "mockGuildId";
     }
 }
