@@ -113,7 +113,7 @@ public class VoiceChannelTest {
         assertEquals(mockAudioPlayerSendHandler, returnedAudioPlayerSendHandler);
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyIfBotIsNotConnectedToVoiceChannel(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         final String GUILD_ID = "mockGuildId";
