@@ -132,4 +132,10 @@ public class VoiceChannelTest {
 
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
+
+    @Test
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenNullGuildIdIsPassed(){
+        JDA mockJda = mock(JDA.class);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, null);
+    }
 }
