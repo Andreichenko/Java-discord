@@ -143,5 +143,9 @@ public class VoiceChannelTest {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         final String GUILD_ID = "mockGuildId";
         JDA mockJda = mock(JDA.class);
+        when(mockJda.getGuildById(anyString())).thenReturn(null);
+
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
     }
 }
