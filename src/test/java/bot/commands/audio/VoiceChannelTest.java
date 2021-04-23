@@ -139,6 +139,7 @@ public class VoiceChannelTest {
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, null);
     }
 
+    @Test(expected = IllegalArgumentException.class)
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenGuildWithIdIsNotFound(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         final String GUILD_ID = "mockGuildId";
