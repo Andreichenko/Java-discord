@@ -132,4 +132,21 @@ public class VoiceChannelTest {
 
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenNullGuildIdIsPassed(){
+        JDA mockJda = mock(JDA.class);
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenGuildWithIdIsNotFound(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        final String GUILD_ID = "mockGuildId";
+        JDA mockJda = mock(JDA.class);
+        when(mockJda.getGuildById(anyString())).thenReturn(null);
+
+        AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda,
+                GUILD_ID);
+    }
 }
