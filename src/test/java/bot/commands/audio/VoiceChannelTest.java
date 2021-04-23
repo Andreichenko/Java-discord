@@ -140,7 +140,8 @@ public class VoiceChannelTest {
     }
 
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenGuildWithIdIsNotFound(){
-
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        final String GUILD_ID = "mockGuildId";
         JDA mockJda = mock(JDA.class);
     }
 }
