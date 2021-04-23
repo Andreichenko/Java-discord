@@ -133,7 +133,7 @@ public class VoiceChannelTest {
         assertEquals(GUILD_ID, stringArgumentCaptor.getValue());
     }
 
-    @Test
+    @Test(expected = IllegalArgumentException.class)
     public void gettingAudioPlayerSendHandlerFailsSuccessfullyWhenNullGuildIdIsPassed(){
         JDA mockJda = mock(JDA.class);
         AudioPlayerSendHandler returnedAudioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(mockJda, null);
