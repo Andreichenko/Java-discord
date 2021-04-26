@@ -8,8 +8,7 @@ import static org.junit.Assert.assertEquals;
 public class Timetest {
 
 
-    public void TestTimeUtilsWithHoursMinsSeconds()
-    {
+    public void testUtils(){
 
     }
 }
