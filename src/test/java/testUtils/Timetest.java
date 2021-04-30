@@ -14,7 +14,10 @@ public class Timetest {
         assertEquals("1:01:40", timeString);
     }
 
+    @Test
     public void TestTimeUtilsWithMinimalsSeconds(){
-
+        // This is 1 minute and 40 seconds
+        String timeString = TimeUtils.timeString(100);
+        assertEquals("01:40", timeString);
     }
 }
