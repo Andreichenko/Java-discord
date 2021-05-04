@@ -30,3 +30,7 @@ services:
       - OWNER_ID=12345
       - POSTGRES_LOCATION=jdbc:postgresql://db-discord:5432/postgres
     restart: always
+
+networks:
+  discord:
+    driver: bridge
