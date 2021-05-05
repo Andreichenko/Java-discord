@@ -6,6 +6,9 @@ services:
     ports:
       - "5432:5432"
     environment:
+      POSTGRES_USER: discord
+      POSTGRES_PASSWORD: discord
+      POSTGRES_DB: discord
       PGDATA: /var/lib/postgresql/data/pgdata
     volumes:
       - /opt/discord-bot/postgresData:/var/lib/postgresql
