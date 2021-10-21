@@ -1,3 +1,8 @@
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.0.RELEASE'
+}
+
 group 'com.frei.discord-bot'
 version '1.0-SNAPSHOT'
 
@@ -8,6 +13,9 @@ sourceCompatibility = 1.8
 repositories {
     mavenCentral()
     jcenter()
+    maven {
+        url 'https://m2.dv8tion.net/releases'
+    }
 }
 
 dependencies {
@@ -16,12 +24,12 @@ dependencies {
     testCompile group: 'org.mockito', name: 'mockito-core', version: '3.0.0'
 
     //JDA and lavaplayer
-    compile 'org.awaitility:awaitility:4.0.1'
+    compile 'org.awaitility:awaitility:4.1.0'
     compile 'org.asteriskjava:asterisk-java:1.0.0-final'
 
     compile 'net.dv8tion:JDA:+'
     compile 'com.jagrosh:jda-utilities:+'
-    compile 'com.sedmelluq:lavaplayer:1.3.55'
+    compile 'com.sedmelluq:lavaplayer:1.3.78'
 
     // from youtube
     compile 'com.google.apis:google-api-services-youtube:v3-rev212-1.25.0'
