@@ -1,6 +1,5 @@
 package bot;
 
-import bot.repositories.AliasEntityRepository;
 import bot.services.BotService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -14,16 +13,16 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 @SpringBootApplication
 @EnableConfigurationProperties
-public class AppBootstrap implements CommandLineRunner{
+public class ApplicationBootstrap implements CommandLineRunner {
 
     private final BotService botService;
 
-    public AppBootstrap(BotService botService) {
+    public ApplicationBootstrap(BotService botService) {
         this.botService = botService;
     }
 
     public static void main(String[] args) {
-        SpringApplication.run(AppBootstrap.class, args);
+        SpringApplication.run(ApplicationBootstrap.class, args);
     }
 
     @Override
