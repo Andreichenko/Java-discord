@@ -31,3 +31,9 @@ DISCORD_BOT_KEY	== The discord API key
 BOT_USER_ID == The User ID account 
 
 POSTGRES_LOCATION == The URL of postgres 
+
+
+
+
+
+PS. the project move to GitLab
