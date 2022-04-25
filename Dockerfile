@@ -1,7 +1,7 @@
 FROM openjdk:8-jre-buster
 
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe" > /etc/apt/sources.list
-
+# - Java 17. The possibility of installing should be explored
 RUN apt-get -y update
 
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q python-software-properties software-properties-common curl
