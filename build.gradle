@@ -38,22 +38,30 @@ dependencies {
     compile 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     compile 'com.google.apis:google-api-services-youtube:v3-rev212-1.25.0'
 
+    //jaxb
+    implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
+
     //springboot
 
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.3.1.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: '2.6.6'
 
     // PostgresSQL-specific connector for JPA
     implementation('org.postgresql:postgresql:9.4-1206-jdbc42')
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-web
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.3.1.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.6.6'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-tomcat
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.3.1.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-tomcat', version: '2.6.6'
 
     // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-actuator
-    compile group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.3.1.RELEASE'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-starter-actuator', version: '2.6.6'
+    implementation group: 'org.springframework.boot', name: 'spring-boot-configuration-processor', version: '2.6.6'
 
+    // https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter-test
+    testImplementation group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '2.6.6'
+
+    compileOnly "org.springframework.boot:spring-boot-configuration-processor"
 }
 
 test {
