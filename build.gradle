@@ -7,7 +7,7 @@ version '0.1'
 sourceCompatibility = '17'
 
 //apply plugin: 'application'
-mainClassName = "bot.ApplicationBootstrap"
+//mainClassName = "bot.ApplicationBootstrap"
 
 repositories {
     mavenCentral()
