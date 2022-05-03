@@ -27,6 +27,6 @@ public class ApplicationBootstrap implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        this.botService.startBot();
+      //  this.botService.startBot();
     }
 }
