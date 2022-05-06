@@ -36,6 +36,7 @@ package bot.utils.commands;
  */
 
 import java.util.List;
+import bot.utils.commands.annotation.JDACommand;
 
 public interface AnnotatedModuleCompiler {
     List<Command> compile(Object o);
