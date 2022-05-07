@@ -17,5 +17,8 @@ public interface CommandEvent {
     void reply(String message, Consumer<Message> success, Consumer<Throwable> failure);
     void reply(MessageEmbed embed);
     void reply(String message);
+    void reply(MessageEmbed embed, Consumer<Message> success);
+    void reply(MessageEmbed embed, Consumer<Message> success, Consumer<Throwable> failure);
     void reply(String message, Consumer<Message> success);
+    void reply(Message message);
 }
