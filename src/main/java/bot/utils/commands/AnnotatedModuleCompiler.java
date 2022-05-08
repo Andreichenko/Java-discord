@@ -13,9 +13,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
 package bot.utils.commands;
 
+        import bot.utils.commands.annotation.JDACommand;
+
+        import java.util.List;
 
 /**
  * A "compiler" for {@link Object Object}s that uses {@link java.lang.annotation.Annotation Annotation}s
@@ -34,10 +36,17 @@ package bot.utils.commands;
  * @author Kaidan Gustave
  * @since 1.7
  */
-
-import java.util.List;
-import bot.utils.commands.annotation.JDACommand;
-
 public interface AnnotatedModuleCompiler {
+    /**
+     * Compiles one or more {@link Command Command}s
+     * using method annotations as for properties from the specified {@link Object
+     * Object}.
+     *
+     * <p><b>This Object must be annotated with {@link
+     * JDACommand.Module @JDACommand.Module}!</b>
+     *
+     * @param o The Object, annotated with {@code @JDACommand.Module}.
+     * @return A {@link List} of Commands generated from the provided Object
+     */
     List<Command> compile(Object o);
 }
