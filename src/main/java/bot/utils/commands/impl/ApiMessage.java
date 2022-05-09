@@ -1,9 +1,26 @@
 package bot.utils.commands.impl;
 
 import net.dv8tion.jda.api.JDA;
-import net.dv8tion.jda.api.entities.*;
+import net.dv8tion.jda.api.entities.Category;
+import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.entities.Emote;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.IMentionable;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageActivity;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.MessageEmbed;
+import net.dv8tion.jda.api.entities.MessageReaction;
+import net.dv8tion.jda.api.entities.MessageReference;
+import net.dv8tion.jda.api.entities.MessageSticker;
+import net.dv8tion.jda.api.entities.MessageType;
+import net.dv8tion.jda.api.entities.PrivateChannel;
+import net.dv8tion.jda.api.entities.Role;
+import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.interactions.components.ActionRow;
-import net.dv8tion.jda.api.interactions.components.LayoutComponent;
+import net.dv8tion.jda.api.interactions.components.ComponentLayout;
 import net.dv8tion.jda.api.requests.RestAction;
 import net.dv8tion.jda.api.requests.restaction.AuditableRestAction;
 import net.dv8tion.jda.api.requests.restaction.MessageAction;
@@ -14,12 +31,12 @@ import org.jetbrains.annotations.Nullable;
 
 import java.time.OffsetDateTime;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.EnumSet;
 import java.util.Formatter;
 import java.util.List;
 
 public class ApiMessage implements Message {
-
     String rawContent;
 
     public ApiMessage(String rawContent) {
@@ -29,6 +46,12 @@ public class ApiMessage implements Message {
     @Nullable
     @Override
     public MessageReference getMessageReference() {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public Message getReferencedMessage() {
         return null;
     }
 
@@ -47,7 +70,7 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public List<TextChannel> getMentionedChannels() {
-        return null;
+        return Collections.emptyList();
     }
 
     @NotNull
@@ -59,7 +82,7 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public List<Role> getMentionedRoles() {
-        return null;
+        return Collections.emptyList();
     }
 
     @NotNull
@@ -71,7 +94,7 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public List<Member> getMentionedMembers(@NotNull Guild guild) {
-        return null;
+        return Collections.emptyList();
     }
 
     @NotNull
@@ -134,7 +157,7 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public String getContentRaw() {
-        return null;
+        return rawContent;
     }
 
     @NotNull
@@ -179,12 +202,6 @@ public class ApiMessage implements Message {
 
     @NotNull
     @Override
-    public GuildMessageChannel getGuildChannel() {
-        return null;
-    }
-
-    @NotNull
-    @Override
     public PrivateChannel getPrivateChannel() {
         return null;
     }
@@ -192,12 +209,6 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public TextChannel getTextChannel() {
-        return null;
-    }
-
-    @NotNull
-    @Override
-    public NewsChannel getNewsChannel() {
         return null;
     }
 
@@ -274,13 +285,19 @@ public class ApiMessage implements Message {
 
     @NotNull
     @Override
+    public MessageAction editMessage(@NotNull MessageEmbed newContent) {
+        return null;
+    }
+
+    @NotNull
+    @Override
     public MessageAction editMessageEmbeds(@NotNull Collection<? extends MessageEmbed> embeds) {
         return null;
     }
 
     @NotNull
     @Override
-    public MessageAction editMessageComponents(@NotNull Collection<? extends LayoutComponent> components) {
+    public MessageAction editMessageComponents(@NotNull Collection<? extends ComponentLayout> components) {
         return null;
     }
 
@@ -328,13 +345,13 @@ public class ApiMessage implements Message {
     @NotNull
     @Override
     public RestAction<Void> addReaction(@NotNull Emote emote) {
-        return null;
+        return new BlankRestAction<>();
     }
 
     @NotNull
     @Override
     public RestAction<Void> addReaction(@NotNull String unicode) {
-        return null;
+        return new BlankRestAction<>();
     }
 
     @NotNull
@@ -393,13 +410,19 @@ public class ApiMessage implements Message {
 
     @Nullable
     @Override
-    public MessageReaction getReactionByUnicode(@NotNull String unicode) {
+    public MessageReaction.ReactionEmote getReactionByUnicode(@NotNull String unicode) {
         return null;
     }
 
     @Nullable
     @Override
-    public MessageReaction getReactionById(long id) {
+    public MessageReaction.ReactionEmote getReactionById(@NotNull String id) {
+        return null;
+    }
+
+    @Nullable
+    @Override
+    public MessageReaction.ReactionEmote getReactionById(long id) {
         return null;
     }
 
@@ -422,7 +445,7 @@ public class ApiMessage implements Message {
 
     @NotNull
     @Override
-    public EnumSet<MessageFlag> getFlags() {
+    public EnumSet<MessageFlag> getFlags(){
         return null;
     }
 
@@ -445,11 +468,6 @@ public class ApiMessage implements Message {
     @Nullable
     @Override
     public Interaction getInteraction() {
-        return null;
-    }
-
-    @Override
-    public RestAction<ThreadChannel> createThreadChannel(String name) {
         return null;
     }
 
