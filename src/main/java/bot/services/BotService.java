@@ -1,6 +1,7 @@
 package bot.services;
 
 
+import bot.api.dto.TriggerCommandDto;
 import bot.commands.alias.AliasCreateCommand;
 import bot.commands.alias.AliasDeleteCommand;
 import bot.commands.alias.AliasListCommand;
@@ -8,6 +9,7 @@ import bot.repositories.AliasEntityRepository;
 import bot.utils.BotConfiguration;
 import bot.utils.commands.Command;
 import bot.utils.commands.CommandClientBuilder;
+import bot.utils.commands.CommandEvent;
 import com.jagrosh.jdautilities.command.CommandClient;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
@@ -60,6 +62,13 @@ public class BotService {
         return null;
     }
 
+    public CommandEvent createCommandEvent(TriggerCommandDto triggerCommandDto) {
+        return null;
+    }
+
+    public JDA getJda() {
+        return null;
+    }
 }
 
 
