@@ -106,9 +106,10 @@ public class BotService {
             throw new IllegalArgumentException("member is null");
         }
 
-        return new ApiCommandEvent(user, textChannel, messageChannel, privateChannel,
-                apiMessage, member, jda, guild, ChannelType.TEXT,
-                triggerCommandDto.getCommandArgs(), client);
+        return null;
+        //return new ApiCommandEvent(user, textChannel, messageChannel, privateChannel,
+        //        apiMessage, member, jda, guild, ChannelType.TEXT,
+        //        triggerCommandDto.getCommandArgs(), client);
     }
 
 
