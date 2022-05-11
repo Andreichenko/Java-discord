@@ -54,7 +54,6 @@ public class VoiceChannelEventListener extends ListenerAdapter {
     /**
      *
      * @param event this event is triggered whenever something happens on the server, and then should check if the bot was
-
      */
     @Override
     public void onGuildVoiceLeave(@Nonnull GuildVoiceLeaveEvent event){
