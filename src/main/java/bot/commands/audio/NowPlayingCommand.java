@@ -3,8 +3,6 @@ package bot.commands.audio;
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.commands.audio.utils.YouTubeUtils;
-import bot.utils.TextChannelResponses;
-import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;

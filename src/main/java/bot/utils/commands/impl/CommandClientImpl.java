@@ -577,11 +577,13 @@ public class CommandClientImpl implements CommandClient, EventListener
                     }
                 }
             }
-        }
-
         if (listener != null)
             listener.onNonCommandMessage(event);
-    }
+        }
+
+
+
+
 
     @Nullable
     public Command getCommandWithName(String name) {

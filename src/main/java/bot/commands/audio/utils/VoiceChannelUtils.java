@@ -1,6 +1,5 @@
 package bot.commands.audio.utils;
 
-import bot.utils.TextChannelResponses;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayer;
 import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import net.dv8tion.jda.api.JDA;

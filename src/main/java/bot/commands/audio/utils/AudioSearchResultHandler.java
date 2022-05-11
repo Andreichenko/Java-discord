@@ -1,6 +1,5 @@
 package bot.commands.audio.utils;
 
-import bot.utils.TimeLineStamp;
 import com.sedmelluq.discord.lavaplayer.player.AudioLoadResultHandler;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.tools.FriendlyException;

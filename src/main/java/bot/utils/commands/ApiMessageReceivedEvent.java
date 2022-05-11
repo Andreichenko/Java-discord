@@ -6,6 +6,6 @@ import org.jetbrains.annotations.NotNull;
 
 public class ApiMessageReceivedEvent {
     public ApiMessageReceivedEvent(@NotNull JDA api, long responseNumber, @NotNull Message message){
-        super(api, responseNumber, message);
+       // super(api, responseNumber, message);
     }
 }
