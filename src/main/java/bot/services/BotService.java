@@ -4,28 +4,7 @@ import bot.commands.alias.AliasCreateCommand;
 import bot.commands.alias.AliasDeleteCommand;
 import bot.commands.alias.AliasListCommand;
 
-import bot.commands.audio.ClearQueueCommand;
-import bot.commands.audio.HistoryCommand;
-import bot.commands.audio.JoinCommand;
-import bot.commands.audio.LeaveCommand;
-import bot.commands.audio.LoopCommand;
-import bot.commands.audio.NowPlayingCommand;
-import bot.commands.audio.PauseCommand;
-import bot.commands.audio.PlayCommand;
-import bot.commands.audio.PlayTopCommand;
-import bot.commands.audio.QueueCommand;
-import bot.commands.audio.RemoveCommand;
-import bot.commands.audio.ResumeCommand;
-import bot.commands.audio.SeekCommand;
-import bot.commands.audio.ShuffleCommand;
-import bot.commands.audio.SkipSongCommand;
-import bot.commands.audio.SkipToCommand;
-
-import bot.commands.text.WhisperTextCommand;
 import bot.api.dto.TriggerCommandDto;
-import bot.commands.alias.AliasCreateCommand;
-import bot.commands.alias.AliasDeleteCommand;
-import bot.commands.alias.AliasListCommand;
 import bot.repositories.AliasEntityRepository;
 import bot.utils.BotConfiguration;
 import bot.utils.commands.Command;

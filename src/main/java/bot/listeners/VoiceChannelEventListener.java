@@ -16,7 +16,7 @@ import java.util.TimerTask;
 
 public class VoiceChannelEventListener extends ListenerAdapter {
 
-    public static final int VOICE_CHECK_DELAY = 30 * 1000;
+    public static final int VOICE_CHECK_DELAY = 60 * 1000;
 
     private String BOT_USER_ID;
 
