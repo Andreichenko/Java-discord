@@ -15,8 +15,19 @@ import com.sedmelluq.discord.lavaplayer.player.AudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.player.DefaultAudioPlayerManager;
 import com.sedmelluq.discord.lavaplayer.source.AudioSourceManagers;
 import net.dv8tion.jda.api.JDA;
+import bot.utils.commands.impl.ApiMessage;
+import bot.utils.commands.impl.ApiTextChannel;
+import bot.utils.commands.impl.ApiCommandEvent;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import net.dv8tion.jda.api.entities.User;
+import net.dv8tion.jda.api.entities.ChannelType;
+import net.dv8tion.jda.api.entities.Guild;
+import net.dv8tion.jda.api.entities.Member;
+import net.dv8tion.jda.api.entities.Message;
+import net.dv8tion.jda.api.entities.MessageChannel;
+import net.dv8tion.jda.api.entities.PrivateChannel;
+import net.dv8tion.jda.api.entities.TextChannel;
 
 import javax.security.auth.login.LoginException;
 
@@ -63,11 +74,47 @@ public class BotService {
     }
 
     public CommandEvent createCommandEvent(TriggerCommandDto triggerCommandDto) {
-        return null;
+        User user = jda.getUserById(triggerCommandDto.getAuthorId());
+        if (user == null) {
+            throw new IllegalArgumentException("user is null");
+        }
+
+        TextChannel textChannel;
+        if (triggerCommandDto.isSilent()) {
+            textChannel = new ApiTextChannel();
+        } else {
+            textChannel = jda.getTextChannelById(triggerCommandDto.getTextChannelId());
+        }
+        MessageChannel messageChannel = null; // unsupported
+        PrivateChannel privateChannel = null; // unsupported
+        Message apiMessage = new ApiMessage("-" + triggerCommandDto.getCommandName() + " " + triggerCommandDto.getCommandArgs());
+
+        Guild guild = jda.getGuildById(triggerCommandDto.getGuildId());
+        if (guild == null) {
+            throw new IllegalArgumentException("guild is null");
+        }
+
+        Member member = guild.getMember(user);
+        if (member == null) {
+            throw new IllegalArgumentException("member is null");
+        }
+
+        return new ApiCommandEvent(user, textChannel, messageChannel, privateChannel,
+                apiMessage, member, jda, guild, ChannelType.TEXT,
+                triggerCommandDto.getCommandArgs(), client);
     }
 
+
     public JDA getJda() {
-        return null;
+        return jda;
+    }
+
+    public CommandClient getClient() {
+        return client;
+    }
+
+    public AudioPlayerManager getAudioPlayerManager() {
+        return playerManager;
     }
 }
 
