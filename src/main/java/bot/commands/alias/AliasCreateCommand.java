@@ -5,7 +5,7 @@ import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+
 
 import java.util.Arrays;
 import java.util.Map;
@@ -13,6 +13,7 @@ import java.util.Set;
 
 import bot.entities.AliasEntity;
 import bot.repositories.AliasEntityRepository;
+import org.springframework.stereotype.Component;
 
 import static bot.utils.TextChannelResponses.ALIAS_CANT_BE_CREATED_COMMAND_NOT_FOUND;
 import static bot.utils.TextChannelResponses.ALIAS_CREATED;
@@ -25,11 +26,8 @@ import static bot.utils.TextChannelResponses.NEED_MORE_ARGUMENTS_TO_CREATE_AN_AL
 public class AliasCreateCommand extends Command {
 
     private final Logger LOGGER = LogManager.getLogger(AliasCreateCommand.class);
-
     private Set<String> allCurrentCommandNames;
-
     private Map<String, Command> commandNameToCommandMap;
-
     private final AliasEntityRepository aliasEntityRepository;
 
     @Autowired
