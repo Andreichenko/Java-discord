@@ -1,0 +1,27 @@
+version: '2'
+services:
+  db-discord:
+    container_name: db-discord
+    hostname: db-discord
+    image: postgres:9.6-alpine
+    ports:
+      - "5432:5432"
+    networks:
+      - discord
+    environment:
+      POSTGRES_USER: discord
+      POSTGRES_PASSWORD: discord
+      POSTGRES_DB: discord
+      PGDATA: /var/lib/postgresql/data/pgdata
+    volumes:
+      - /opt/discord-bot/postgresData/data:/var/lib/postgresql/data
+    restart: always
+
+  discord-bot:
+    image: andreichenko/centos7:latest
+    hostname: discord-bot
+    container_name: discord-bot
+
+networks:
+  discord:
+    driver: bridge
