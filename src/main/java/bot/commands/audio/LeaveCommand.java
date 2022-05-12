@@ -2,11 +2,13 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.VoiceChannelUtils;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import bot.utils.UnicodeEmote;
+import bot.utils.commands.Command;
+import bot.utils.commands.CommandEvent;
 import net.dv8tion.jda.api.managers.AudioManager;
 
-public class LeaveCommand extends Command {
+public class LeaveCommand extends Command
+{
     public LeaveCommand() {
         this.name = "leave";
         this.aliases = new String[]{"die", "stop"};
@@ -19,14 +21,17 @@ public class LeaveCommand extends Command {
         AudioPlayerSendHandler audioPlayerSendHandler;
         try {
             audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
-        } catch(IllegalArgumentException e) {
+        }
+        catch(IllegalArgumentException e) {
             event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
             return;
         }
 
+        // tell the track scheduler that the bot is leaving the vc and not to find related videos.
+        audioPlayerSendHandler.getTrackScheduler().setGotLeaveMessage(true);
         audioPlayerSendHandler.getAudioPlayer().stopTrack();
         audioManager.closeAudioConnection();
         audioPlayerSendHandler.getTrackScheduler().clearQueue();
-        event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
+        event.getMessage().addReaction(UnicodeEmote.THUMBS_UP).queue();
     }
 }
