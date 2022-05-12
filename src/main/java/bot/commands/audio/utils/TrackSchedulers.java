@@ -21,15 +21,14 @@ import java.util.List;
 
 import static bot.utils.OptionsCommands.AUTOPLAY_NAME;
 
-public class TrackScheduler extends AudioEventAdapter {
-    private static final Logger LOGGER = LogManager.getLogger(TrackScheduler.class);
+public class TrackSchedulers extends AudioEventAdapter {
+    private static final Logger LOGGER = LogManager.getLogger(TrackSchedulers.class);
     private final EvictingQueue<AudioTrack> historyQueue = EvictingQueue.create(20);
 
     /**
      * The API key needed to call the YouTube API
      */
     private final String youtubeApiKey;
-
     /**
      * The repository for all option data
      */
@@ -55,7 +54,7 @@ public class TrackScheduler extends AudioEventAdapter {
      */
     private long queueDurationInMilliSeconds = 0;
 
-    public TrackScheduler(String youtubeApiKey, OptionEntityRepository optionEntityRepository, String guildId) {
+    public TrackSchedulers(String youtubeApiKey, OptionEntityRepository optionEntityRepository, String guildId) {
         this.youtubeApiKey = youtubeApiKey;
         this.optionEntityRepository = optionEntityRepository;
         this.guildId = guildId;
