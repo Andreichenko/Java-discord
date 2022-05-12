@@ -1,5 +1,8 @@
 package bot.api.dto;
 
+/**
+ * GuildDto class for api
+ */
 public class GuildDto {
 
     String name;
