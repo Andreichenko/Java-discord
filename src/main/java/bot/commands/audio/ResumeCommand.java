@@ -1,8 +1,6 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.VoiceChannelUtils;
-import bot.utils.TextChannelResponses;
-import bot.utils.UnicodeMotion;
 import com.jagrosh.jdautilities.command.Command;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.apache.logging.log4j.LogManager;

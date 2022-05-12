@@ -1,7 +1,5 @@
 package bot.commands.audio;
 
-import bot.utils.TextChannelResponses;
-import bot.utils.TimeLineStamp;
 import com.jagrosh.jdautilities.command.CommandEvent;
 import org.junit.Before;
 import org.junit.Test;
