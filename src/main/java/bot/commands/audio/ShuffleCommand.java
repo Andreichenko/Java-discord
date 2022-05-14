@@ -2,8 +2,9 @@ package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.TrackSchedulers;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import bot.utils.UnicodeEmote;
+import bot.utils.commands.Command;
+import bot.utils.commands.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.managers.AudioManager;
 
@@ -12,7 +13,6 @@ import java.util.List;
 
 public class ShuffleCommand extends Command {
     public ShuffleCommand() {
-
         this.name = "shuffle";
         this.help = "Shuffle the queue";
     }
@@ -33,6 +33,6 @@ public class ShuffleCommand extends Command {
         Collections.shuffle(queue);
         trackScheduler.setQueue(queue);
 
-        event.getMessage().addReaction(UnicodeMotion.THUMBS_UP).queue();
+        event.getMessage().addReaction(UnicodeEmote.THUMBS_UP).queue();
     }
 }
