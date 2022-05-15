@@ -1,7 +1,7 @@
 package bot.commands.audio;
 
 import bot.commands.audio.utils.AudioPlayerSendHandler;
-import bot.commands.audio.utils.TrackScheduler;
+import bot.commands.audio.utils.TrackSchedulers;
 import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.utils.UnicodeEmote;
 import bot.utils.commands.Command;
@@ -21,8 +21,7 @@ public class SkipToCommand extends Command {
         AudioPlayerSendHandler audioPlayerSendHandler;
         try {
             audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
-        }
-        catch(IllegalArgumentException e) {
+        } catch(IllegalArgumentException e) {
             event.getChannel().sendMessage("**Not currently connected to the voice channel**").queue();
             return;
         }
@@ -36,7 +35,7 @@ public class SkipToCommand extends Command {
             return;
         }
 
-        TrackScheduler trackScheduler = audioPlayerSendHandler.getTrackScheduler();
+        TrackSchedulers trackScheduler = audioPlayerSendHandler.getTrackScheduler();
 
         List<AudioTrack> queue = trackScheduler.getQueue();
         List<AudioTrack> sublistQueue = queue.subList(elementSkipTo - 1, queue.size());
