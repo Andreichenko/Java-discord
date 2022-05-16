@@ -76,9 +76,9 @@ public class BotService {
         this.jda.shutdown();
     }
 
-   // public Command getCommandWithName(String name){
-   //     return null;
-   // }
+    public Command getCommandWithName(String name){
+        return null;
+    }
 
     public CommandEvent createCommandEvent(TriggerCommandDto triggerCommandDto) {
         User user = jda.getUserById(triggerCommandDto.getAuthorId());
@@ -124,6 +124,8 @@ public class BotService {
     public AudioPlayerManager getAudioPlayerManager() {
         return playerManager;
     }
+
+
 }
 
 

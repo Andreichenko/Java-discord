@@ -13,7 +13,8 @@ import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.awt.Color;
 
-public class NowPlayingCommand extends Command {
+public class NowPlayingCommand extends Command
+{
     public NowPlayingCommand() {
         this.name = "nowplaying";
         this.aliases = new String[]{"np", "now playing"};
@@ -26,8 +27,7 @@ public class NowPlayingCommand extends Command {
         AudioPlayerSendHandler audioPlayerSendHandler;
         try {
             audioPlayerSendHandler = VoiceChannelUtils.getAudioPlayerSendHandler(event.getJDA(), event.getGuild().getId());
-        }
-        catch(IllegalArgumentException e) {
+        } catch(IllegalArgumentException e) {
             event.getChannel().sendMessage(TextChannelResponses.BOT_NOT_CONNECTED_TO_VOICE).queue();
             return;
         }
