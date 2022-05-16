@@ -32,7 +32,7 @@ public class SendCommandController {
                                               @RequestParam String guildId, @RequestParam String textChannelId,
                                               @RequestParam String userId) {
 
-        Command command = botService.getCommandFromName(commandName);
+       // Command command = botService.getCommandFromName(commandName);
 
         return new ResponseEntity<>(HttpStatus.OK);
 
