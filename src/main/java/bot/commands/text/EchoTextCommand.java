@@ -8,6 +8,7 @@ import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
 public class EchoTextCommand extends Command {
     public EchoTextCommand() {
         this.name = "echoTest";
+        this.aliases = new String[]{"echo", "text"};
 
     }
 
