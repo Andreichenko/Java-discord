@@ -9,7 +9,7 @@ public class EchoTextCommand extends Command {
     public EchoTextCommand() {
         this.name = "echoTest";
         this.aliases = new String[]{"echo", "text"};
-
+        this.help = "Sends a message with the text that was passed in as an argument";
     }
 
     @Override
