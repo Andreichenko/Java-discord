@@ -7,6 +7,8 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 public class DmCommand extends Command{
+
+
     public DmCommand() {
         this.name = "dm";
         this.hidden = true;
@@ -31,6 +33,12 @@ public class DmCommand extends Command{
         String message = String.join(" ", queryParts).trim();
 
         User userToDm = event.getJDA().getUserById(userID);
+
+        if (userToDm == null){
+            LOGGER.debug("User ID {} not found", userID);
+            fail(event);
+            return;
+        }
 
         userToDm.openPrivateChannel().queue(channel -> channel.sendMessage(message).queue());
     }
