@@ -18,6 +18,21 @@ public class DmCommand extends Command{
     protected void execute(CommandEvent event) {
         String rawContent = event.getMessage().getContentRaw();
         String[] queryParts = rawContent.split("\\s+");
+
+        if (queryParts.length < 3){
+            fail(event);
+            return;
+        }
+
+        String userID = queryParts[1];
+        queryParts[0] = "";
+        queryParts[1] = "";
+
+        String message = String.join(" ", queryParts).trim();
+
+        User userToDm = event.getJDA().getUserById(userID);
+
+        userToDm.openPrivateChannel().queue(channel -> channel.sendMessage(message).queue());
     }
 
     private void fail(CommandEvent event){
