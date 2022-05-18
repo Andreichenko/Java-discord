@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Logger;
 
 public class DmCommand extends Command{
 
+    private static final Logger LOGGER = LogManager.getLogger(DmCommand.class);
 
     public DmCommand() {
         this.name = "dm";
