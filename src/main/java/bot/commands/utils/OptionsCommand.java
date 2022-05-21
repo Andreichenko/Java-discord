@@ -34,7 +34,8 @@ public class OptionsCommand extends Command{
     @Override
     protected void execute(CommandEvent event) {
         event.getChannel().sendTyping().queue();
-
+        // if an argument was not provided and there is an optionEntity then just invert whatever is currently set.
+        // also we have to check that at least 3 arguments are specified
         //command is given as -options OPTIONS_NAME <optional true/false value>
         //get the arguments and extract them into the different parts
         String[] arguments = event.getArgs().split("\\s+");
