@@ -32,7 +32,7 @@ public class OptionListCommand extends Command {
         event.getChannel().sendTyping().queue();
 
         HashMap<String, Boolean> nameToState = new HashMap<>();
-
+        // get the settings and then
         for (String option : OPTION_NAMES) {
             OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(event.getGuild().getId(), option);
 
@@ -45,7 +45,7 @@ public class OptionListCommand extends Command {
         }
 
         EmbedBuilder embedBuilder = new EmbedBuilder();
-
+        //get a random colour for the embed
         setRandomColour(embedBuilder);
 
         AtomicInteger ordinal = new AtomicInteger(1);
