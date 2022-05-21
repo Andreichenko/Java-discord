@@ -45,6 +45,8 @@ public class OptionsCommand extends Command{
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
         if (optionEntity != null ){
             optionEntity = new OptionEntity();
+        }else if (optionEntity == null){
+            event.getChannel().sendMessage(String.format("**%s has been %s.**", optionName, disabled_enabled_text)).queue();
         }
     }
 }
