@@ -7,12 +7,14 @@ import bot.utils.commands.Command;
 import bot.utils.commands.CommandEvent;
 import org.springframework.stereotype.Component;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Locale;
 
 import static bot.utils.OptionsCommands.AUTOPLAY_HELP;
 import static bot.utils.OptionsCommands.AUTOPLAY_NAME;
 import static bot.utils.TextChannelResponses.NEED_MORE_ARGUMENTS_TO_SET_OPTION;
+import static bot.utils.TextChannelResponses.NOT_VALID_OPTION;
 
 
 @Component
@@ -49,6 +51,11 @@ public class OptionsCommand extends Command{
 
         String guildId = event.getGuild().getId();
         String optionName = arguments[0].toLowerCase(Locale.ROOT);
+
+        if (!Arrays.asList(OPTION_NAMES).contains(optionName)) {
+            event.getChannel().sendMessage(String.format(NOT_VALID_OPTION, optionName)).queue();
+            return;
+        }
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
         if (optionEntity != null ){
             optionEntity = new OptionEntity();
