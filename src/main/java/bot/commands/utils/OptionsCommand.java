@@ -46,7 +46,7 @@ public class OptionsCommand extends Command{
         if (optionEntity != null ){
             optionEntity = new OptionEntity();
         }else if (optionEntity == null){
-            event.getChannel().sendMessage(String.format("**%s has been %s.**", optionName, disabled_enabled_text)).queue();
+           // event.getChannel().sendMessage(String.format("**%s has been %s.**", optionName, disabled_enabled_text)).queue();
         }
     }
 }
