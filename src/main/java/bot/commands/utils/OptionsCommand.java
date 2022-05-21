@@ -12,6 +12,7 @@ import java.util.Locale;
 
 import static bot.utils.OptionsCommands.AUTOPLAY_HELP;
 import static bot.utils.OptionsCommands.AUTOPLAY_NAME;
+import static bot.utils.TextChannelResponses.NEED_MORE_ARGUMENTS_TO_SET_OPTION;
 
 
 @Component
@@ -31,6 +32,7 @@ public class OptionsCommand extends Command{
         this.help = "Set options for the bot. Current Options:\n" +
                 String.format("> %s - %s", AUTOPLAY_NAME, AUTOPLAY_HELP);
     }
+
     @Override
     protected void execute(CommandEvent event) {
         event.getChannel().sendTyping().queue();
@@ -39,6 +41,11 @@ public class OptionsCommand extends Command{
         //command is given as -options OPTIONS_NAME <optional true/false value>
         //get the arguments and extract them into the different parts
         String[] arguments = event.getArgs().split("\\s+");
+        //check that at least 3 arguments are specified
+        if (arguments.length < 1 || arguments[0].equals("")) {
+            event.getChannel().sendMessage(NEED_MORE_ARGUMENTS_TO_SET_OPTION).queue();
+            return;
+        }
 
         String guildId = event.getGuild().getId();
         String optionName = arguments[0].toLowerCase(Locale.ROOT);
