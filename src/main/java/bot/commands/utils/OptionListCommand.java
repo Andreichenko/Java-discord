@@ -50,5 +50,11 @@ public class OptionListCommand extends Command {
 
         AtomicInteger ordinal = new AtomicInteger(1);
         StringBuilder stringBuilder = new StringBuilder();
+        nameToState.forEach((setting_name, value) -> {
+            int itemPosition = ordinal.getAndIncrement();
+            stringBuilder.append(String.format("`%d.` %s - %s\n\n", itemPosition, setting_name, value));
+        });
+
+        embedBuilder.setDescription(stringBuilder);
     }
 }
