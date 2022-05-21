@@ -8,6 +8,7 @@ import net.dv8tion.jda.api.EmbedBuilder;
 import org.springframework.stereotype.Component;
 
 import java.util.HashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import static bot.commands.utils.OptionsCommand.OPTION_NAMES;
 import static bot.utils.EmbedUtils.setRandomColour;
@@ -46,5 +47,8 @@ public class OptionListCommand extends Command {
         EmbedBuilder embedBuilder = new EmbedBuilder();
 
         setRandomColour(embedBuilder);
+
+        AtomicInteger ordinal = new AtomicInteger(1);
+        StringBuilder stringBuilder = new StringBuilder();
     }
 }
