@@ -43,5 +43,8 @@ public class OptionsCommand extends Command{
         String guildId = event.getGuild().getId();
         String optionName = arguments[0].toLowerCase(Locale.ROOT);
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
+        if (optionEntity != null ){
+            optionEntity = new OptionEntity();
+        }
     }
 }
