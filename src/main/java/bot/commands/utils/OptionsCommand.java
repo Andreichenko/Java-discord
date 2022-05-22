@@ -56,6 +56,8 @@ public class OptionsCommand extends Command{
             event.getChannel().sendMessage(String.format(NOT_VALID_OPTION, optionName)).queue();
             return;
         }
+        Boolean booleanValue = null;
+        // ??????  check if an argument was provided
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
         if (optionEntity != null ){
             optionEntity = new OptionEntity();
