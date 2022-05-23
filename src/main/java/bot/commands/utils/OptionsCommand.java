@@ -13,8 +13,7 @@ import java.util.Locale;
 
 import static bot.utils.OptionsCommands.AUTOPLAY_HELP;
 import static bot.utils.OptionsCommands.AUTOPLAY_NAME;
-import static bot.utils.TextChannelResponses.NEED_MORE_ARGUMENTS_TO_SET_OPTION;
-import static bot.utils.TextChannelResponses.NOT_VALID_OPTION;
+import static bot.utils.TextChannelResponses.*;
 
 
 @Component
@@ -58,6 +57,16 @@ public class OptionsCommand extends Command{
         }
         Boolean booleanValue = null;
         // ??????  check if an argument was provided
+        if (arguments.length == 2) {
+            String booleanSetter = arguments[1].toLowerCase(Locale.ROOT);
+
+            if (!(booleanSetter.equals("false") || booleanSetter.equals("true"))) {
+                event.getChannel().sendMessage(String.format(NOT_VALID_BOOLEAN, booleanSetter)).queue();
+                return;
+            }
+
+            booleanValue = Boolean.parseBoolean(booleanSetter);
+        }
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
         if (optionEntity != null ){
             optionEntity = new OptionEntity();
