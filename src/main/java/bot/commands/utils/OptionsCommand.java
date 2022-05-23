@@ -57,8 +57,8 @@ public class OptionsCommand extends Command{
         }
         Boolean booleanValue = null;
         // ??????  check if an argument was provided
-        if (arguments.length == 1) {
-            String booleanSetter = arguments[0].toLowerCase(Locale.ROOT);
+        if (arguments.length == 2) {
+            String booleanSetter = arguments[1].toLowerCase(Locale.ROOT);
 
             if (!(booleanSetter.equals("false") || booleanSetter.equals("true"))) {
                 event.getChannel().sendMessage(String.format(NOT_VALID_BOOLEAN, booleanSetter)).queue();
