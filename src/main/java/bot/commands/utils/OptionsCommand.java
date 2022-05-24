@@ -68,10 +68,21 @@ public class OptionsCommand extends Command{
             booleanValue = Boolean.parseBoolean(booleanSetter);
         }
         OptionEntity optionEntity = optionEntityRepository.findByServerIdAndName(guildId, optionName);
-        if (optionEntity != null ){
+
+        // if an argument was not provided and there is an optionEntity then just invert whatever is currently set.
+        if (optionEntity != null && booleanValue == null) {
+            booleanValue = !optionEntity.getOption();
+        }
+        else if (optionEntity == null) {
+            // there is no optionEntity so create one
             optionEntity = new OptionEntity();
-        }else if (optionEntity == null){
-           // event.getChannel().sendMessage(String.format("**%s has been %s.**", optionName, disabled_enabled_text)).queue();
+            optionEntity.setServerId(guildId);
+            optionEntity.setName(optionName);
+
+            // if booleanValue is still null then set it to false (all options default to true when created)
+            if (booleanValue == null) {
+                booleanValue = Boolean.FALSE;
+            }
         }
     }
 }
