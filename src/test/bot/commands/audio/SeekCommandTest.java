@@ -16,7 +16,7 @@ public class SeekCommandTest {
     public void init() {
         MockitoAnnotations.initMocks(this);
     }
-    @Test
+
     public void seekWithHoursMinutesSeconds() {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
