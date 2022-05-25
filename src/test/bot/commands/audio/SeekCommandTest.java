@@ -4,6 +4,7 @@ import bot.utils.TextChannelResponses;
 import bot.utils.TimeUtils;
 import bot.utils.commands.CommandEvent;
 import org.junit.Before;
+import org.junit.Test;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 
@@ -15,7 +16,7 @@ public class SeekCommandTest {
     public void init() {
         MockitoAnnotations.initMocks(this);
     }
-
+    @Test
     public void seekWithHoursMinutesSeconds() {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
