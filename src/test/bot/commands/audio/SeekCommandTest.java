@@ -21,7 +21,7 @@ public class SeekCommandTest {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
         SeekCommand seekCommand = new SeekCommand();
-
+// check
         assertEquals(10922000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(TextChannelResponses.SEEKING_TO_INFORMATION, TimeUtils.timeString(10922)),
                 stringArgumentCaptor.getValue());
