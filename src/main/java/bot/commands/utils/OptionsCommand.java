@@ -1,4 +1,4 @@
-package bot.commands.utilities;
+package bot.commands.utils;
 
 import bot.entities.OptionEntity;
 import bot.repositories.OptionEntityRepository;
@@ -17,8 +17,7 @@ import static bot.utils.TextChannelResponses.NOT_VALID_BOOLEAN;
 import static bot.utils.TextChannelResponses.NOT_VALID_OPTION;
 
 @Component
-public class OptionsCommand extends Command
-{
+public class OptionsCommand extends Command {
     static final String[] OPTION_NAMES = new String[]{AUTOPLAY_NAME};
     private final OptionEntityRepository optionEntityRepository;
     private final HashMap<Boolean, String> enabledDisabledMap = new HashMap<>();
@@ -75,8 +74,7 @@ public class OptionsCommand extends Command
         // if an argument was not provided and there is an optionEntity then just invert whatever is currently set.
         if (optionEntity != null && booleanValue == null) {
             booleanValue = !optionEntity.getOption();
-        }
-        else if (optionEntity == null) {
+        } else if (optionEntity == null) {
             // there is no optionEntity so create one
             optionEntity = new OptionEntity();
             optionEntity.setServerId(guildId);
