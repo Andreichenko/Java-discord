@@ -2,25 +2,19 @@ package bot.commands.text;
 
 import bot.utils.commands.Command;
 import bot.utils.commands.CommandEvent;
-import net.dv8tion.jda.api.Permission;
 
 import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
 
-public class WhisperTextCommand extends Command {
-    public WhisperTextCommand() {
-        this.name = "whisper";
-        this.aliases = new String[]{"w"};
-        this.help = "Sends a message with the text that was passed in as an argument and then deletes the message that " +
-                "triggered the command";
-        this.botPermissions = new Permission[]{Permission.MESSAGE_MANAGE};
+public class EchoTextCommand extends Command {
+    public EchoTextCommand() {
+        this.name = "echoTest";
+        this.aliases = new String[]{"echo", "text"};
+        this.help = "Sends a message with the text that was passed in as an argument";
     }
 
     @Override
     protected void execute(CommandEvent event) {
-        event.getMessage().delete().queue();
-
         String textToReturn = event.getArgs();
-
         if (textToReturn.isEmpty()) {
             event.getChannel().sendMessage(ECHO_COMMAND_NO_ARGS).queue();
             return;
