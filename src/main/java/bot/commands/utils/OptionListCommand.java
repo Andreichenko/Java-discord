@@ -49,15 +49,15 @@ public class OptionListCommand extends Command {
         setRandomColour(embedBuilder);
 
         AtomicInteger ordinal = new AtomicInteger(1);
-        StringBuilder sb = new StringBuilder();
+        StringBuilder stringBuilder = new StringBuilder();
 
         nameToState.forEach((setting_name, value) -> {
             int itemPosition = ordinal.getAndIncrement();
 
-            sb.append(String.format("`%d.` %s - %s\n\n", itemPosition, setting_name, value));
+            stringBuilder.append(String.format("`%d.` %s - %s\n\n", itemPosition, setting_name, value));
         });
 
-        embedBuilder.setDescription(sb);
+        embedBuilder.setDescription(stringBuilder);
         event.getChannel().sendMessage(embedBuilder.build()).queue();
     }
 }
