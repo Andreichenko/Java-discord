@@ -49,4 +49,24 @@ public class SeekCommandTestMocker {
         return mockCommandEvent;
     }
 
+    public static CommandEvent createMockCommandEventWithTime(){
+        return null;
+    }
+
+    public static CommandEvent createMockCommandEventThatFailsWithTime(){
+        return null;
+    }
+
+    public static CommandEvent createMockCommandEventThatFailsSongTooLong(){
+        return null;
+    }
+
+    public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(){
+        return null;
+    }
+
+    public static CommandEvent createMockCommandEventThatFailsSongSeekable(){
+        return null;
+    }
+
 }
