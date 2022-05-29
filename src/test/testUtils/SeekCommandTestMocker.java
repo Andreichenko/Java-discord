@@ -55,6 +55,9 @@ public class SeekCommandTestMocker {
 
         TextChannel mockTextChannel = mock(TextChannel.class);
         when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
+
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(false);
         return null;
     }
 
