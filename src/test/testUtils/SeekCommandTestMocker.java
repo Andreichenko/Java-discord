@@ -49,11 +49,15 @@ public class SeekCommandTestMocker {
         return mockCommandEvent;
     }
 
-    public static CommandEvent  createMockCommandEventWhereBotNotConnected(){
+    public static CommandEvent  createMockCommandEventWhereBotNotConnected(ArgumentCaptor<String> stringArgumentCaptor){
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
         return null;
     }
 
     public static CommandEvent createMockCommandEventThatFailsWithTime(){
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
         return null;
     }
 
