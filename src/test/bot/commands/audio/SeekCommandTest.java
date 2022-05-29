@@ -18,12 +18,11 @@ public class SeekCommandTest {
         MockitoAnnotations.initMocks(this);
     }
 
-
+    @Test
     public void seekWithHoursMinutesSeconds() {
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
-// check
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
                 longArgumentCaptor, "3:02:02");
         SeekCommand seekCommand = new SeekCommand();

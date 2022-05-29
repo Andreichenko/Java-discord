@@ -3,7 +3,6 @@ package bot.commands.text;
 import bot.utils.commands.Command;
 import bot.utils.commands.CommandEvent;
 import net.dv8tion.jda.api.Permission;
-import org.aspectj.bridge.IMessage;
 
 import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
 
@@ -17,7 +16,7 @@ public class WhisperTextCommand extends Command {
     }
 
     @Override
-    protected void execute(CommandEvent event, IMessage) {
+    protected void execute(CommandEvent event) {
         event.getMessage().delete().queue();
 
         String textToReturn = event.getArgs();
