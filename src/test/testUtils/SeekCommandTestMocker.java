@@ -49,7 +49,7 @@ public class SeekCommandTestMocker {
         return mockCommandEvent;
     }
 
-    public static CommandEvent createMockCommandEventWithTime(){
+    public static CommandEvent  createMockCommandEventWhereBotNotConnected(){
         return null;
     }
 
