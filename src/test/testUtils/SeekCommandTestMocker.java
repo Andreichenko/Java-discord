@@ -61,7 +61,11 @@ public class SeekCommandTestMocker {
 
         Guild mockGuild = mock(Guild.class);
         when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
-        return null;
+
+        CommandEvent mockCommandEvent = mock(CommandEvent.class);
+        when(mockCommandEvent.getGuild()).thenReturn(mockGuild);
+        when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        return mockCommandEvent;
     }
 
     public static CommandEvent createMockCommandEventThatFailsWithTime(ArgumentCaptor<String> stringArgumentCaptor,
