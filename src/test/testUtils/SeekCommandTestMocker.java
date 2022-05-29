@@ -54,7 +54,9 @@ public class SeekCommandTestMocker {
         return null;
     }
 
-    public static CommandEvent createMockCommandEventThatFailsWithTime(){
+    public static CommandEvent createMockCommandEventThatFailsWithTime(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                       ArgumentCaptor<Long> longArgumentCaptor,
+                                                                       String timeArgument){
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
         return null;
