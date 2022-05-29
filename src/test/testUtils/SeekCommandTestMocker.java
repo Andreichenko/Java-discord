@@ -62,7 +62,8 @@ public class SeekCommandTestMocker {
         return null;
     }
 
-    public static CommandEvent createMockCommandEventThatFailsSongTooLong(){
+    public static CommandEvent createMockCommandEventThatFailsSongTooLong(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                          String timeArgument){
         return null;
     }
 
