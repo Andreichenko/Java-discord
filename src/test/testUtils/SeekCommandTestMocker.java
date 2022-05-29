@@ -78,6 +78,9 @@ public class SeekCommandTestMocker {
 
     public static CommandEvent createMockCommandEventThatFailsSongTooLong(ArgumentCaptor<String> stringArgumentCaptor,
                                                                           String timeArgument){
+        MessageAction mockMessageAction = mock(MessageAction.class);
+        doAnswer(invocation -> null).when(mockMessageAction).queue();
+
         return null;
     }
 
