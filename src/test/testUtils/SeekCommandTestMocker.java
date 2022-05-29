@@ -67,7 +67,8 @@ public class SeekCommandTestMocker {
         return null;
     }
 
-    public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(){
+    public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(ArgumentCaptor<String> stringArgumentCaptor,
+                                                                              String timeArgument){
         return null;
     }
 
