@@ -84,6 +84,9 @@ public class SeekCommandTestMocker {
         AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
         when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
 
+        AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
+        when(mockAudioPlayerSendHandler.getAudioPlayer()).thenReturn(mockAudioPlayer);
+
         return null;
     }
 
@@ -91,6 +94,9 @@ public class SeekCommandTestMocker {
                                                                           String timeArgument){
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
+
+        TextChannel mockTextChannel = mock(TextChannel.class);
+        when(mockTextChannel.sendMessage(stringArgumentCaptor.capture())).thenReturn(mockMessageAction);
 
         return null;
     }
