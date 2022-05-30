@@ -10,6 +10,8 @@ import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import static bot.utils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
+import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
+import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -30,6 +32,10 @@ public class TestEchoTextCommand {
         when(mockCommandEvent.getArgs()).thenReturn("");
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
 
+        EchoTextCommand echoTextCommand = new EchoTextCommand();
+        echoTextCommand.execute(mockCommandEvent);
+
+        assertEquals(ECHO_COMMAND_NO_ARGS, textChannelArgumentCaptor.getValue());
     }
 
 }
