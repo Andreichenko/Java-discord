@@ -4,6 +4,7 @@ package bot.commands.text;
 import bot.utils.commands.CommandEvent;
 import net.dv8tion.jda.api.entities.TextChannel;
 import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
@@ -24,6 +25,7 @@ public class TestEchoTextCommand {
         MockitoAnnotations.initMocks(this);
     }
 
+    @Test
     public void testFailsWhenNoArgsAreSent(){
         ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
         TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
