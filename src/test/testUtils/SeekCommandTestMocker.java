@@ -91,6 +91,9 @@ public class SeekCommandTestMocker {
         when(mockAudioManager.isConnected()).thenReturn(true);
         when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
 
+        Guild mockGuild = mock(Guild.class);
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
         return null;
     }
 
