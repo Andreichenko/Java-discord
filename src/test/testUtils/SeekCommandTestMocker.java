@@ -114,6 +114,9 @@ public class SeekCommandTestMocker {
         when(mockAudioTrack.getDuration()).thenReturn(Long.valueOf(0));
         when(mockAudioTrack.isSeekable()).thenReturn(true);
 
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
+
         return null;
     }
 
