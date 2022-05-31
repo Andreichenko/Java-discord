@@ -120,6 +120,10 @@ public class SeekCommandTestMocker {
         AudioPlayerSendHandler mockAudioPlayerSendHandler = mock(AudioPlayerSendHandler.class);
         when(mockAudioPlayerSendHandler.getAudioPlayer()).thenReturn(mockAudioPlayer);
 
+        AudioManager mockAudioManager = mock(AudioManager.class);
+        when(mockAudioManager.isConnected()).thenReturn(true);
+        when(mockAudioManager.getSendingHandler()).thenReturn(mockAudioPlayerSendHandler);
+
         return null;
     }
 
