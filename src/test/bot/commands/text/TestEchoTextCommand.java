@@ -40,4 +40,11 @@ public class TestEchoTextCommand {
         assertEquals(ECHO_COMMAND_NO_ARGS, textChannelArgumentCaptor.getValue());
     }
 
+    public void testExecutesSuccessfully(){
+
+        final String ARGS = "this is a message";
+        ArgumentCaptor<String> textChannelArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        TextChannel mockTextChannel = createMockTextChannelWhereTextIsSentNoTyping(textChannelArgumentCaptor);
+    }
+
 }
