@@ -132,7 +132,7 @@ public class SeekCommandTestMocker {
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
         when(mockCommandEvent.getArgs()).thenReturn(timeArgument);
 
-        return null;
+        return mockCommandEvent;
     }
 
     public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(ArgumentCaptor<String> stringArgumentCaptor,
