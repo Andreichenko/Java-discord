@@ -140,6 +140,10 @@ public class SeekCommandTestMocker {
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
 
+        Guild mockGuild = mock(Guild.class);
+        AudioManager mockAudioManager= mock(AudioManager.class);;
+        when(mockGuild.getAudioManager()).thenReturn(mockAudioManager);
+
 
         return null;
     }
