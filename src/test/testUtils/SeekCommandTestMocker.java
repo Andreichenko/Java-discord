@@ -135,13 +135,7 @@ public class SeekCommandTestMocker {
         return mockCommandEvent;
     }
 
-    public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(ArgumentCaptor<String> stringArgumentCaptor,
-                                                                              String timeArgument){
-        MessageAction mockMessageAction = mock(MessageAction.class);
-        doAnswer(invocation -> null).when(mockMessageAction).queue();
 
-        return null;
-    }
 
     public static CommandEvent createMockCommandEventThatFailsSongSeekable(ArgumentCaptor<String> stringArgumentCaptor,
                                                                            String timeArgument){
@@ -154,6 +148,9 @@ public class SeekCommandTestMocker {
         AudioTrack mockAudioTrack = mock(AudioTrack.class);
         when(mockAudioTrack.getDuration()).thenReturn(Long.valueOf(999999999));
         when(mockAudioTrack.isSeekable()).thenReturn(false);
+
+        AudioPlayer mockAudioPlayer = mock(AudioPlayer.class);
+        when(mockAudioPlayer.getPlayingTrack()).thenReturn(mockAudioTrack);
 
         return null;
     }
