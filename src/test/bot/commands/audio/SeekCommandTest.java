@@ -32,4 +32,23 @@ public class SeekCommandTest {
         assertEquals(String.format(TextChannelResponses.SEEKING_TO_INFORMATION, TimeUtils.timeString(10922)),
                 stringArgumentCaptor.getValue());
     }
+
+    public void seekWithMinutesSeconds(){
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
+    }
+
+    public void seekWithSeconds(){
+
+    }
+
+    public void seekWithInvalidFormatFails(){
+
+    }
+
+    public void seekWithStringFails(){
+
+    }
+
+
 }
