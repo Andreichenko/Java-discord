@@ -40,6 +40,7 @@ public class TestEchoTextCommand {
         assertEquals(ECHO_COMMAND_NO_ARGS, textChannelArgumentCaptor.getValue());
     }
 
+    @Test
     public void testExecutesSuccessfully(){
 
         final String ARGS = "this is a message";
