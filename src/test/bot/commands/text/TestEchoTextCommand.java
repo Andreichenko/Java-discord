@@ -48,6 +48,10 @@ public class TestEchoTextCommand {
         CommandEvent mockCommandEvent = mock(CommandEvent.class);
         when(mockCommandEvent.getArgs()).thenReturn(ARGS);
         when(mockCommandEvent.getChannel()).thenReturn(mockTextChannel);
+        EchoTextCommand echoTextCommand = new EchoTextCommand();
+        echoTextCommand.execute(mockCommandEvent);
+
+        assertEquals(ARGS, textChannelArgumentCaptor.getValue());
     }
 
 }
