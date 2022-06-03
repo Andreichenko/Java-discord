@@ -137,7 +137,7 @@ public class SeekCommandTestMocker {
 
 
 
-    public static CommandEvent createMockCommandEventThatFailsSongSeekable(ArgumentCaptor<String> stringArgumentCaptor,
+    public static CommandEvent createMockCommandEventThatFailsSongNotSeekable(ArgumentCaptor<String> stringArgumentCaptor,
                                                                            String timeArgument){
         MessageAction mockMessageAction = mock(MessageAction.class);
         doAnswer(invocation -> null).when(mockMessageAction).queue();
