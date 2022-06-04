@@ -55,6 +55,8 @@ public class SeekCommandTest {
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
                 longArgumentCaptor, 0);
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
     }
 
     public void seekWithInvalidFormatFails(){
