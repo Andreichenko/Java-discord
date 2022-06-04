@@ -57,6 +57,9 @@ public class SeekCommandTest {
                 longArgumentCaptor, 0);
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
+        assertEquals(0, longArgumentCaptor.getValue().longValue());
+        assertEquals(String.format(TextChannelResponses.SEEKING_TO_INFORMATION, TimeUtils.timeString(2)),
+                stringArgumentCaptor.getValue());
     }
 
     public void seekWithInvalidFormatFails(){
