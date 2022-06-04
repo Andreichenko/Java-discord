@@ -33,6 +33,7 @@ public class SeekCommandTest {
                 stringArgumentCaptor.getValue());
     }
 
+    @Test
     public void seekWithMinutesSeconds(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
