@@ -38,8 +38,10 @@ public class SeekCommandTest {
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
                 longArgumentCaptor, "02:02");
+
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
+
         assertEquals(122000, longArgumentCaptor.getValue().longValue());
         assertEquals(String.format(TextChannelResponses.SEEKING_TO_INFORMATION, TimeUtils.timeString(122)),
                 stringArgumentCaptor.getValue());
