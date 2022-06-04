@@ -39,7 +39,8 @@ public class SeekCommandTest {
     }
 
     public void seekWithSeconds(){
-
+        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
     }
 
     public void seekWithInvalidFormatFails(){
