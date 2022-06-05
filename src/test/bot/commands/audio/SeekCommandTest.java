@@ -67,6 +67,11 @@ public class SeekCommandTest {
 
     public void seekWithInvalidFormatFails(){
         ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
+        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
+                "3:4:5:6");
+        SeekCommand seekCommand = new SeekCommand();
+        seekCommand.execute(mockCommandEvent);
+        assertEquals(TextChannelResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
     }
 
     public void seekWithStringFails(){
