@@ -72,4 +72,14 @@ test {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
+    dependsOn 'cleanTest'
+}
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src'
+            srcDir 'test'
+        }
+    }
 }
