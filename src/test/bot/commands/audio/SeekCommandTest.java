@@ -55,7 +55,7 @@ public class SeekCommandTest {
         ArgumentCaptor<Long> longArgumentCaptor = ArgumentCaptor.forClass(Long.class);
 
         CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventWithTime(stringArgumentCaptor,
-                longArgumentCaptor, 0);
+                longArgumentCaptor, "2221");
 
         SeekCommand seekCommand = new SeekCommand();
         seekCommand.execute(mockCommandEvent);
@@ -65,26 +65,8 @@ public class SeekCommandTest {
                 stringArgumentCaptor.getValue());
     }
 
-    @Test
-    public void seekWithInvalidFormatFails(){
-        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
-        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
-                "3:4:5:6");
-        SeekCommand seekCommand = new SeekCommand();
-        seekCommand.execute(mockCommandEvent);
-        assertEquals(TextChannelResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
-    }
 
-    public void seekWithStringFails(){
-        ArgumentCaptor<String> stringArgumentCaptor = ArgumentCaptor.forClass(String.class);
 
-        CommandEvent mockCommandEvent = SeekCommandTestMocker.createMockCommandEventThatFailsWithTime(stringArgumentCaptor,
-                "string");
-
-        SeekCommand seekCommand = new SeekCommand();
-        seekCommand.execute(mockCommandEvent);
-        assertEquals(TextChannelResponses.SEEK_COMMAND_FORMAT, stringArgumentCaptor.getValue());
-    }
 
 
 }
