@@ -79,7 +79,7 @@ sourceSets {
     main {
         java {
             srcDir 'src'
-            srcDir 'test'
+            srcDir 'test'  //test dir will be moved after build
         }
     }
 }
