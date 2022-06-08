@@ -1,15 +1,15 @@
 package bot.commands.audio;
 
-import bot.utils.TextChannelResponses;
-import bot.utils.TimeUtils;
-import bot.utils.commands.CommandEvent;
-import org.junit.Before;
-import org.junit.Test;
-import org.mockito.ArgumentCaptor;
-import org.mockito.MockitoAnnotations;
-import testUtils.SeekCommandTestMocker;
-
-import static org.junit.Assert.assertEquals;
+//import bot.utils.TextChannelResponses;
+//import bot.utils.TimeUtils;
+//import bot.utils.commands.CommandEvent;
+//import org.junit.Before;
+//import org.junit.Test;
+//import org.mockito.ArgumentCaptor;
+//import org.mockito.MockitoAnnotations;
+//import testUtils.SeekCommandTestMocker;
+//
+//import static org.junit.Assert.assertEquals;
 
 public class SeekCommandTest {
 
