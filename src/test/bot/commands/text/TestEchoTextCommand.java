@@ -10,7 +10,7 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.MockitoAnnotations;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import static bot.utils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
+//import static bot.utils.MockTextChannelCreator.createMockTextChannelWhereTextIsSentNoTyping;
 import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;
 import static org.junit.Assert.assertEquals;
 import static org.mockito.Mockito.mock;
