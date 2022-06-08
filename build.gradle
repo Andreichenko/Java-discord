@@ -75,11 +75,11 @@ test {
     dependsOn 'cleanTest'
 }
 
-sourceSets {
-    main {
-        java {
-            srcDir 'src'
-            srcDir 'test'  //test dir will be moved after build
-        }
-    }
-}
+//sourceSets {
+//    main {
+//        java {
+//            srcDir 'src'
+//            srcDir 'test'  //test dir will be moved after build
+//        }
+//    }
+//}
