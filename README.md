@@ -31,9 +31,5 @@ DISCORD_BOT_KEY	== The discord API key
 BOT_USER_ID == The User ID account 
 
 POSTGRES_LOCATION == The URL of postgres 
-
-
-
-
-
-PS. the project move to GitLab
+№№
+I should do a code review and add updates to the dependencies, so will the application architecture be added here
