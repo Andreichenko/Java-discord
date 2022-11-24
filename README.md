@@ -1,8 +1,8 @@
 # discord-bot
 
 
-[![Build Status](https://travis-ci.com/Andreichenko/discord-bot.svg?branch=master)](https://travis-ci.com/Andreichenko/discord-bot) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a alt="Java">
-        <img src="https://img.shields.io/badge/Java-v1.8-orange.svg" />
+ [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT) <a alt="Java">
+        <img src="https://img.shields.io/badge/Java-v17-orange.svg" />
     </a>    <a alt="Docker">
         <img src="https://img.shields.io/badge/Docker-v19-yellowgreen.svg" />
     </a>  <a alt="Bootstrap">
@@ -12,7 +12,7 @@
 
 
 
-version 0.1
+## version 0.1.3
 
 This bot is deployed in a separate container and connected to your platform ID. This allows you to broadcast an audio stream, and it is also possible to store commands in a separate database based on mongoDB. Spring Session provides an API and implementations for managing a user’s session information.
 
@@ -31,9 +31,5 @@ DISCORD_BOT_KEY	== The discord API key
 BOT_USER_ID == The User ID account 
 
 POSTGRES_LOCATION == The URL of postgres 
-
-
-
-
-
-PS. the project move to GitLab
+№№
+I should do a code review and add updates to the dependencies, so will the application architecture be added here

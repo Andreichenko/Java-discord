@@ -18,6 +18,9 @@
 .idea/**/gradle.xml
 .idea/**/libraries
 
+### Gradle Patch ###
+**/build/
+
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 

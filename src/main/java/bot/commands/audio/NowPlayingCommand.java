@@ -4,17 +4,17 @@ import bot.commands.audio.utils.AudioPlayerSendHandler;
 import bot.commands.audio.utils.VoiceChannelUtils;
 import bot.commands.audio.utils.YouTubeUtils;
 import bot.utils.TextChannelResponses;
-import bot.utils.TimeLineStamp;
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import bot.utils.TimeUtils;
+import bot.utils.commands.Command;
+import bot.utils.commands.CommandEvent;
 import com.sedmelluq.discord.lavaplayer.source.youtube.YoutubeAudioTrack;
 import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.EmbedBuilder;
 
 import java.awt.Color;
 
-public class NowPlayingCommand extends Command {
-
+public class NowPlayingCommand extends Command
+{
     public NowPlayingCommand() {
         this.name = "nowplaying";
         this.aliases = new String[]{"np", "now playing"};
@@ -47,8 +47,9 @@ public class NowPlayingCommand extends Command {
         }
         eb.setAuthor("Now playing");
         eb.setTitle(np.getInfo().title, np.getInfo().uri);
-        eb.setDescription(String.format("%s / %s", TimeLineStamp.timeString(np.getPosition() / 1000),
-                TimeLineStamp.timeString(np.getDuration() / 1000)));
+        eb.setDescription(String.format("%s / %s", TimeUtils.timeString(np.getPosition() / 1000),
+                TimeUtils.timeString(np.getDuration() / 1000)));
         event.getChannel().sendMessage(eb.build()).queue();
     }
+
 }

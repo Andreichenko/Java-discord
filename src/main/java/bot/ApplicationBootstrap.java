@@ -25,6 +25,7 @@ public class ApplicationBootstrap implements CommandLineRunner {
         SpringApplication.run(ApplicationBootstrap.class, args);
     }
 
+
     @Override
     public void run(String... args) throws Exception {
         this.botService.startBot();

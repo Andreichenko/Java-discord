@@ -31,39 +31,44 @@ public class AliasEntity{
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public String getServerId() {
         return serverId;
-    }
-
-    public void setServerId(String serverId) {
-        this.serverId = serverId;
     }
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
     public String getCommand() {
         return command;
-    }
-
-    public void setCommand(String command) {
-        this.command = command;
     }
 
     public String getArgs() {
         return args;
     }
 
-    public void setArgs(String args) {
+    public AliasEntity setId(Long id) {
+        this.id = id;
+        return this;
+    }
+
+    public AliasEntity setServerId(String serverId) {
+        this.serverId = serverId;
+        return this;
+    }
+
+    public AliasEntity setName(String name) {
+        this.name = name;
+        return this;
+    }
+
+    public AliasEntity setCommand(String command) {
+        this.command = command;
+        return this;
+    }
+
+    public AliasEntity setArgs(String args) {
         this.args = args;
+        return this;
     }
 }

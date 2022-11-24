@@ -26,6 +26,10 @@ public class TextChannelResponses {
     public static final String TRYING_TO_RESUME_PLAYING_SONG = "**The song is not paused.**";
     public static final String TRYING_TO_PAUSE_PAUSED_SONG = "**Song is already paused.**";
 
+    public static final String NO_SUBREDDIT_PROVIDED = "**You need to provide a subreddit to search for.**";
+    public static final String UNABLE_TO_SEARCH_FOR_SUBREDDIT = "**Unable to search for that subreddit**";
+    public static final String UNABLE_TO_GET_POSTS_FOR_SUBREDDIT = "**Unable to get posts for that subreddit**";
+
     public static final String HOW_TO_MAKE_ALIAS = "`-aliascreate ALIAS_NAME <Command to run when ALIAS_NAME is called>`";
     public static final String NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS = "**Need more arguments to create an alias" +
             ".**\n**Create an alias with**" + HOW_TO_MAKE_ALIAS;
@@ -41,11 +45,15 @@ public class TextChannelResponses {
     public static final String ALIAS_DELETE_NONE_PROVIDED = "**You need to provide an alias to delete**";
     public static final String ALIAS_DELETE_ALIAS_DOES_NOT_EXIST = "**Alias with name `%s` doesn't exist**";
     public static final String ALIAS_TOO_LONG = "**That Alias is too long. It needs to be less than 2000 characters**";
+    public static final String ALIAS_SEARCH_NOT_PROVIDED = "**What am I searching for?**";
 
     public static final String ECHO_COMMAND_NO_ARGS = "**You need to provide some text to echo.**";
 
     public static final String NO_HISTORY_TO_SHOW = "**There is no history to show.**";
     public static final String CANT_DISPLAY_QUEUE_PAGE = "**Cannot display that page**";
 
-    public static final String CANT_DISPLAY_ALL_PAGE = "**You need to make sure that the pages is exist";
+    public static final String NEED_MORE_ARGUMENTS_TO_SET_OPTION = "**Need more arguments to set an option.**";
+    public static final String NOT_VALID_OPTION = "**%s is not an option.**";
+    public static final String NOT_VALID_BOOLEAN = "**%s is not an option setting.**";
+
 }

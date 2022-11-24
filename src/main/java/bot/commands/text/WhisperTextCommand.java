@@ -1,7 +1,7 @@
 package bot.commands.text;
 
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import bot.utils.commands.Command;
+import bot.utils.commands.CommandEvent;
 import net.dv8tion.jda.api.Permission;
 
 import static bot.utils.TextChannelResponses.ECHO_COMMAND_NO_ARGS;

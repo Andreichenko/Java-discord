@@ -1,7 +1,9 @@
 package bot.commands.alias;
 
-import com.jagrosh.jdautilities.command.Command;
-import com.jagrosh.jdautilities.command.CommandEvent;
+import bot.entities.AliasEntity;
+import bot.repositories.AliasEntityRepository;
+import bot.utils.commands.Command;
+import bot.utils.commands.CommandEvent;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +12,6 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
-
-import bot.entities.AliasEntity;
-import bot.repositories.AliasEntityRepository;
 
 import static bot.utils.TextChannelResponses.ALIAS_CANT_BE_CREATED_COMMAND_NOT_FOUND;
 import static bot.utils.TextChannelResponses.ALIAS_CREATED;
@@ -23,7 +22,6 @@ import static bot.utils.TextChannelResponses.NEED_MORE_ARGUMENTS_TO_CREATE_AN_AL
 
 @Component
 public class AliasCreateCommand extends Command {
-
     private final Logger LOGGER = LogManager.getLogger(AliasCreateCommand.class);
 
     private Set<String> allCurrentCommandNames;
@@ -33,22 +31,25 @@ public class AliasCreateCommand extends Command {
     private final AliasEntityRepository aliasEntityRepository;
 
     @Autowired
-    public AliasCreateCommand(AliasEntityRepository aliasEntityRepository){
-
+    public AliasCreateCommand(AliasEntityRepository aliasEntityRepository) {
         this.name = "aliascreate";
         this.aliases = new String[]{"alias", "ac"};
         this.help = "Create a new alias for a command. Created using " + HOW_TO_MAKE_ALIAS;
 
         this.aliasEntityRepository = aliasEntityRepository;
-
     }
 
     @Override
-    protected void execute(CommandEvent event){
+    protected void execute(CommandEvent event) {
         event.getChannel().sendTyping().queue();
 
+        //command is given as -alias NAME_OF_ALIAS <Command to run when alias is called>
+        //e.g. -aliascreate song play http://youtube.com/somesong
+        //get the arguments and extract them into the different parts
         String[] arguments = event.getArgs().split("\\s+");
-        if (arguments.length < 2){
+
+        //check that at least 3 arguments are specified
+        if (arguments.length < 2) {
             event.getChannel().sendMessage(NEED_MORE_ARGUMENTS_TO_CREATE_AN_ALIAS).queue();
             return;
         }
@@ -57,14 +58,15 @@ public class AliasCreateCommand extends Command {
         String aliasCommand = arguments[1].toLowerCase();
         String aliasCommandArguments = arguments.length < 3 ? " " : sliceArgumentsToString(arguments, 2, arguments.length);
 
-        if (allCurrentCommandNames.contains(aliasName)){
+        if (allCurrentCommandNames.contains(aliasName)) {
             event.getChannel().sendMessage(String.format(ALIAS_NAME_ALREADY_IN_USE_AS_COMMAND, aliasName)).queue();
             return;
         }
+
         // This is the command that the alias will execute when it is called
         Command command = commandNameToCommandMap.get(aliasCommand);
 
-        if (command == null){
+        if (command == null) {
             event.getChannel().sendMessage(String.format(ALIAS_CANT_BE_CREATED_COMMAND_NOT_FOUND, aliasCommand)).queue();
             return;
         }
@@ -72,31 +74,29 @@ public class AliasCreateCommand extends Command {
         String guildId = event.getGuild().getId();
 
         // a Discord message can't be longer than 2000 characters
-        if (String.format(ALIAS_CREATED, aliasName, aliasCommand, aliasCommandArguments).length() > 1999){
-
+        if (String.format(ALIAS_CREATED, aliasName, aliasCommand, aliasCommandArguments).length() > 1999) {
             LOGGER.error("Tried to create alias that was too long");
             event.getChannel().sendMessage(ALIAS_TOO_LONG).queue();
             return;
         }
 
         // can't store anything longer than 255 characters in the database
-        if (aliasName.length() > 255 || aliasCommand.length() > 255 || aliasCommandArguments.length() > 255){
+        if (aliasName.length() > 255 || aliasCommand.length() > 255 || aliasCommandArguments.length() > 255) {
             event.getChannel().sendMessage(ALIAS_TOO_LONG).queue();
             return;
         }
 
         // if the alias already exists delete it
         AliasEntity existingAlias = aliasEntityRepository.findByServerIdAndName(guildId, aliasName);
-
-        if (existingAlias != null){
+        if (existingAlias != null) {
             aliasEntityRepository.delete(existingAlias);
         }
 
-        AliasEntity aliasEntity = new AliasEntity();
-        aliasEntity.setArgs(aliasCommandArguments);
-        aliasEntity.setName(aliasName);
-        aliasEntity.setCommand(aliasCommand);
-        aliasEntity.setServerId(guildId);
+        AliasEntity aliasEntity = new AliasEntity()
+                .setArgs(aliasCommandArguments)
+                .setName(aliasName)
+                .setCommand(aliasCommand)
+                .setServerId(guildId);
 
         aliasEntityRepository.save(aliasEntity);
 
@@ -106,16 +106,7 @@ public class AliasCreateCommand extends Command {
                 aliasName, aliasCommand, aliasCommandArguments);
     }
 
-    public void setAllCurrentCommandNames(Set<String> allCurrentCommandNames) {
-        this.allCurrentCommandNames = allCurrentCommandNames;
-    }
-
-    public void setCommandNameToCommandMap(Map<String, Command> commandNameToCommandMap) {
-        this.commandNameToCommandMap = commandNameToCommandMap;
-    }
-
-    String sliceArgumentsToString(String[] arr, int start, int end){
-
+    String sliceArgumentsToString(String[] arr, int start, int end) {
         // Get the slice of the Array
         String[] slice = new String[end - start];
 
@@ -124,5 +115,13 @@ public class AliasCreateCommand extends Command {
 
         // return the slice
         return Arrays.toString(slice).replace(",", "").replace("[", "").replace("]", "");
+    }
+
+    public void setAllCurrentCommandNames(Set<String> allCurrentCommandNames) {
+        this.allCurrentCommandNames = allCurrentCommandNames;
+    }
+
+    public void setCommandNameToCommandMap(Map<String, Command> commandNameToCommandMap) {
+        this.commandNameToCommandMap = commandNameToCommandMap;
     }
 }
