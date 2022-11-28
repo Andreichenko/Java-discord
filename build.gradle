@@ -3,7 +3,7 @@ plugins {
     id 'org.springframework.boot' version '2.6.6'
 }
 
-sourceCompatibility = '17'
+sourceCompatibility = '13'
 
 version '0.1'
 
