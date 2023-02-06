@@ -8,7 +8,7 @@
     </a>  <a alt="Bootstrap">
         <img src="https://img.shields.io/badge/Bootstrap-v4.0.0-yellowgreen.svg">
     </a>
-    [![BCH compliance](https://bettercodehub.com/edge/badge/Andreichenko/discord-bot?branch=master)](https://bettercodehub.com/)
+    
 
 
 
