@@ -41,6 +41,9 @@ dependencies {
     implementation 'com.google.oauth-client:google-oauth-client-jetty:1.23.0'
     implementation 'com.google.apis:google-api-services-youtube:v3-rev212-1.25.0'
 
+    //reddit
+    implementation 'net.dean.jraw:JRAW:1.1.0'
+
     //jaxb
     implementation group: 'javax.xml.bind', name: 'jaxb-api', version: '2.3.0'
 
@@ -72,14 +75,13 @@ test {
         events "passed", "skipped", "failed"
         exceptionFormat "full"
     }
-    dependsOn 'cleanTest'
 }
 
-//sourceSets {
-//    main {
-//        java {
-//            srcDir 'src'
-//            srcDir 'test'  //test dir will be moved after build
-//        }
+//jar {
+//    manifest {
+//        attributes(
+//                'Class-Path': configurations.compile.collect { it.getName() }.join(' '),
+//                'Main-Class': mainClassName
+//        )
 //    }
 //}
