@@ -12,7 +12,7 @@
 
 
 
-## version 0.1.3
+## version 0.1.4
 
 This bot is deployed in a separate container and connected to your platform ID. This allows you to broadcast an audio stream, and it is also possible to store commands in a separate database based on mongoDB. Spring Session provides an API and implementations for managing a user’s session information.
 
