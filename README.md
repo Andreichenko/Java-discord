@@ -33,3 +33,4 @@ BOT_USER_ID == The User ID account
 POSTGRES_LOCATION == The URL of postgres 
 №№
 I should do a code review and add updates to the dependencies, so will the application architecture be added here
+TODO recreate documentation
