@@ -8,7 +8,7 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 
 /**
  * This bot is deployed in a separate container and connected to your platform ID
- * Based on Java Springboot Framework 2.3.1
+ * Based on Java Springboot Framework 2.3.1 need to rework
  */
 
 @SpringBootApplication
